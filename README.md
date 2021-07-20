@@ -2,6 +2,18 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.1.
 
+
+## Tech Stack:
+- Angular
+- HTML
+- CSS (SCSS)
+- API: https://docs.thecatapi.com/
+
+
+## The aim of the task is to create two views:
+- The first view is the paginated list of items
+- The second view is the detailed view of an item from the list
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
