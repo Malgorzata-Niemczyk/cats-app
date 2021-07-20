@@ -1,1 +1,6 @@
-<p>cats-list works!</p>
+<ul class="cats_list">
+    <li *ngFor="let cat of cats">
+        <p>{{cat.name}}</p>
+        <p>{{cat.origin}}</p>
+    </li>
+</ul>
