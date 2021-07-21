@@ -15,7 +15,8 @@ const httpOptions = {
 })
 
 export class CatsService {
-  private url = 'https://api.thecatapi.com/v1/breeds';
+  pageLimit = 8;
+  private url = `https://api.thecatapi.com/v1/breeds?limit=${this.pageLimit}`;
 
   constructor(private http: HttpClient) { }
 

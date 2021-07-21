@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscriber } from 'rxjs';
 import { CatsService } from 'src/app/services/cats.service';
 import { Cats } from '../cats';
 
