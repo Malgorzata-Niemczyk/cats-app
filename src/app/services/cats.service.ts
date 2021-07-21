@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, pipe } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 import { Cats } from "../components/cats";
 
 const httpOptions = {
@@ -21,7 +22,12 @@ export class CatsService {
   constructor(private http: HttpClient) { }
 
   getCats(): Observable<Cats[]> {
-    return this.http.get<Cats[]>(this.url, httpOptions); 
+    return this.http.get<Cats[]>(this.url, httpOptions);
+  }
+
+  getCat(id: string): Observable<Cats> {
+    const catURL = `${this.url}&breed_id=${id}`;
+    return this.http.get<Cats>(catURL);
   }
 
 }

@@ -9,13 +9,24 @@ import { Cats } from '../cats';
 })
 export class CatsListComponent implements OnInit {
   cats: Cats[] = [];
+  selectedCat?: Cats;
 
   constructor(private catsService: CatsService) { }
 
   ngOnInit(): void { 
-    this.catsService.getCats().subscribe(cats => {
-      this.cats = cats;
-      console.log(cats)
+    this.getCatsList();
+  }
+
+  getCatsList() {
+    this.catsService.getCats().subscribe(response => {
+      this.cats = response;
+      console.log(response);
     });
   }
+
+  onSelect(cat: Cats): void {
+    this.selectedCat = cat;
+    console.log(cat);
+  }
+
 }

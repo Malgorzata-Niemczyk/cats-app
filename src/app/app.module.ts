@@ -17,7 +17,6 @@ import { CatDetailsComponent } from './components/cat-details/cat-details.compon
     BrowserModule,
     HttpClientModule,
     AppRoutingModule
-
   ],
   providers: [],
   bootstrap: [AppComponent]

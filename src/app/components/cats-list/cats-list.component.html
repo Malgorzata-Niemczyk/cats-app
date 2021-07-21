@@ -1,7 +1,9 @@
 <ul class="cats_list">
-    <li *ngFor="let cat of cats" class="cat_item">
-        <img [src]="cat.image!.url" alt="some cat">
-        <p>Name: <span>{{cat.name}}</span></p>
-        <p>Origin: <span>{{cat.origin}}</span></p>
+    <li *ngFor="let cat of cats" class="cat_item" >
+        <a [routerLink]="['/cat', cat.id]">
+            <img [src]="cat.image!.url" alt="some cat">
+            <p>Name: <span>{{cat.name}}</span></p>
+            <p>Origin: <span>{{cat.origin}}</span></p>
+        </a>
     </li>
 </ul>

@@ -5,7 +5,7 @@ export interface Cats {
    life_span?: string,
    origin?: string,
    weight?: {
-      imperial: string
+      metric: string
    },
    image?: {
       url: string
