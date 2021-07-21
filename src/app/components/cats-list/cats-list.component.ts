@@ -14,6 +14,9 @@ export class CatsListComponent implements OnInit {
   constructor(private catsService: CatsService) { }
 
   ngOnInit(): void { 
-    this.catsService.getCats().subscribe(cats => this.cats = cats);
+    this.catsService.getCats().subscribe(cats => {
+      this.cats = cats;
+      console.log(cats)
+    });
   }
 }

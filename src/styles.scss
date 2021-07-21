@@ -8,5 +8,9 @@
 }
 
 body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family: 'Roboto', sans-serif;
+    margin: 20px 0;
 }

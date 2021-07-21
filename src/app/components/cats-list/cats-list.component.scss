@@ -1,0 +1,44 @@
+.cats_list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    img {
+        margin-bottom: 10px;
+        align-self: center;
+        height: 100px;
+        width: 150px;
+        object-fit: contain;
+    }
+
+    .cat_item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 20px;
+        padding: 20px 30px;
+        height: 200px;
+        width: 300px;
+        border: 2px solid blueviolet;
+        border-top-left-radius: 25px;
+        border-bottom-right-radius: 25px;
+        list-style-type: none;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+    
+        p {
+            text-transform: uppercase;
+        }
+    
+        span {
+            font-weight: bold;
+            text-transform: initial;
+        }
+
+        &:hover {
+            background-color: rgb(228, 67, 228);
+            color: whitesmoke;
+        }
+    }
+}

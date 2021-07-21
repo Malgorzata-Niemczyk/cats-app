@@ -4,5 +4,10 @@ export interface Cats {
    temperament?: string,
    life_span?: string,
    origin?: string,
-   weight_imperial?: string 
+   weight?: {
+      imperial: string
+   },
+   image?: {
+      url: string
+   } 
 }
