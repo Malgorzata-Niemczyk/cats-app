@@ -1,7 +1,7 @@
 <div class="search-bar">
     <input 
         type="search" 
-        placeholder="Search by breed..."
+        placeholder="Search by breed or origin..."
     >
 </div>
 <ul class="cats_list">
@@ -12,11 +12,9 @@
         class="cat_item" 
         [routerLink]="['/cat', cat.id]"
     >
-        <a >
-            <img [src]="cat.image!.url" alt="some cat">
-            <p>Name: <span>{{cat.name}}</span></p>
-            <p>Origin: <span>{{cat.origin}}</span></p>
-        </a>
+        <img [src]="cat.image!.url" alt="some cat" class="cat-picture">
+        <p>Name: <span>{{cat.name}}</span></p>
+        <p>Origin: <span>{{cat.origin}}</span></p>
     </li>
 </ul>
 <div class="pagination-wrapper">
