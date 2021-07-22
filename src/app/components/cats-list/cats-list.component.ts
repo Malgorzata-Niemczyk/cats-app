@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CatsService } from 'src/app/services/cats.service';
 import { Cats } from '../cats';
 
@@ -8,8 +8,8 @@ import { Cats } from '../cats';
   styleUrls: ['./cats-list.component.scss']
 })
 export class CatsListComponent implements OnInit {
-  cats: Cats[] = [];
-  selectedCat?: Cats;
+  @Input() cats: Cats[] = [];
+  @Input() selectedCat!: Cats;
 
   totalRecords!: number;
   pageSize:number = 8;

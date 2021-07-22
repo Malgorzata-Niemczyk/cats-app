@@ -1,9 +1,14 @@
-<div *ngIf="cat">
-    <h2>{{cat.name | uppercase}}</h2>
-    <p>ID: {{cat.id}}</p>
-    <p>Temperament: {{cat.temperament}}</p>
-    <p>Origin: {{cat.origin}}</p>
-    <p>Average life span: {{cat.life_span}}</p>
-    <p>Weight: {{cat.weight?.metric}} kgs</p>
-    <button (click)="goBack()">Go Back</button>
+<div *ngIf="cat" class="details-wrapper">
+    <div>
+        <img src="" alt="">
+    </div>
+    <div>
+        <h2>{{cat.name | uppercase}}</h2>
+        <p>ID: {{cat.id}}</p>
+        <p>Temperament: {{cat.temperament}}</p>
+        <p>Origin: {{cat.origin}}</p>
+        <p>Average life span: {{cat.life_span}}</p>
+        <p>Weight: {{cat.weight?.metric}} kgs</p>
+        <button (click)="goBack()">Go Back</button>
+    </div>
 </div>
