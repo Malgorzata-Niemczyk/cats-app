@@ -1,6 +1,6 @@
 <div *ngIf="cat" class="details-wrapper">
     <div>
-        <img src="" alt="">
+        <img [src]="cat.image?.url" alt="some cat">
     </div>
     <div>
         <h2>{{cat.name | uppercase}}</h2>
@@ -9,6 +9,6 @@
         <p>Origin: {{cat.origin}}</p>
         <p>Average life span: {{cat.life_span}}</p>
         <p>Weight: {{cat.weight?.metric}} kgs</p>
-        <button (click)="goBack()">Go Back</button>
+        <button [routerLink]="['']">Go Back</button>
     </div>
 </div>

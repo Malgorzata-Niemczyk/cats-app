@@ -10,8 +10,9 @@
                 currentPage: page,
                 totalItems: totalRecords }" 
         class="cat_item" 
+        [routerLink]="['/cat', cat.id]"
     >
-        <a [routerLink]="['/cat', cat.id]" (click)="onSelect(cat)" >
+        <a >
             <img [src]="cat.image!.url" alt="some cat">
             <p>Name: <span>{{cat.name}}</span></p>
             <p>Origin: <span>{{cat.origin}}</span></p>

@@ -1,4 +1,4 @@
-export interface Cats {
+export interface Cat {
    id: string,
    name: string,
    temperament?: string,

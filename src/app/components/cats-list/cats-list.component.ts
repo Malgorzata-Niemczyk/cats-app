@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CatsService } from 'src/app/services/cats.service';
-import { Cats } from '../cats';
+import { Cat } from '../../models/cat';
 
 @Component({
   selector: 'app-cats-list',
@@ -8,12 +8,11 @@ import { Cats } from '../cats';
   styleUrls: ['./cats-list.component.scss']
 })
 export class CatsListComponent implements OnInit {
-  @Input() cats: Cats[] = [];
-  @Input() selectedCat!: Cats;
+  @Input() cats: Cat[] = [];
 
-  totalRecords!: number;
+  totalRecords: number = 67;
   pageSize:number = 8;
-  page:number = 1;
+  page:number = 0;
 
   constructor(private catsService: CatsService) { }
 
@@ -24,20 +23,13 @@ export class CatsListComponent implements OnInit {
   getCatsList() {
     this.catsService.getCats().subscribe(response => {
       this.cats = response;
-      this.totalRecords = response.length;
       console.log(response);
     });
   }
 
   onPageChanged(event: any) {
-    this.page = event;
+    this.page = event + 1;
     this.getCatsList();
-
-  }
-
-  onSelect(cat: Cats): void {
-    this.selectedCat = cat;
-    console.log(cat);
   }
 
 }

@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, pipe } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { Cats } from "../components/cats";
+import { Cat } from "../models/cat";
+import { environment } from 'src/environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -16,18 +17,19 @@ const httpOptions = {
 })
 
 export class CatsService {
-  pageLimit = 8;
-  private url = `https://api.thecatapi.com/v1/breeds`;
+  itemsPerPage = 8;
+  page = 0;
+  private url = `${environment.apiURL}/breeds?limit=${this.itemsPerPage}&page=${this.page}`;
 
   constructor(private http: HttpClient) { }
 
-  getCats(): Observable<Cats[]> {
-    return this.http.get<Cats[]>(this.url, httpOptions);
+  getCats(): Observable<Cat[]> {
+    return this.http.get<Cat[]>(this.url, httpOptions);
   }
 
-  getCat(id: string): Observable<Cats> {
-    const catURL = `${this.url}?breed_id=${id}`;
-    return this.http.get<Cats>(catURL);
+  getCat(id: string): Observable<Cat> {
+    const catURL = `${environment.apiURL}/images/search?breed_id=${id}`;
+    return this.http.get<Cat>(catURL);
   }
 
 }

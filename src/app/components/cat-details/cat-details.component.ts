@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { CatsService } from 'src/app/services/cats.service';
-import { Cats } from '../../components/cats';
+import { Cat } from '../../models/cat';
 
 @Component({
   selector: 'app-cat-details',
@@ -11,7 +11,7 @@ import { Cats } from '../../components/cats';
   styleUrls: ['./cat-details.component.scss']
 })
 export class CatDetailsComponent implements OnInit {
-  cat!: Cats;
+  cat: Cat;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,9 +27,4 @@ export class CatDetailsComponent implements OnInit {
     const id: any = this.route.snapshot.paramMap.get('id');
     this.catsService.getCat(id).subscribe(result => this.cat = result);
   }
-
-  goBack() {
-    this.location.back();
-  }
-
 }
