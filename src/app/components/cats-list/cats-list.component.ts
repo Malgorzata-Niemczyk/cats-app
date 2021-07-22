@@ -9,6 +9,7 @@ import { Cat } from '../../models/cat';
 })
 export class CatsListComponent implements OnInit {
   cats: Cat[] = [];
+  searchTerm: string;
 
   totalRecords: number = 67;
   pageSize:number = 8;
@@ -32,4 +33,8 @@ export class CatsListComponent implements OnInit {
     this.getCatsList();
   }
 
+  getSearchTerm(): string {
+    return this.searchTerm;
+  }
+ 
 }

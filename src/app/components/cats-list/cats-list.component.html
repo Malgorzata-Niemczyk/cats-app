@@ -2,13 +2,17 @@
     <input 
         type="search" 
         placeholder="Search by breed or origin..."
+        [(ngModel)]="searchTerm"
     >
 </div>
 <ul class="cats_list">
-    <li *ngFor="let cat of cats | paginate: { id: 'listing-pagination',
+    <li *ngFor="let cat of cats 
+            | paginate: { id: 'listing-pagination',
                 itemsPerPage: pageSize,
                 currentPage: page,
-                totalItems: totalRecords }" 
+                totalItems: totalRecords }
+            | searchFilter: getSearchTerm()
+            " 
         class="cat_item" 
         [routerLink]="['/cat', cat.id]"
     >
