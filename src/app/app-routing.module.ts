@@ -6,7 +6,7 @@ import { CatsListComponent } from './components/cats-list/cats-list.component';
 import { CatDetailsComponent } from './components/cat-details/cat-details.component';
 
 const appRoutes: Routes = [
-  { path: 'cats', component: CatsListComponent },
+  { path: '', component: CatsListComponent },
   { path: 'cat/:id', component: CatDetailsComponent }
 ]
 
