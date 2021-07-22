@@ -1,3 +1,9 @@
+<div class="search-bar">
+    <input 
+        type="search" 
+        placeholder="Search by breed..."
+    >
+</div>
 <ul class="cats_list">
     <li *ngFor="let cat of cats | paginate: { id: 'listing-pagination',
                 itemsPerPage: pageSize,
