@@ -9,5 +9,7 @@ export interface Cat {
    },
    image?: {
       url: string
-   } 
+   },
+   description?: string,
+   wikipedia_url?: string
 }

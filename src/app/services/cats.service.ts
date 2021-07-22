@@ -28,7 +28,7 @@ export class CatsService {
   }
 
   getCat(id: string): Observable<Cat> {
-    const catURL = `${environment.apiURL}/images/search?breed_id=${id}`;
+    const catURL = `${environment.apiURL}/breeds/${id}`;
     return this.http.get<Cat>(catURL);
   }
 

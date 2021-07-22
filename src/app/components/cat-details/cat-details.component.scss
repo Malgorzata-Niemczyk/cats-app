@@ -1,11 +1,38 @@
-.details-wrapper {
+.details-container {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    gap: 20px;
     padding: 20px;
+    max-width: 80%;
 
-    p {
-        padding: 5px;
+    .cat-heading-wrapper {
+        display: flex;
+        align-items: center;
+
+        h2 {
+            font-size: 40px;
+        }
     }
 
-    button {
+    .cat-info-wrapper {
+        padding: 20px;
+        border-left: 1px solid black;
+        
+        p {
+            padding: 5px;
+        }
+
+        span {
+            font-weight: bold;
+        }
+
+        .wiki-link {
+            padding: 5px 0;
+        }
+    }
+
+    .go-back-btn {
         margin-top: 10px;
         padding: 10px 20px;
         text-transform: uppercase;
@@ -19,5 +46,28 @@
         &:hover {
             background-color: #4cb5bd;
         }
+    }
+}
+
+@media screen and (max-width: 694px) {
+    .details-container {
+        flex-direction: column;
+
+        .cat-heading-wrapper {
+            h2 {
+                padding-left: 25px;
+            }
+        }
+
+        .cat-info-wrapper {
+            border-left: none;
+            border-top: 1px solid black;
+        }
+    }
+}
+
+@media screen and (max-width: 474px) {
+    .details-container {
+        max-width: 95%;
     }
 }
