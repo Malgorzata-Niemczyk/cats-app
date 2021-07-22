@@ -1,5 +1,10 @@
 <ul class="cats_list">
-    <li *ngFor="let cat of cats" class="cat_item" >
+    <li *ngFor="let cat of cats | paginate: { id: 'listing-pagination',
+                itemsPerPage: pageSize,
+                currentPage: page,
+                totalItems: totalRecords }" 
+        class="cat_item" 
+    >
         <a [routerLink]="['/cat', cat.id]">
             <img [src]="cat.image!.url" alt="some cat">
             <p>Name: <span>{{cat.name}}</span></p>
@@ -7,3 +12,12 @@
         </a>
     </li>
 </ul>
+<div class="pagination-wrapper">
+    <pagination-controls
+        id="listing-pagination"
+        (pageChange)="onPageChanged($event)"
+        previousLabel="Previous"
+        nextLabel="Next"
+        class="custom-pagination"
+    ></pagination-controls>
+</div>

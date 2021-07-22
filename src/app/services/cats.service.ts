@@ -17,7 +17,7 @@ const httpOptions = {
 
 export class CatsService {
   pageLimit = 8;
-  private url = `https://api.thecatapi.com/v1/breeds?limit=${this.pageLimit}`;
+  private url = `https://api.thecatapi.com/v1/breeds`;
 
   constructor(private http: HttpClient) { }
 
@@ -26,7 +26,7 @@ export class CatsService {
   }
 
   getCat(id: string): Observable<Cats> {
-    const catURL = `${this.url}&breed_id=${id}`;
+    const catURL = `${this.url}?breed_id=${id}`;
     return this.http.get<Cats>(catURL);
   }
 

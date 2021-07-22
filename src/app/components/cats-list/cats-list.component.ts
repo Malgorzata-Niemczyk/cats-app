@@ -11,6 +11,10 @@ export class CatsListComponent implements OnInit {
   cats: Cats[] = [];
   selectedCat?: Cats;
 
+  totalRecords!: number;
+  pageSize:number = 8;
+  page:number = 1;
+
   constructor(private catsService: CatsService) { }
 
   ngOnInit(): void { 
@@ -20,8 +24,15 @@ export class CatsListComponent implements OnInit {
   getCatsList() {
     this.catsService.getCats().subscribe(response => {
       this.cats = response;
+      this.totalRecords = response.length;
       console.log(response);
     });
+  }
+
+  onPageChanged(event: any) {
+    this.page = event;
+    this.getCatsList();
+
   }
 
   onSelect(cat: Cats): void {
