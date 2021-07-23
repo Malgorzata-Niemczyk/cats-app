@@ -3,8 +3,10 @@
         type="search" 
         placeholder="Search by breed or origin..."
         [(ngModel)]="searchTerm"
+        *ngIf="cats.length !== 0"
     >
 </div>
+<h3 class="loader" *ngIf="cats.length === 0">Loading...</h3>
 <ul class="cats_list">
     <li *ngFor="let cat of cats 
             | paginate: { id: 'listing-pagination',
@@ -28,5 +30,6 @@
         previousLabel="Previous"
         nextLabel="Next"
         class="custom-pagination"
+        *ngIf="cats.length !== 0"
     ></pagination-controls>
 </div>

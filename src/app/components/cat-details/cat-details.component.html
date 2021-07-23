@@ -1,3 +1,4 @@
+<h3 class="loader" *ngIf="!cat">Loading...</h3>
 <div *ngIf="cat" class="details-container">
     <div class="cat-image-wrapper" class="cat-heading-wrapper">
         <h2>{{cat.name | uppercase}}</h2>
