@@ -19,9 +19,7 @@ const httpOptions = {
 export class CatsService {
   errorMessage: string;
 
-  itemsPerPage = 8;
-  currentPage = 0;
-  private url = `${environment.apiURL}/breeds?limit=${this.itemsPerPage}&page=${this.currentPage}`;
+  private url = `${environment.apiURL}/breeds`;
 
   constructor(private http: HttpClient) { }
 
