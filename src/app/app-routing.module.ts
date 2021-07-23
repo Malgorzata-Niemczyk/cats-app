@@ -4,10 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { CatsListComponent } from './components/cats-list/cats-list.component';
 import { CatDetailsComponent } from './components/cat-details/cat-details.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
-  { path: '', component: CatsListComponent },
-  { path: 'cat/:id', component: CatDetailsComponent }
+  { path: 'cats', component: CatsListComponent },
+  { path: 'cat/:id', component: CatDetailsComponent },
+  { path: "", redirectTo: '/cats', pathMatch: 'full'},
+  { path: '**', component: PageNotFoundComponent }
 ]
 
 @NgModule({

@@ -9,13 +9,15 @@ import { AppComponent } from './app.component';
 import { CatsListComponent } from './components/cats-list/cats-list.component';
 import { CatDetailsComponent } from './components/cat-details/cat-details.component';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CatsListComponent,
     CatDetailsComponent,
-    SearchFilterPipe
+    SearchFilterPipe,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
