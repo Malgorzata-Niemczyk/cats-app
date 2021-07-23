@@ -10,10 +10,11 @@ import { Cat } from '../../models/cat';
 export class CatsListComponent implements OnInit {
   cats: Cat[] = [];
   searchTerm: string;
+  responsivePagination: boolean = true;
 
-  totalRecords: number = 67;
-  pageSize:number = 8;
-  page:number = 0;
+  totalItems: number = 67;
+  itemsPerPage:number = 8;
+  currentPage:number = 0;
 
   constructor(private catsService: CatsService) { }
 
@@ -29,7 +30,7 @@ export class CatsListComponent implements OnInit {
   }
 
   onPageChanged(event: any) {
-    this.page = event + 1;
+    this.currentPage = event + 1;
     this.getCatsList();
   }
 

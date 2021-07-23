@@ -20,8 +20,8 @@ export class CatsService {
   errorMessage: string;
 
   itemsPerPage = 8;
-  page = 0;
-  private url = `${environment.apiURL}/breeds?limit=${this.itemsPerPage}&page=${this.page}`;
+  currentPage = 0;
+  private url = `${environment.apiURL}/breeds?limit=${this.itemsPerPage}&page=${this.currentPage}`;
 
   constructor(private http: HttpClient) { }
 
@@ -61,5 +61,5 @@ export class CatsService {
       }
     }
   }
-  
+
 }

@@ -10,9 +10,9 @@
 <ul class="cats_list">
     <li *ngFor="let cat of cats 
             | paginate: { id: 'listing-pagination',
-                itemsPerPage: pageSize,
-                currentPage: page,
-                totalItems: totalRecords }
+                itemsPerPage: itemsPerPage,
+                currentPage: currentPage,
+                totalItems: totalItems }
             | searchFilter: getSearchTerm()
             " 
         class="cat_item" 
@@ -29,6 +29,7 @@
         (pageChange)="onPageChanged($event)"
         previousLabel="Previous"
         nextLabel="Next"
+        [responsive]="responsivePagination"
         class="custom-pagination"
         *ngIf="cats.length !== 0"
     ></pagination-controls>
