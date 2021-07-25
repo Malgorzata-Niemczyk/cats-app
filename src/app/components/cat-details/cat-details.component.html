@@ -2,6 +2,7 @@
 <div *ngIf="cat" class="details-container">
     <div class="cat-image-wrapper" class="cat-heading-wrapper">
         <h2>{{cat.name | uppercase}}</h2>
+        <img [src]="catImagePath" alt="some cat" class="selected-cat-picture">
     </div>
     <div class="cat-info-wrapper">
         <p><span>ID:</span> {{cat.id}}</p>

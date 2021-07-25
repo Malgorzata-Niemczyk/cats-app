@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { CatsService } from 'src/app/services/cats.service';
-import { Cat } from '../../models/cat';
+import { selectedCat } from '../../models/cat';
 
 @Component({
   selector: 'app-cat-details',
@@ -10,7 +10,8 @@ import { Cat } from '../../models/cat';
   styleUrls: ['./cat-details.component.scss']
 })
 export class CatDetailsComponent implements OnInit {
-  cat: Cat;
+  cat: selectedCat;
+  catImagePath: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,9 +24,17 @@ export class CatDetailsComponent implements OnInit {
   
   getSelectedCat() {
     const id: any = this.route.snapshot.paramMap.get('id');
-    this.catsService.getCat(id).subscribe(result => {
-      this.cat = result;
-      console.log(result);
+
+    this.catsService.getCat(id).subscribe((results: any) => {
+      for (let value of results) {
+        for (let item of value.breeds) {
+          this.cat = item;
+        }
+      };
+
+      this.catImagePath = results.map((item: any) => item.url);
+      
+      console.log(this.cat);
     });
   }
 }

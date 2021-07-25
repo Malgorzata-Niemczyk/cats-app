@@ -11,7 +11,7 @@ export class CatsListComponent implements OnInit {
   cats: Cat[] = [];
   searchTerm: string;
   
-  totalItems: number = 67;
+  totalItems: number;
   itemsPerPage:number = 8;
   currentPage:number = 0;
 
@@ -24,6 +24,7 @@ export class CatsListComponent implements OnInit {
   getCatsList() {
     this.catsService.getCats().subscribe(response => {
       this.cats = response;
+      this.totalItems = response.length
       console.log(response);
     });
   }
