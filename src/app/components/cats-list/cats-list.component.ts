@@ -1,3 +1,4 @@
+import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { CatsService } from 'src/app/services/cats.service';
 import { Cat } from '../../models/cat';
@@ -10,10 +11,10 @@ import { Cat } from '../../models/cat';
 export class CatsListComponent implements OnInit {
   cats: Cat[] = [];
   searchTerm: string;
-  
-  totalItems: number;
-  itemsPerPage:number = 8;
-  currentPage:number = 0;
+
+  itemsPerPage = 8;
+  currentPage = 0;
+  totalItems: any;
 
   constructor(private catsService: CatsService) { }
 
@@ -21,10 +22,21 @@ export class CatsListComponent implements OnInit {
     this.getCatsList();
   }
 
+  getHttpParams(itemsPerPage: number, currentPage: number, totalItems: number): HttpParams {
+    let params = new HttpParams();
+
+    params.append('limit', itemsPerPage);
+    params.append('page', currentPage);
+    params.append('count', totalItems);
+
+    return params;
+  }
+
   getCatsList() {
-    this.catsService.getCats().subscribe(response => {
+    const params = this.getHttpParams(this.itemsPerPage, this.currentPage, this.totalItems);
+    
+    this.catsService.getCats(params).subscribe(response => {
       this.cats = response;
-      this.totalItems = response.length
       console.log(response);
     });
   }

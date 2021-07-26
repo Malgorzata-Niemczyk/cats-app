@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, pipe, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Cat, selectedCat } from "../models/cat";
@@ -8,7 +8,8 @@ import { environment } from 'src/environments/environment';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    'x-api-key': 'd00783d4-6658-4e88-9b61-82ce0d180865',
+    'x-api-key': '933cb9dc-2299-4e7d-8cfc-d5b5bdce8253',
+    observe: 'response'
   })
 }
 
@@ -19,13 +20,15 @@ const httpOptions = {
 export class CatsService {
   errorMessage: string;
 
-  private url = `${environment.apiURL}/breeds`;
+  private url = `${environment.apiURL}/breeds`
 
   constructor(private http: HttpClient) { }
 
-  getCats(): Observable<Cat[]> {
-    return this.http.get<Cat[]>(this.url, httpOptions)
+  getCats(params: HttpParams): Observable<Cat[]> {
+
+    return this.http.get<Cat[]>(this.url, {...httpOptions, params})
       .pipe(
+        tap(console.log),
         catchError(err => {
           if (err.error instanceof ErrorEvent) {
             this.errorMessage = `Error: ${err.error.message}`
