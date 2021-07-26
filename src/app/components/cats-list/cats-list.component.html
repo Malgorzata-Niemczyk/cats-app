@@ -18,6 +18,7 @@
         class="cat_item" 
         [routerLink]="['/cat', cat.id]"
     >
+        <button class="fav-btn">Add to Fav</button>
         <img [src]="cat.image!.url" alt="some cat" class="cat-picture">
         <p>Name: <span>{{cat.name}}</span></p>
         <p>Origin: <span>{{cat.origin}}</span></p>
