@@ -14,7 +14,7 @@ export class CatsListComponent implements OnInit {
 
   itemsPerPage = 8;
   currentPage = 0;
-  totalItems: any;
+  totalItems: number;
 
   constructor(private catsService: CatsService) { }
 
@@ -22,22 +22,23 @@ export class CatsListComponent implements OnInit {
     this.getCatsList();
   }
 
-  getHttpParams(itemsPerPage: number, currentPage: number, totalItems: number): HttpParams {
-    let params = new HttpParams();
+  getHttpParams(): HttpParams {
+    let params = new HttpParams()
+    .set('limit', this.itemsPerPage)
+    .set('page', this.currentPage);
 
-    params.append('limit', itemsPerPage);
-    params.append('page', currentPage);
-    params.append('count', totalItems);
+    console.log(params.toString());
 
     return params;
   }
 
   getCatsList() {
-    const params = this.getHttpParams(this.itemsPerPage, this.currentPage, this.totalItems);
+    const params = this.getHttpParams();
     
-    this.catsService.getCats(params).subscribe(response => {
-      this.cats = response;
-      console.log(response);
+    this.catsService.getCats(params).subscribe((response) => {
+      this.cats = response.cats;
+      this.totalItems = response.totalItems
+      console.log(response.cats, response.totalItems);
     });
   }
 
@@ -48,6 +49,11 @@ export class CatsListComponent implements OnInit {
 
   getSearchTerm(): string {
     return this.searchTerm;
+  }
+
+  AddToFavourites(event: Event) {
+    event.stopPropagation();
+    console.log('Add to Fav')
   }
  
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { Observable, pipe, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Cat, selectedCat } from "../models/cat";
@@ -9,8 +9,8 @@ const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
     'x-api-key': '933cb9dc-2299-4e7d-8cfc-d5b5bdce8253',
-    observe: 'response'
-  })
+  }),
+  observe: 'response'
 }
 
 @Injectable({
@@ -24,11 +24,11 @@ export class CatsService {
 
   constructor(private http: HttpClient) { }
 
-  getCats(params: HttpParams): Observable<Cat[]> {
-
-    return this.http.get<Cat[]>(this.url, {...httpOptions, params})
+  getCats(params: HttpParams): Observable<{cats: Cat[], totalItems: number}> {
+    //@ts-ignore 
+    return this.http.get<HttpResponse<Cat[]>>(this.url, {...httpOptions, params})
       .pipe(
-        tap(console.log),
+        map((response: any) => ({cats: response.body, totalItems: response.headers.get('Pagination-Count')})),
         catchError(err => {
           if (err.error instanceof ErrorEvent) {
             this.errorMessage = `Error: ${err.error.message}`
