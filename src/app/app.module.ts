@@ -10,6 +10,8 @@ import { CatsListComponent } from './components/cats-list/cats-list.component';
 import { CatDetailsComponent } from './components/cat-details/cat-details.component';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FavouriteCatsComponent } from './components/favourite-cats/favourite-cats.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     CatsListComponent,
     CatDetailsComponent,
     SearchFilterPipe,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    NavbarComponent,
+    FavouriteCatsComponent
   ],
   imports: [
     BrowserModule,

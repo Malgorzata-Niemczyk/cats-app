@@ -1,0 +1,29 @@
+.navbar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #4cb5bd;
+    min-width: 100vw;
+    padding: 15px;
+    z-index: 10;
+
+    .links-wrapper {
+        display: flex;
+        justify-content: space-evenly;
+    
+        li {
+            text-transform: uppercase;
+            list-style-type: none;
+
+            .nav-links {
+                padding: 5px;
+                color: white;
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
