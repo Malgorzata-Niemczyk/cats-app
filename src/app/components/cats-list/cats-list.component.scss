@@ -1,11 +1,19 @@
-.search-bar {
+.search-bar, .custom-page-size-selection {
     display: flex;
     justify-content: center;
+}
 
+.search-bar {
     input {
         margin: 20px 0;
         padding: 5px;
         width: 40%;
+    }
+}
+
+.custom-page-size-selection {
+    label {
+       margin-right: 10px;
     }
 }
 
