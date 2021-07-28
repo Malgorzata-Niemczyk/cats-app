@@ -1,7 +1,7 @@
 <div class="search-bar">
     <input 
         type="search" 
-        placeholder="Search by breed or origin..."
+        placeholder="Search cats by breed's name..."
         [(ngModel)]="filteredCatsNames"
         (input)="getFilteredCatsList()"
     >
@@ -26,7 +26,6 @@
         [routerLink]="['/cat', cat.id]"
     >
         <button class="fav-btn" (click)="AddToFavourites($event)">Add to <br> Fav</button>
-        <img [src]="cat.url" alt="some cat" class="cat-picture">
         <p>Name: <span>{{cat.name}}</span></p>
         <p>Origin: <span>{{cat.origin}}</span></p>
     </li>

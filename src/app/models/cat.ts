@@ -1,11 +1,4 @@
 export interface Cat {
-      url: string
-      id: string,
-      name: string,
-      origin: string,
-}
-
-export interface selectedCat {
    url: string,
    id: string,
    name: string,

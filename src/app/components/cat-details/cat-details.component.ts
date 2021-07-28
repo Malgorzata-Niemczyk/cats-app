@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { CatsService } from 'src/app/services/cats.service';
-import { selectedCat } from '../../models/cat';
+import { Cat } from '../../models/cat';
 
 @Component({
   selector: 'app-cat-details',
@@ -10,7 +10,7 @@ import { selectedCat } from '../../models/cat';
   styleUrls: ['./cat-details.component.scss']
 })
 export class CatDetailsComponent implements OnInit {
-  cat: selectedCat;
+  cat: Cat;
   catImagePath: string;
 
   constructor(
