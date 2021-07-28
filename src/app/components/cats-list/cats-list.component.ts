@@ -13,6 +13,7 @@ export class CatsListComponent implements OnInit {
   searchTerm: string;
 
   itemsPerPage = 8;
+  itemsPerPageSizes = [3, 6, 9, 12];
   currentPage = 0;
   totalItems: number;
 
@@ -37,13 +38,18 @@ export class CatsListComponent implements OnInit {
     
     this.catsService.getCats(params).subscribe((response) => {
       this.cats = response.cats;
-      this.totalItems = response.totalItems
+      this.totalItems = response.totalItems;
       console.log(response.cats, response.totalItems);
     });
   }
 
   onPageChanged(event: any) {
     this.currentPage = event;
+    this.getCatsList();
+  }
+
+  onPageSizeChange(event: any) {
+    this.itemsPerPage = event.target.value;
     this.getCatsList();
   }
 
