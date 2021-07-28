@@ -8,7 +8,6 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { CatsListComponent } from './components/cats-list/cats-list.component';
 import { CatDetailsComponent } from './components/cat-details/cat-details.component';
-import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FavouriteCatsComponent } from './components/favourite-cats/favourite-cats.component';
@@ -18,7 +17,6 @@ import { FavouriteCatsComponent } from './components/favourite-cats/favourite-ca
     AppComponent,
     CatsListComponent,
     CatDetailsComponent,
-    SearchFilterPipe,
     PageNotFoundComponent,
     NavbarComponent,
     FavouriteCatsComponent

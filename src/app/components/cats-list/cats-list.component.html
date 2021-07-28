@@ -2,11 +2,12 @@
     <input 
         type="search" 
         placeholder="Search by breed or origin..."
-        [(ngModel)]="searchTerm"
-        *ngIf="cats.length !== 0"
+        [(ngModel)]="filteredCatsNames"
+        (input)="getFilteredCatsList()"
     >
 </div>
 <h3 class="loader" *ngIf="cats.length === 0">Loading...</h3>
+<h3 class="loader" *ngIf="cats.length === 0 && cats !== null">No results found...</h3>
 <div class="custom-page-size-selection">
     <label>Items per Page:</label>
     <select (change)="onPageSizeChange($event)">
@@ -20,13 +21,12 @@
                 itemsPerPage: itemsPerPage,
                 currentPage: currentPage,
                 totalItems: totalItems }
-            | searchFilter: getSearchTerm()
             " 
         class="cat_item" 
         [routerLink]="['/cat', cat.id]"
     >
         <button class="fav-btn" (click)="AddToFavourites($event)">Add to <br> Fav</button>
-        <img [src]="cat.image!.url" alt="some cat" class="cat-picture">
+        <img [src]="cat.url" alt="some cat" class="cat-picture">
         <p>Name: <span>{{cat.name}}</span></p>
         <p>Origin: <span>{{cat.origin}}</span></p>
     </li>

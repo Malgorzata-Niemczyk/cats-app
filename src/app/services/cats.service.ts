@@ -20,24 +20,23 @@ const httpOptions = {
 export class CatsService {
   errorMessage: string;
 
-  private url = `${environment.apiURL}/breeds`
-
   constructor(private http: HttpClient) { }
 
   getCats(params: HttpParams): Observable<{cats: Cat[], totalItems: number}> {
-    //@ts-ignore 
-    return this.http.get<HttpResponse<Cat[]>>(this.url, {...httpOptions, params})
+    const url = `${environment.apiURL}/breeds`;
+    // @ts-ignore 
+    return this.http.get<HttpResponse<Cat[]>>(url, {...httpOptions, params})
       .pipe(
         map((response: any) => ({cats: response.body, totalItems: response.headers.get('Pagination-Count')})),
-        catchError(err => {
-          if (err.error instanceof ErrorEvent) {
-            this.errorMessage = `Error: ${err.error.message}`
-          } else {
-            this.errorMessage = this.getServerErrorMessage(err)
-          }
+      );
+  }
 
-          return throwError(this.errorMessage);
-        })
+  getFilteredCats(params: HttpParams): Observable<{cats: Cat[], totalItems: number}> {
+    let queryURL = `${environment.apiURL}/breeds/search?`;
+    // @ts-ignore 
+    return this.http.get<HttpResponse<Cat[]>>(queryURL, {...httpOptions, params})
+      .pipe(
+        map((response: any) => ({cats: response.body, totalItems: response.headers.get('Pagination-Count')})),
       );
   }
 
