@@ -22,9 +22,15 @@ export class FavouriteCatsComponent implements OnInit {
     console.log(this.favouriteCats);
   }
 
-  deleteFavouriteCatFromLS(event: Event) {
+  deleteFavouriteCatFromLS(event: Event, id: string) {
     event.stopPropagation();
-    this.localStorageService.removeFromStorage('favourite-cats');
+
+    const catIndex = this.favouriteCats.findIndex(favCat => favCat.id === id);
+    if (catIndex > -1) {
+      this.favouriteCats.splice(catIndex, 1);
+    }
+
+    this.localStorageService.setStorage('favourite-cats', this.favouriteCats);
   }
 
 }

@@ -15,7 +15,7 @@
         <td>{{favCat.id}}</td>
         <td>{{favCat.name}}</td>
         <td>{{favCat.origin}}</td>
-        <td><button type="button" class="btn btn-outline-danger" (click)="deleteFavouriteCatFromLS($event)">Delete</button></td>
+        <td><button type="button" class="btn btn-outline-danger" style="text-transform: uppercase;" (click)="deleteFavouriteCatFromLS($event, favCat.id)">Delete</button></td>
       </tr>
     </tbody>
   </table>
