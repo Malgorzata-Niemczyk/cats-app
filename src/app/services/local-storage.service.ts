@@ -7,7 +7,7 @@ export class LocalStorageService {
 
   constructor() { }
 
-  setStorage(key: string, data: any): void {
+  setStorage(key: string, data: {}): void {
     try {
       localStorage.setItem(key, JSON.stringify(data));
     } catch (err) {

@@ -19,7 +19,10 @@ export class CatsListComponent implements OnInit {
   currentPage = 0;
   totalItems: number;
 
-  constructor(private catsService: CatsService, private localStorageService: LocalStorageService) { }
+  constructor(
+    private catsService: CatsService, 
+    private localStorageService: LocalStorageService
+  ) { }
 
   ngOnInit(): void { 
     this.getCatsList();
@@ -36,7 +39,7 @@ export class CatsListComponent implements OnInit {
     return params;
   }
 
-  getCatsList() {
+  getCatsList(): void {
     const params = this.getHttpParams();
     
     this.catsService.getCats(params).subscribe((response) => {
@@ -46,7 +49,7 @@ export class CatsListComponent implements OnInit {
     });
   }
 
-  getFilteredCatsList() {
+  getFilteredCatsList():void {
     const params = this.getHttpParams();
     
     this.catsService.getFilteredCats(params).subscribe((response) => {
@@ -56,7 +59,7 @@ export class CatsListComponent implements OnInit {
     });
   }
 
-  handleInputChange() {
+  handleInputChange(): void {
     if (this.filteredCatsNames) {
       this.getFilteredCatsList()
     } else {
@@ -76,10 +79,7 @@ export class CatsListComponent implements OnInit {
 
   AddToFavourites(event: Event) {
     event.stopPropagation();
-    
-    // this.localStorageService.setStorage('favourite-cats',);
-
-    console.log('Added to Fav');
+    this.localStorageService.setStorage('favourite-cats', this.cats);
 
     console.log(localStorage);
   }

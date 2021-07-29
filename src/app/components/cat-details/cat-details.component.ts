@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { CatsService } from 'src/app/services/cats.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { Cat } from '../../models/cat';
 
 @Component({
@@ -12,10 +13,12 @@ import { Cat } from '../../models/cat';
 export class CatDetailsComponent implements OnInit {
   cat: Cat;
   catImagePath: string;
+  favouritesArr = [];
 
   constructor(
     private route: ActivatedRoute,
     private catsService: CatsService,
+    private localStorageService: LocalStorageService
   ) { }
 
   ngOnInit(): void {
@@ -37,4 +40,12 @@ export class CatDetailsComponent implements OnInit {
       console.log(this.cat);
     });
   }
+
+  AddToFavourites(event: Event) {
+    this.localStorageService.setStorage('favourite-cats', [...this.favouritesArr, this.cat]);
+
+    console.log(localStorage);
+  }
+ 
+
 }
