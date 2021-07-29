@@ -1,5 +1,5 @@
-<h3>There are no cats in your favourites list</h3>
-<table class="table">
+<h3 *ngIf="favouriteCats.length === 0">There are no cats in your favourites list</h3>
+<table class="table" *ngIf="favouriteCats.length > 0">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -10,12 +10,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="table-row" [routerLink]="['/cat']">
+      <tr class="table-row" [routerLink]="['/cat', favCat.id]" *ngFor="let favCat of favouriteCats">
         <th scope="row">1</th>
-        <td>abys</td>
-        <td>Abyssinian</td>
-        <td>Egypt</td>
-        <td><button type="button" class="btn btn-outline-danger">Delete</button></td>
+        <td>{{favCat.id}}</td>
+        <td>{{favCat.name}}</td>
+        <td>{{favCat.origin}}</td>
+        <td><button type="button" class="btn btn-outline-danger" (click)="deleteFavouriteCatFromLS($event)">Delete</button></td>
       </tr>
     </tbody>
   </table>
