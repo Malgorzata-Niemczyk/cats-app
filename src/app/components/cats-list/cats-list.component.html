@@ -7,7 +7,7 @@
     >
 </div>
 <h3 class="loader" *ngIf="cats.length === 0">Loading...</h3>
-<h3 class="loader" *ngIf="cats.length === 0 && cats !== null">No results found...</h3>
+<h3 class="loader" *ngIf="cats.length === 0 && cats !== null">No results found!</h3>
 <div class="custom-page-size-selection">
     <label>Items per Page:</label>
     <select (change)="onPageSizeChange($event)">

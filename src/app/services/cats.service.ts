@@ -32,7 +32,7 @@ export class CatsService {
   }
 
   getFilteredCats(params: HttpParams): Observable<{cats: Cat[], totalItems: number}> {
-    let queryURL = `${environment.apiURL}/breeds/search?`;
+    const queryURL = `${environment.apiURL}/breeds/search?`;
     // @ts-ignore 
     return this.http.get<HttpResponse<Cat[]>>(queryURL, {...httpOptions, params})
       .pipe(
