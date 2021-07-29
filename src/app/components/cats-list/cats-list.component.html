@@ -3,11 +3,10 @@
         type="search" 
         placeholder="Search cats by breed's name..."
         [(ngModel)]="filteredCatsNames"
-        (input)="getFilteredCatsList()"
+        (input)="handleInputChange()"
     >
 </div>
-<h3 class="loader" *ngIf="cats.length === 0">Loading...</h3>
-<h3 class="loader" *ngIf="cats.length === 0 && cats !== null">No results found!</h3>
+<h3 class="loader" *ngIf="cats.length === 0">No results found!</h3>
 <div class="custom-page-size-selection">
     <label>Items per Page:</label>
     <select (change)="onPageSizeChange($event)">
@@ -25,7 +24,7 @@
         class="cat_item" 
         [routerLink]="['/cat', cat.id]"
     >
-        <button class="fav-btn" (click)="AddToFavourites($event)">Add to <br> Fav</button>
+        <button class="fav-btn" (click)="AddToFavourites($event)">Add to <br> ❤️</button>
         <p>Name: <span>{{cat.name}}</span></p>
         <p>Origin: <span>{{cat.origin}}</span></p>
     </li>

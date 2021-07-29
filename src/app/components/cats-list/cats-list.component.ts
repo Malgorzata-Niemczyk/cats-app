@@ -1,6 +1,7 @@
 import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { CatsService } from 'src/app/services/cats.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { Cat } from '../../models/cat';
 
 @Component({
@@ -18,7 +19,7 @@ export class CatsListComponent implements OnInit {
   currentPage = 0;
   totalItems: number;
 
-  constructor(private catsService: CatsService) { }
+  constructor(private catsService: CatsService, private localStorageService: LocalStorageService) { }
 
   ngOnInit(): void { 
     this.getCatsList();
@@ -55,6 +56,14 @@ export class CatsListComponent implements OnInit {
     });
   }
 
+  handleInputChange() {
+    if (this.filteredCatsNames) {
+      this.getFilteredCatsList()
+    } else {
+      this.getCatsList();
+    }
+  }
+
   onPageChanged(event: any) {
     this.currentPage = event;
     this.getCatsList();
@@ -65,15 +74,14 @@ export class CatsListComponent implements OnInit {
     this.getCatsList();
   }
 
-  filterCats(searchValue: any): void {
-    let searchTerm = searchValue.target.value;
-
-    this.filteredCats = this.cats.filter(cat => cat.name.toLowerCase().includes(searchTerm.toLowerCase()));
-  }
-
   AddToFavourites(event: Event) {
     event.stopPropagation();
-    console.log('Add to Fav')
+    
+    // this.localStorageService.setStorage('favourite-cats',);
+
+    console.log('Added to Fav');
+
+    console.log(localStorage);
   }
  
 }
