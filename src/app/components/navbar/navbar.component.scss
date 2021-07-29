@@ -9,7 +9,8 @@
 
     .links-wrapper {
         display: flex;
-        justify-content: space-evenly;
+        justify-content: center;
+        margin: 0 auto;
     
         li {
             text-transform: uppercase;
@@ -24,6 +25,14 @@
                     text-decoration: underline;
                 }
             }
+        }
+
+        li:nth-child(1) {
+            margin-right: 50px;
+        }
+
+        li:nth-child(2) {
+            margin-left: 50px;
         }
     }
 }
