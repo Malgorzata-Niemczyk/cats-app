@@ -41,7 +41,7 @@ export class CatDetailsComponent implements OnInit {
   }
 
   AddToFavourites() {
-    this.localStorageService.setStorage('favourite-cats', this.cat);
+    this.localStorageService.addFavItem('favourite-cats', this.cat);
 
     console.log(localStorage);
   }

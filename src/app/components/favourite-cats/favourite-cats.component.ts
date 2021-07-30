@@ -25,12 +25,7 @@ export class FavouriteCatsComponent implements OnInit {
   deleteFavouriteCatFromLS(event: Event, id: string) {
     event.stopPropagation();
 
-    const catIndex = this.favouriteCats.findIndex(favCat => favCat.id === id);
-    if (catIndex > -1) {
-      this.favouriteCats.splice(catIndex, 1);
-    }
-
-    this.localStorageService.setStorage('favourite-cats', this.favouriteCats);
+    this.localStorageService.deleteFavouriteCatFromLS('favourite-cats', id);
   }
-
+  
 }

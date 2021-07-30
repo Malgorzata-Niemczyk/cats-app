@@ -1,43 +1,52 @@
 import { Injectable } from '@angular/core';
+import { Cat } from '../models/cat';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocalStorageService {
+  public favArr: Cat[] = [];
 
   constructor() { }
 
-  setStorage(key: string, data: {}): void {
-    try {
-      let favArr = [];
+  localStorage: Storage;
 
-      if (key) {
-        favArr = this.getStorage(key);
-        favArr = [...favArr, data]
-      } else {
-        favArr = [data];
-      }
-      localStorage.setItem(key, JSON.stringify(favArr));
-    } catch (err) {
-      console.error('Error saving data to localStorage', err);
+  hasKey(key: string): boolean {
+    return key in localStorage;
+  }
+
+  addFavItem(key: string, data: Cat) {
+    if (this.hasKey(key)) {
+      this.favArr = this.getStorage(key);
+      this.favArr = [...this.favArr, data]
+    } else {
+      this.favArr = [data];
     }
+    this.setStorage(key);
+  }
+
+  setStorage(key: string): void {
+    localStorage.setItem(key, JSON.stringify(this.favArr));
+    // console.log('getStorage', this.favArr.length)
   }
 
   getStorage(key: string) {
-    try {
-      if (key) {
-        return JSON.parse(localStorage.getItem(key) || '[]');
-      } else {
-        return [];
-      }
-    } catch (err) {
-      console.error('Error getting data from localStorage', err);
-      return null;
-    }
+    let favArr = localStorage.getItem(key);
+    // console.log('getStorage', JSON.parse(favArr || '').length)
+    return favArr ? JSON.parse(favArr) : [];
   }
 
-  removeFromStorage(key: string) {
-    localStorage.removeItem(key);
+  deleteFavouriteCatFromLS(key: string, id: string) {
+    let favCats = this.getStorage(key);
+
+    let catIndex = favCats.findIndex((favCat: any) => favCat.id === id);
+    if (catIndex > -1) {
+      favCats.splice(catIndex, 1)
+    }
+    this.favArr = favCats;
+
+
+    this.setStorage(key);
   }
 
 }
