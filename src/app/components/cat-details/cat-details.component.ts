@@ -13,7 +13,6 @@ import { Cat } from '../../models/cat';
 export class CatDetailsComponent implements OnInit {
   cat: Cat;
   catImagePath: string;
-  favouritesArr = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -41,8 +40,8 @@ export class CatDetailsComponent implements OnInit {
     });
   }
 
-  AddToFavourites(event: Event) {
-    this.localStorageService.setStorage('favourite-cats', [...this.favouritesArr, this.cat]);
+  AddToFavourites() {
+    this.localStorageService.setStorage('favourite-cats', this.cat);
 
     console.log(localStorage);
   }

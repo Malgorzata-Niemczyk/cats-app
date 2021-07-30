@@ -9,7 +9,15 @@ export class LocalStorageService {
 
   setStorage(key: string, data: {}): void {
     try {
-      localStorage.setItem(key, JSON.stringify(data));
+      let favArr = [];
+
+      if (key) {
+        favArr = this.getStorage(key);
+        favArr = [...favArr, data]
+      } else {
+        favArr = [data];
+      }
+      localStorage.setItem(key, JSON.stringify(favArr));
     } catch (err) {
       console.error('Error saving data to localStorage', err);
     }
@@ -17,11 +25,19 @@ export class LocalStorageService {
 
   getStorage(key: string) {
     try {
-      return JSON.parse(localStorage.getItem(key) || '[]');
+      if (key) {
+        return JSON.parse(localStorage.getItem(key) || '[]');
+      } else {
+        return [];
+      }
     } catch (err) {
       console.error('Error getting data from localStorage', err);
       return null;
     }
+  }
+
+  removeFromStorage(key: string) {
+    localStorage.removeItem(key);
   }
 
 }

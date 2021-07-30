@@ -3,7 +3,7 @@
     <div class="cat-heading-wrapper">
         <img [src]="catImagePath" alt="some cat" class="selected-cat-picture">
         <h2>{{cat.name | uppercase}}</h2>
-        <button class="fav-btn" (click)="AddToFavourites($event)">Add to ❤️</button>
+        <button class="fav-btn" (click)="AddToFavourites()">Add to ❤️</button>
     </div>
     <div class="cat-info-wrapper">
         <p><span>ID:</span> {{cat.id}}</p>

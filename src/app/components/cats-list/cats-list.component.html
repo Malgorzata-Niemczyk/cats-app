@@ -24,7 +24,7 @@
         class="cat_item" 
         [routerLink]="['/cat', cat.id]"
     >
-        <button class="fav-btn" (click)="AddToFavourites($event)">Add to <br> ❤️</button>
+        <button class="fav-btn" (click)="AddToFavourites($event, cat)">Add to <br> ❤️</button>
         <p>Name: <span>{{cat.name}}</span></p>
         <p>Origin: <span>{{cat.origin}}</span></p>
     </li>

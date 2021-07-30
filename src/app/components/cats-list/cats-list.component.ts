@@ -14,6 +14,8 @@ export class CatsListComponent implements OnInit {
   filteredCats: Cat[] = [];
   filteredCatsNames: string = '';
 
+  selectedFavCat: Cat;
+
   itemsPerPage = 8;
   itemsPerPageSizes = [3, 6, 9, 12];
   currentPage = 0;
@@ -77,9 +79,11 @@ export class CatsListComponent implements OnInit {
     this.getCatsList();
   }
 
-  AddToFavourites(event: Event) {
+  AddToFavourites(event: Event, favCat: Cat) {
     event.stopPropagation();
-    this.localStorageService.setStorage('favourite-cats', this.cats);
+
+    let selectedFavCat = favCat;
+    this.localStorageService.setStorage('favourite-cats', selectedFavCat);
 
     console.log(localStorage);
   }
