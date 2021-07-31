@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { Cat } from 'src/app/models/cat';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-favourite-cats',
@@ -9,6 +10,7 @@ import { Cat } from 'src/app/models/cat';
 })
 export class FavouriteCatsComponent implements OnInit {
   favouriteCats: Cat[];
+  displayedColumns: string[] = ['position', 'id', 'breed', 'origin', 'action'];
 
   constructor(private localStorageService: LocalStorageService) { }
 
@@ -26,6 +28,10 @@ export class FavouriteCatsComponent implements OnInit {
     event.stopPropagation();
 
     this.localStorageService.deleteFavouriteCatFromLS('favourite-cats', id);
+  }
+
+  deleteAllFavourites() {
+    this.localStorageService.deleteAllItemsFromLS('favourite-cats');
   }
   
 }

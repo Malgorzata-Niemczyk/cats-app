@@ -45,7 +45,7 @@
         border-bottom-right-radius: 25px;
         list-style-type: none;
         cursor: pointer;
-        transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s, text-shadow 0.3s;
+        transition: background-color 0.3s, box-shadow 0.3s, text-shadow 0.3s;
     
         p {
             text-transform: uppercase;
@@ -60,8 +60,7 @@
             color: whitesmoke;
             text-shadow: 2px 2px 3px black;
             background-color: rgb(226, 152, 226);
-            box-shadow: 4px 4px 10px black;
-            transform: scale(0.95); 
+            box-shadow: 4px 4px 10px black; 
         }
 
         &:hover > .fav-btn {

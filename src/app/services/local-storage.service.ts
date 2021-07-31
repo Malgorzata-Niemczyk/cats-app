@@ -16,6 +16,11 @@ export class LocalStorageService {
   }
 
   addFavItem(key: string, data: Cat) {
+    let favID = this.favArr.map(item => item.id);
+    if (favID.includes(data.id)) {
+      return;
+    }
+
     if (this.hasKey(key)) {
       this.favArr = this.getStorage(key);
       this.favArr = [...this.favArr, data]
@@ -45,8 +50,11 @@ export class LocalStorageService {
     }
     this.favArr = favCats;
 
-
     this.setStorage(key);
+  }
+
+  deleteAllItemsFromLS(key: string) {
+    localStorage.removeItem(key);
   }
 
 }
