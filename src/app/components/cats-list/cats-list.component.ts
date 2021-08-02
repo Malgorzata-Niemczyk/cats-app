@@ -76,6 +76,7 @@ export class CatsListComponent implements OnInit {
 
   onPageSizeChange(event: any) {
     this.itemsPerPage = event.target.value;
+    this.currentPage = 0;
     this.getCatsList();
   }
 
