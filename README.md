@@ -7,12 +7,34 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Angular
 - HTML
 - CSS (SCSS)
+- ngx-pagination
+- Angular Material
 - API: https://docs.thecatapi.com/
 
 
-## The aim of the task is to create two views:
+## The aim of the task is to create three views:
 - The first view is the paginated list of items
 - The second view is the detailed view of an item from the list
+- The third view is the view of items added to favourites
+
+## App features:
+- Searching items by their names
+- Adding an item to favourites from a list view and a detailed view
+- Items added to favourites view are saved in localStorage
+
+## App views:
+
+List of items
+
+![](./screenshots/cats-list.PNG)
+
+Detailed view of an item
+
+![](./screenshots/cat-details.PNG)
+
+Favourites view
+
+![](./screenshots/fav-cats.PNG)
 
 ## Development server
 
