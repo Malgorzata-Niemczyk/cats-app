@@ -20,8 +20,13 @@
 <div class="custom-page-size-selection">
     <label>Items per Page:</label>
     <select (change)="onPageSizeChange($event)">
-        <option value="8" selected>8</option>
-        <option *ngFor="let pageSize of itemsPerPageSizes" [ngValue]="pageSize">{{pageSize}}</option>
+        <option 
+            *ngFor="let pageSize of itemsPerPageSizes" 
+            [ngValue]="pageSize" 
+            [selected]="pageSize === 8"
+        >
+            {{pageSize}}
+        </option>
     </select>
 </div>
 <ul class="cats_list">

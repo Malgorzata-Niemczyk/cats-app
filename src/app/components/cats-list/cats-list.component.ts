@@ -17,7 +17,7 @@ export class CatsListComponent implements OnInit {
   selectedFavCat: Cat;
 
   itemsPerPage = 8;
-  itemsPerPageSizes = [3, 6, 9, 12];
+  itemsPerPageSizes = [3, 6, 8, 9, 12];
   currentPage = 0;
   totalItems: number;
 
