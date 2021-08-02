@@ -6,22 +6,23 @@ import { Cat } from '../models/cat';
 })
 export class LocalStorageService {
   public favArr: Cat[] = [];
+  public keyName = 'favourite-cats';
 
   constructor() { }
 
   localStorage: Storage;
 
-  hasKey(key: string): boolean {
+  hasKey(key = this.keyName): boolean {
     return key in localStorage;
   }
 
-  addFavItem(key: string, data: Cat) {
+  addFavItem(key = this.keyName, data: Cat) {
     let favID = this.favArr.map(item => item.id);
     if (favID.includes(data.id)) {
       return;
     }
 
-    if (this.hasKey(key)) {
+    if (this.hasKey(key = this.keyName)) {
       this.favArr = this.getStorage(key);
       this.favArr = [...this.favArr, data]
     } else {
@@ -30,18 +31,18 @@ export class LocalStorageService {
     this.setStorage(key);
   }
 
-  setStorage(key: string): void {
+  setStorage(key = this.keyName): void {
     localStorage.setItem(key, JSON.stringify(this.favArr));
     // console.log('getStorage', this.favArr.length)
   }
 
-  getStorage(key: string) {
+  getStorage(key = this.keyName) {
     let favArr = localStorage.getItem(key);
     // console.log('getStorage', JSON.parse(favArr || '').length)
     return favArr ? JSON.parse(favArr) : [];
   }
 
-  deleteFavouriteCatFromLS(key: string, id: string) {
+  deleteFavouriteCatFromLS(key = this.keyName, id: string) {
     let favCats = this.getStorage(key);
 
     let catIndex = favCats.findIndex((favCat: any) => favCat.id === id);
@@ -53,7 +54,7 @@ export class LocalStorageService {
     this.setStorage(key);
   }
 
-  deleteAllItemsFromLS(key: string) {
+  deleteAllItemsFromLS(key = this.keyName) {
     localStorage.removeItem(key);
   }
 

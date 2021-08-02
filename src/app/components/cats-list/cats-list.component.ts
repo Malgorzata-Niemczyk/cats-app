@@ -83,7 +83,7 @@ export class CatsListComponent implements OnInit {
   AddToFavourites(event: Event, favCat: Cat) {
     event.stopPropagation();
 
-    this.localStorageService.addFavItem('favourite-cats', favCat);
+    this.localStorageService.addFavItem(this.localStorageService.keyName, favCat);
 
     console.log(localStorage);
   }
