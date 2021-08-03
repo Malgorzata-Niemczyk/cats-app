@@ -13,6 +13,7 @@ import { Cat } from '../../models/cat';
 export class CatDetailsComponent implements OnInit {
   cat: Cat;
   catImagePath: string;
+  favCatsData$ = this.localStorageService.favCats$;
 
   constructor(
     private route: ActivatedRoute,

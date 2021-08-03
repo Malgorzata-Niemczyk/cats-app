@@ -11,6 +11,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 export class FavouriteCatsComponent implements OnInit {
   favouriteCats: Cat[];
   displayedColumns: string[] = ['position', 'id', 'breed', 'origin', 'action'];
+  favCatsData$ = this.localStorageService.favCats$;
 
   constructor(private localStorageService: LocalStorageService) { }
 

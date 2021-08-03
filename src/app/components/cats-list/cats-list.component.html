@@ -1,46 +1,48 @@
-<div class="search-bar">
-    <input 
-        type="search" 
-        placeholder="Search cats by breed's name..."
-        [(ngModel)]="filteredCatsNames"
-        (input)="handleInputChange()"
-    >
-</div>
-<h3 class="loader" *ngIf="cats.length === 0">No results found!</h3>
-<div class="pagination-wrapper">
-    <pagination-controls
-        id="listing-pagination"
-        (pageChange)="onPageChanged($event)"
-        previousLabel="Previous"
-        nextLabel="Next"
-        [responsive]="true"
-        class="custom-pagination"
-    ></pagination-controls>
-</div>
-<div class="custom-page-size-selection">
-    <label>Items per Page:</label>
-    <select (change)="onPageSizeChange($event)">
-        <option 
-            *ngFor="let pageSize of itemsPerPageSizes" 
-            [ngValue]="pageSize" 
-            [selected]="pageSize === 8"
+<div *ngIf="favCatsData$ | async as favCatsData">
+    <div class="search-bar">
+        <input 
+            type="search" 
+            placeholder="Search cats by breed's name..."
+            [(ngModel)]="filteredCatsNames"
+            (input)="handleInputChange()"
         >
-            {{pageSize}}
-        </option>
-    </select>
+    </div>
+    <h3 class="loader" *ngIf="cats.length === 0">No results found!</h3>
+    <div class="pagination-wrapper">
+        <pagination-controls
+            id="listing-pagination"
+            (pageChange)="onPageChanged($event)"
+            previousLabel="Previous"
+            nextLabel="Next"
+            [responsive]="true"
+            class="custom-pagination"
+        ></pagination-controls>
+    </div>
+    <div class="custom-page-size-selection">
+        <label>Items per Page:</label>
+        <select (change)="onPageSizeChange($event)">
+            <option 
+                *ngFor="let pageSize of itemsPerPageSizes" 
+                [ngValue]="pageSize" 
+                [selected]="pageSize === 8"
+            >
+                {{pageSize}}
+            </option>
+        </select>
+    </div>
+    <ul class="cats_list">
+        <li *ngFor="let cat of cats 
+                | paginate: { id: 'listing-pagination',
+                    itemsPerPage: itemsPerPage,
+                    currentPage: currentPage,
+                    totalItems: totalItems }
+                " 
+            class="cat_item" 
+            [routerLink]="['/cat', cat.id]"
+        >
+            <button class="fav-btn" (click)="AddToFavourites($event, cat)">❤️</button>
+            <p>Name: <span>{{cat.name}}</span></p>
+            <p>Origin: <span>{{cat.origin}}</span></p>
+        </li>
+    </ul>    
 </div>
-<ul class="cats_list">
-    <li *ngFor="let cat of cats 
-            | paginate: { id: 'listing-pagination',
-                itemsPerPage: itemsPerPage,
-                currentPage: currentPage,
-                totalItems: totalItems }
-            " 
-        class="cat_item" 
-        [routerLink]="['/cat', cat.id]"
-    >
-        <button class="fav-btn" (click)="AddToFavourites($event, cat)">❤️</button>
-        <p>Name: <span>{{cat.name}}</span></p>
-        <p>Origin: <span>{{cat.origin}}</span></p>
-    </li>
-</ul>
