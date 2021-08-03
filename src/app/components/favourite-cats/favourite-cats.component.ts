@@ -36,7 +36,7 @@ export class FavouriteCatsComponent implements OnInit {
   }
 
   deleteAllFavourites() {
-    if (window.confirm('Are your sure you want to delete all records')) {
+    if (window.confirm('Are your sure you want to delete all records?')) {
       this.localStorageService.deleteAllItemsFromLS(this.localStorageService.keyName);
     }
   }

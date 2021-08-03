@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { CatDetailsComponent } from '../components/cat-details/cat-details.component';
 import { Cat } from '../models/cat';
 import { LocalStorageRefService } from './local-storage-ref.service';
 
