@@ -23,16 +23,22 @@ export class FavouriteCatsComponent implements OnInit {
     this.favouriteCats = this.localStorageService.getStorage(this.localStorageService.keyName);
 
     console.log(this.favouriteCats);
+
+    console.log(this.favCatsData$)
   }
 
   deleteFavouriteCatFromLS(event: Event, id: string) {
     event.stopPropagation();
 
-    this.localStorageService.deleteFavouriteCatFromLS(this.localStorageService.keyName, id);
+    if (window.confirm('Are your sure you want to delete this record?')) {
+      this.localStorageService.deleteFavouriteCatFromLS(this.localStorageService.keyName, id);
+    }
   }
 
   deleteAllFavourites() {
-    this.localStorageService.deleteAllItemsFromLS(this.localStorageService.keyName);
+    if (window.confirm('Are your sure you want to delete all records')) {
+      this.localStorageService.deleteAllItemsFromLS(this.localStorageService.keyName);
+    }
   }
   
 }
