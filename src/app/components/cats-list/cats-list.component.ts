@@ -1,7 +1,7 @@
 import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { CatsService } from 'src/app/services/cats.service';
-import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { FavouriteCatsService } from 'src/app/services/favourite-cats.service';
 import { Cat } from '../../models/cat';
 
 @Component({
@@ -22,11 +22,11 @@ export class CatsListComponent implements OnInit {
   currentPage = 0;
   totalItems: number;
 
-  favCatsData$ = this.localStorageService.favCats$;
+  favCatsData$ = this.favouriteCatsService.favCats$;
 
   constructor(
     private catsService: CatsService, 
-    private localStorageService: LocalStorageService
+    private favouriteCatsService: FavouriteCatsService
   ) { }
 
   ngOnInit(): void { 
@@ -83,14 +83,14 @@ export class CatsListComponent implements OnInit {
     this.getCatsList();
   }
 
-  isInFavourites(selectedItem: Cat) {
-    let favItemID = this.localStorageService.favArr.map(item => item.id).includes(selectedItem.id);
-    return favItemID ? this.favButtonText = '🖤' : this.favButtonText = '❤️';
-  }
+  // isInFavourites(selectedItem: Cat) {
+  //   let favItemID = this.localStorageService.favArr.map(item => item.id).includes(selectedItem.id);
+  //   return favItemID ? this.favButtonText = '🖤' : this.favButtonText = '❤️';
+  // }
 
   AddToFavourites(favCat: Cat) {
-    this.localStorageService.addFavItem(this.localStorageService.keyName, favCat);
-    this.isInFavourites(favCat);
+    this.favouriteCatsService.addFavouriteCat(favCat);
+    // this.isInFavourites(favCat);
 
     console.log(localStorage);
   }
