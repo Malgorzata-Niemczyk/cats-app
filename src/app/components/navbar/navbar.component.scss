@@ -14,7 +14,9 @@
 
         .cat-heading-wrapper {
             li {
+                padding: 2.5px;
                 list-style-type: none;
+                cursor: pointer;
             }
 
             .cat-heading {
