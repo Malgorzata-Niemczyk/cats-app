@@ -88,9 +88,7 @@ export class CatsListComponent implements OnInit {
     return favItemID ? this.favButtonText = '🖤' : this.favButtonText = '❤️';
   }
 
-  AddToFavourites(event: Event, favCat: Cat) {
-    event.stopPropagation();
-
+  AddToFavourites(favCat: Cat) {
     this.localStorageService.addFavItem(this.localStorageService.keyName, favCat);
     this.isInFavourites(favCat);
 

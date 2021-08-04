@@ -31,18 +31,15 @@
         </select>
     </div>
     <ul class="cats_list">
-        <li *ngFor="let cat of cats 
+        <app-cat-tile
+            [cat]="cat"
+            *ngFor="let cat of cats 
                 | paginate: { id: 'listing-pagination',
                     itemsPerPage: itemsPerPage,
                     currentPage: currentPage,
                     totalItems: totalItems }
-                " 
-            class="cat_item" 
-            [routerLink]="['/cat', cat.id]"
-        >
-            <button class="fav-btn" (click)="AddToFavourites($event, cat)">{{favButtonText}}</button>
-            <p>Name: <span>{{cat.name}}</span></p>
-            <p>Origin: <span>{{cat.origin}}</span></p>
-        </li>
-    </ul>    
+                "
+            (onAddToFavourites)="AddToFavourites(cat)"
+        ></app-cat-tile>
+    </ul>
 </div>
