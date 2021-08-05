@@ -13,7 +13,6 @@ export class CatsListComponent implements OnInit {
   cats: Cat[] = [];
   filteredCats: Cat[] = [];
   filteredCatsNames: string = '';
-  favButtonText: string = '❤️';
 
   selectedFavCat: Cat;
 
@@ -59,6 +58,8 @@ export class CatsListComponent implements OnInit {
     
     this.catsService.getFilteredCats(params).subscribe((response) => {
       this.cats = response.cats;
+      this.filteredCats = this.cats;
+      
       this.totalItems = response.totalItems;
       console.log(response.cats, response.totalItems);
     });
@@ -83,14 +84,8 @@ export class CatsListComponent implements OnInit {
     this.getCatsList();
   }
 
-  // isInFavourites(selectedItem: Cat) {
-  //   let favItemID = this.localStorageService.favArr.map(item => item.id).includes(selectedItem.id);
-  //   return favItemID ? this.favButtonText = '🖤' : this.favButtonText = '❤️';
-  // }
-
   AddToFavourites(favCat: Cat) {
     this.favouriteCatsService.addFavouriteCat(favCat);
-    // this.isInFavourites(favCat);
 
     console.log(localStorage);
   }

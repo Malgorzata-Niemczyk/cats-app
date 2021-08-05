@@ -16,15 +16,16 @@
             nextLabel="Next"
             [responsive]="true"
             class="custom-pagination"
+            *ngIf="cats.length !== 0"
         ></pagination-controls>
     </div>
-    <div class="custom-page-size-selection">
+    <div class="custom-page-size-selection" *ngIf="cats.length !== 0">
         <label>Items per Page:</label>
         <select (change)="onPageSizeChange($event)">
             <option 
                 *ngFor="let pageSize of itemsPerPageSizes" 
                 [ngValue]="pageSize" 
-                [selected]="pageSize === 8"
+                [selected]="pageSize === itemsPerPageSizes[2]"
             >
                 {{pageSize}}
             </option>

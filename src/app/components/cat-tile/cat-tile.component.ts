@@ -10,7 +10,7 @@ export class CatTileComponent implements OnInit {
   @Input() cat: Cat;
   @Output() onAddToFavourites: EventEmitter<Cat> = new EventEmitter();
 
-  favButtonText: string = '❤️';
+  favButtonText: string = '🖤';
 
   constructor() { }
 
@@ -20,6 +20,7 @@ export class CatTileComponent implements OnInit {
   onAddToFav(cat: Cat, event: Event) {
     event.stopPropagation();
     this.onAddToFavourites.emit(cat);
+    this.favButtonText = '❤️';
   }
 
 }

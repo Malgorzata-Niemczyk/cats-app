@@ -14,7 +14,7 @@ export class CatDetailsComponent implements OnInit {
   cat: Cat;
   catImagePath: string;
   favCatsData$ = this.favouriteCatsService.favCats$;
-  favButtonText: string = 'Add to ❤️';
+  favButtonText: string = 'Add to 🖤';
 
   constructor(
     private route: ActivatedRoute,
@@ -28,28 +28,25 @@ export class CatDetailsComponent implements OnInit {
   
   getSelectedCat() {
     const id: any = this.route.snapshot.paramMap.get('id');
-
+    
     this.catsService.getCat(id).subscribe((results: any) => {
       for (let value of results) {
         for (let item of value.breeds) {
           this.cat = item;
         }
       };
-
+      
       this.catImagePath = results.map((item: any) => item.url);
+
+      this.favouriteCatsService.isCatInFavourites(this.cat);
       
       console.log(this.cat);
     });
   }
 
-  // isInFavourites() {
-  //   let favItemID = this.favouriteCatsService.favArr.map((item: Cat) => item.id).includes(this.cat.id);
-  //   return favItemID ?  this.favButtonText = 'Added To 🖤' :  this.favButtonText = 'Add To ❤️'
-  // }
-  
   AddToFavourites() {
     this.favouriteCatsService.addFavouriteCat(this.cat);
-    // this.isInFavourites();
+    this.favButtonText = 'Added To ❤️';
 
     console.log(localStorage);
   }

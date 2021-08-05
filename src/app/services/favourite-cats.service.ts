@@ -21,22 +21,26 @@ export class FavouriteCatsService {
     return this._favCats$.asObservable();
   } // to read the data, a public Observable is exposed
 
-  addFavouriteCat(data: Cat) {
+  isCatInFavourites(cat: Cat): boolean {
+    return this.getFavouriteCats().some(item => item.id === cat.id);
+  }
+
+  addFavouriteCat(cat: Cat) {
     let favArr = this.getFavouriteCats();
 
     let favItemID = favArr.map(item => item.id);
-    if (favItemID.includes(data.id)) {
+    if (favItemID.includes(cat.id)) {
       return;
     }
 
-    favArr = [...favArr, data]
+    favArr = [...favArr, cat]
    
     this.setFavouriteCats(favArr);
   }
 
-  setFavouriteCats(data: Cat[]): void {
-    this._localStorage.setItem(this.keyName, JSON.stringify(data));
-    this._favCats$.next(data); // to create the data stream from the Observable by implementing the next() method
+  setFavouriteCats(cats: Cat[]): void {
+    this._localStorage.setItem(this.keyName, JSON.stringify(cats));
+    this._favCats$.next(cats); // to create the data stream from the Observable by implementing the next() method
     // console.log('getStorage', this.favArr.length)
   }
 
