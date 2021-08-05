@@ -9,7 +9,6 @@ import { LocalStorageRefService } from './local-storage-ref.service';
 export class FavouriteCatsService {
   private _localStorage: Storage;
 
-  private favArr: Cat[] = [];
   private keyName = 'favourite-cats';
 
   constructor(private _localStorageRefService: LocalStorageRefService) {
@@ -17,37 +16,34 @@ export class FavouriteCatsService {
   }
 
   private _favCats$ = new BehaviorSubject<Cat[]>([]); // The Bavior Subject is set to private to avoid random components altering the data flow and to ensure the data is changed only through the proper methods on the service
-  public favCats$ = this._favCats$.asObservable(); // to read the data, a public Observable is exposed
 
-  hasKey(): boolean {
-    return this.keyName in localStorage;
-  }
+  get favCats$() {
+    return this._favCats$.asObservable();
+  } // to read the data, a public Observable is exposed
 
   addFavouriteCat(data: Cat) {
-    let favID = this.favArr.map(item => item.id);
-    if (favID.includes(data.id)) {
+    let favArr = this.getFavouriteCats();
+
+    let favItemID = favArr.map(item => item.id);
+    if (favItemID.includes(data.id)) {
       return;
     }
 
-    if (this.hasKey()) {
-      this.favArr = this.getFavouriteCats();
-      this.favArr = [...this.favArr, data]
-    } else {
-      this.favArr = [data];
-    }
-    this.setFavouriteCats();
-    this._favCats$.next(this.favArr); // to create the data stream from the Observable by implementing the next() method
+    favArr = [...favArr, data]
+   
+    this.setFavouriteCats(favArr);
   }
 
-  setFavouriteCats(): void {
-    this._localStorage.setItem(this.keyName, JSON.stringify(this.favArr));
+  setFavouriteCats(data: Cat[]): void {
+    this._localStorage.setItem(this.keyName, JSON.stringify(data));
+    this._favCats$.next(data); // to create the data stream from the Observable by implementing the next() method
     // console.log('getStorage', this.favArr.length)
   }
 
   getFavouriteCats() {
     let catJson = this._localStorage.getItem(this.keyName);
     let favDataArr: Cat[] = catJson !== null ? JSON.parse(catJson): [];
-    this._favCats$.next(favDataArr)
+    this.setFavouriteCats(favDataArr);
     // console.log('getStorage', JSON.parse(catJson || '').length)
 
     return favDataArr;
@@ -60,15 +56,12 @@ export class FavouriteCatsService {
     if (catIndex > -1) {
       favCats.splice(catIndex, 1)
     }
-    this.favArr = favCats;
 
-    this.setFavouriteCats();
-    this._favCats$.next(this.favArr);
+    this.setFavouriteCats(favCats);
   }
 
   deleteAllFavouriteCats() {
-    this._localStorage.removeItem(this.keyName);
-    this._favCats$.next([]);
+    this.setFavouriteCats([])
   }
 
 }
