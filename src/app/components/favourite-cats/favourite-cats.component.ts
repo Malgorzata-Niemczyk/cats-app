@@ -18,13 +18,13 @@ export class FavouriteCatsComponent implements OnInit {
     this.getFavouriteCatsFromLS();
   }
 
-  getFavouriteCatsFromLS() {
+  getFavouriteCatsFromLS(): void {
     this.favouriteCats = this.favouriteCatsService.getFavouriteCats();
 
     console.log(this.favouriteCats);
   }
 
-  deleteFavCat(event: Event, id: string) {
+  deleteFavCat(event: Event, id: string): void {
     event.stopPropagation();
 
     if (window.confirm('Are your sure you want to delete this record?')) {
@@ -32,7 +32,7 @@ export class FavouriteCatsComponent implements OnInit {
     }
   }
 
-  deleteAllFavourites() {
+  deleteAllFavourites(): void {
     if (window.confirm('Are your sure you want to delete all records?')) {
       this.favouriteCatsService.deleteAllFavouriteCats();
     }

@@ -43,7 +43,7 @@ export class CatsListComponent implements OnInit {
     return params;
   }
 
-  getCatsList() {
+  getCatsList(): void {
     const params = this.getHttpParams();
     
     this.catsService.getCats(params).subscribe((response) => {
@@ -53,7 +53,7 @@ export class CatsListComponent implements OnInit {
     });
   }
 
-  getFilteredCatsList() {
+  getFilteredCatsList(): void {
     const params = this.getHttpParams();
     
     this.catsService.getFilteredCats(params).subscribe((response) => {
@@ -65,7 +65,7 @@ export class CatsListComponent implements OnInit {
     });
   }
 
-  handleInputChange() {
+  handleInputChange(): void {
     if (this.filteredCatsNames) {
       this.getFilteredCatsList()
     } else {
@@ -73,18 +73,18 @@ export class CatsListComponent implements OnInit {
     }
   }
 
-  onPageChanged(event: any) {
+  onPageChanged(event: number): void {
     this.currentPage = event;
     this.getCatsList();
   }
 
-  onPageSizeChange(event: any) {
+  onPageSizeChange(event: any): void {
     this.itemsPerPage = event.target.value;
     this.currentPage = 0;
     this.getCatsList();
   }
 
-  AddToFavourites(favCat: Cat) {
+  AddToFavourites(favCat: Cat): void {
     this.favouriteCatsService.addFavouriteCat(favCat);
 
     console.log(localStorage);

@@ -25,7 +25,7 @@ export class FavouriteCatsService {
     return this.getFavouriteCats().some(item => item.id === cat.id);
   }
 
-  addFavouriteCat(cat: Cat) {
+  addFavouriteCat(cat: Cat): void {
     let favArr = this.getFavouriteCats();
 
     let favItemID = favArr.map(item => item.id);
@@ -44,7 +44,7 @@ export class FavouriteCatsService {
     // console.log('getStorage', this.favArr.length)
   }
 
-  getFavouriteCats() {
+  getFavouriteCats(): Cat[] {
     let catJson = this._localStorage.getItem(this.keyName);
     let favDataArr: Cat[] = catJson !== null ? JSON.parse(catJson): [];
     this.setFavouriteCats(favDataArr);
@@ -53,7 +53,7 @@ export class FavouriteCatsService {
     return favDataArr;
   }
 
-  deleteFavouriteCat(id: string) {
+  deleteFavouriteCat(id: string): void {
     let favCats = this.getFavouriteCats();
 
     let catIndex = favCats.findIndex((favCat: any) => favCat.id === id);
@@ -64,7 +64,7 @@ export class FavouriteCatsService {
     this.setFavouriteCats(favCats);
   }
 
-  deleteAllFavouriteCats() {
+  deleteAllFavouriteCats(): void {
     this.setFavouriteCats([])
   }
 
