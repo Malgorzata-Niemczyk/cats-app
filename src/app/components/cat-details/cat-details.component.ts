@@ -37,8 +37,6 @@ export class CatDetailsComponent implements OnInit {
       };
       
       this.catImagePath = results.map((item: any) => item.url);
-
-      this.favouriteCatsService.isCatInFavourites(this.cat);
       
       console.log(this.cat);
     });
