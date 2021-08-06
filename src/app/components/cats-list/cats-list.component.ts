@@ -65,31 +65,29 @@ export class CatsListComponent implements OnInit {
     });
   }
 
+  isFilteredListDisplayed(): void {
+    this.filteredCatsNames ? this.getFilteredCatsList() : this.getCatsList();
+  }
+
   handleInputChange(): void {
     this.currentPage = 1;
-
-    if (this.filteredCatsNames) {
-      this.getFilteredCatsList()
-    } else {
-      this.getCatsList();
-    }
+    this.isFilteredListDisplayed();
   }
 
   onPageChanged(event: number): void {
     this.currentPage = event;
-    this.getCatsList();
+    this.isFilteredListDisplayed();
   }
 
   onPageSizeChange(event: any): void {
     this.itemsPerPage = event.target.value;
     this.currentPage = 1;
-    this.getCatsList();
+    this.isFilteredListDisplayed();
   }
 
   AddToFavourites(favCat: Cat): void {
     this.favouriteCatsService.addFavouriteCat(favCat);
-
-    console.log(localStorage);
+    // console.log(localStorage);
   }
 
   isInFavourites(): boolean {
