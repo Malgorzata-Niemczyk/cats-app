@@ -16,9 +16,9 @@ export class CatsListComponent implements OnInit {
 
   selectedFavCat: Cat;
 
-  itemsPerPage = 8;
   itemsPerPageSizes = [3, 6, 8, 9, 12];
-  currentPage = 0;
+  itemsPerPage = this.itemsPerPageSizes[2];
+  currentPage = 1;
   totalItems: number;
 
   favCatsData$ = this.favouriteCatsService.favCats$;
@@ -35,7 +35,7 @@ export class CatsListComponent implements OnInit {
   getHttpParams(): HttpParams {
     let params = new HttpParams()
     .set('limit', this.itemsPerPage)
-    .set('page', this.currentPage)
+    .set('page', this.currentPage - 1)
     .set('q', this.filteredCatsNames);
 
     console.log(params.toString());
@@ -66,6 +66,8 @@ export class CatsListComponent implements OnInit {
   }
 
   handleInputChange(): void {
+    this.currentPage = 1;
+
     if (this.filteredCatsNames) {
       this.getFilteredCatsList()
     } else {
@@ -80,7 +82,7 @@ export class CatsListComponent implements OnInit {
 
   onPageSizeChange(event: any): void {
     this.itemsPerPage = event.target.value;
-    this.currentPage = 0;
+    this.currentPage = 1;
     this.getCatsList();
   }
 

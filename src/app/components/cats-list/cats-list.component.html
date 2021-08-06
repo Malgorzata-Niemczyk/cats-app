@@ -25,7 +25,7 @@
             <option 
                 *ngFor="let pageSize of itemsPerPageSizes" 
                 [ngValue]="pageSize" 
-                [selected]="pageSize === itemsPerPageSizes[2]"
+                [selected]="pageSize === itemsPerPage"
             >
                 {{pageSize}}
             </option>
