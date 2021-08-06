@@ -30,15 +30,11 @@ export class CatDetailsComponent implements OnInit {
     const id: any = this.route.snapshot.paramMap.get('id');
     
     this.catsService.getCat(id).subscribe((results: any) => {
-      for (let value of results) {
-        for (let item of value.breeds) {
-          this.cat = item;
-        }
-      };
+      results.map((value: Cat) => 
+        value.breeds.map((item: Cat) => this.cat = item)
+      );
       
-      this.catImagePath = results.map((item: any) => item.url);
-      
-      console.log(this.cat);
+      this.catImagePath = results.map((item: Cat) => item.url);
     });
   }
 

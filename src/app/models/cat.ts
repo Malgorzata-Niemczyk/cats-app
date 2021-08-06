@@ -1,6 +1,7 @@
 export interface Cat {
    url: string,
    id: string,
+   breeds: [];
    name: string,
    temperament: string,
    life_span: string,
