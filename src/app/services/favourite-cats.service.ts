@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Cat } from '../models/cat';
 import { LocalStorageRefService } from './local-storage-ref.service';
 
@@ -17,7 +17,7 @@ export class FavouriteCatsService {
 
   private _favCats$ = new BehaviorSubject<Cat[]>([]); // The Bavior Subject is set to private to avoid random components altering the data flow and to ensure the data is changed only through the proper methods on the service
 
-  get favCats$() {
+  get favCats$(): Observable<Cat[]> {
     return this._favCats$.asObservable();
   } // to read the data, a public Observable is exposed
 

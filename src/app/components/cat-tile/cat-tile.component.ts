@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Cat } from 'src/app/models/cat';
+import { FavouriteCatsService } from 'src/app/services/favourite-cats.service';
 
 @Component({
   selector: 'app-cat-tile',
@@ -10,17 +11,21 @@ export class CatTileComponent implements OnInit {
   @Input() cat: Cat;
   @Output() onAddToFavourites: EventEmitter<Cat> = new EventEmitter();
 
-  favButtonText: string = '🖤';
+  toAddfavButtonText = '🖤';
+  addedFavButtonTex = '❤️';
 
-  constructor() { }
+  constructor(private favouriteCatsService: FavouriteCatsService) { }
 
   ngOnInit(): void {
   }
 
-  onAddToFav(cat: Cat, event: Event) {
+  onAddToFav(cat: Cat, event: Event): void {
     event.stopPropagation();
     this.onAddToFavourites.emit(cat);
-    this.favButtonText = '❤️';
+  }
+
+  onIsCatInFavs(): boolean {
+    return this.favouriteCatsService.isCatInFavourites(this.cat);
   }
 
 }

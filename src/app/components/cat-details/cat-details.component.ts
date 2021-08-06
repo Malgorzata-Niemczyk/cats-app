@@ -13,8 +13,8 @@ import { Cat } from '../../models/cat';
 export class CatDetailsComponent implements OnInit {
   cat: Cat;
   catImagePath: string;
-  favCatsData$ = this.favouriteCatsService.favCats$;
-  favButtonText: string = 'Add to 🖤';
+  toAddfavButtonText = 'Add to 🖤';
+  addedFavButtonTex = 'Added To ❤️';
 
   constructor(
     private route: ActivatedRoute,
@@ -26,7 +26,7 @@ export class CatDetailsComponent implements OnInit {
     this.getSelectedCat();
   }
   
-  getSelectedCat() {
+  getSelectedCat(): void {
     const id: any = this.route.snapshot.paramMap.get('id');
     
     this.catsService.getCat(id).subscribe((results: any) => {
@@ -44,11 +44,13 @@ export class CatDetailsComponent implements OnInit {
     });
   }
 
-  AddToFavourites() {
+  AddToFavourites(): void {
     this.favouriteCatsService.addFavouriteCat(this.cat);
-    this.favButtonText = 'Added To ❤️';
+    // console.log(localStorage);
+  }
 
-    console.log(localStorage);
+  isInFavourites(): boolean {
+    return this.favouriteCatsService.isCatInFavourites(this.cat);
   }
 
 }

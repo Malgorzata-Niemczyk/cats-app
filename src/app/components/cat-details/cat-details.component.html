@@ -1,19 +1,17 @@
-<div *ngIf="favCatsData$ | async as favCatsData">
-    <h3 class="loader" *ngIf="!cat">Loading...</h3>
-    <div *ngIf="cat" class="details-container">
-        <div class="cat-heading-wrapper">
-            <img [src]="catImagePath" alt="some cat" class="selected-cat-picture">
-            <h2>{{cat.name | uppercase}}</h2>
-            <button class="fav-btn" (click)="AddToFavourites()">{{favButtonText}}</button>
-        </div>
-        <div class="cat-info-wrapper">
-            <p><span>Description:</span> <br> {{cat.description}}</p>
-            <p><span>Temperament:</span> {{cat.temperament}}</p>
-            <p><span>Origin:</span> {{cat.origin}}</p>
-            <p><span>Average life span:</span> {{cat.life_span}}</p>
-            <p><span>Weight:</span> {{cat.weight?.metric}} kgs</p>
-            <p><a [href]="cat.wikipedia_url" target="_blank" rel="noopener" class="wiki-link">WIKIPEDIA</a></p>
-            <button class="go-back-btn" [routerLink]="['/cats']">Go Back</button>
-        </div>
+<h3 class="loader" *ngIf="!cat">Loading...</h3>
+<div *ngIf="cat" class="details-container">
+    <div class="cat-heading-wrapper">
+        <img [src]="catImagePath" alt="some cat" class="selected-cat-picture">
+        <h2>{{cat.name | uppercase}}</h2>
+        <button class="fav-btn" (click)="AddToFavourites()">{{isInFavourites() ? addedFavButtonTex : toAddfavButtonText}}</button>
+    </div>
+    <div class="cat-info-wrapper">
+        <p><span>Description:</span> <br> {{cat.description}}</p>
+        <p><span>Temperament:</span> {{cat.temperament}}</p>
+        <p><span>Origin:</span> {{cat.origin}}</p>
+        <p><span>Average life span:</span> {{cat.life_span}}</p>
+        <p><span>Weight:</span> {{cat.weight?.metric}} kgs</p>
+        <p><a [href]="cat.wikipedia_url" target="_blank" rel="noopener" class="wiki-link">WIKIPEDIA</a></p>
+        <button class="go-back-btn" [routerLink]="['/cats']">Go Back</button>
     </div>
 </div>
