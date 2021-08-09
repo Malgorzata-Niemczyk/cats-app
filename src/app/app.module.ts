@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
 import { CatsListComponent } from './components/cats-list/cats-list.component';
@@ -19,6 +20,7 @@ import { CatDetailsComponent } from './components/cat-details/cat-details.compon
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FavouriteCatsComponent } from './components/favourite-cats/favourite-cats.component';
+import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { FavouriteCatsComponent } from './components/favourite-cats/favourite-ca
     CatDetailsComponent,
     PageNotFoundComponent,
     NavbarComponent,
-    FavouriteCatsComponent
+    FavouriteCatsComponent,
+    DeleteDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,8 @@ import { FavouriteCatsComponent } from './components/favourite-cats/favourite-ca
     MatIconModule,
     MatCardModule,
     MatListModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

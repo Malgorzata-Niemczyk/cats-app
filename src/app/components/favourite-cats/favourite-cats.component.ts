@@ -21,10 +21,6 @@ export class FavouriteCatsComponent implements OnInit {
 
   getFavouriteCatsFromLS() {
     this.favouriteCats = this.localStorageService.getStorage(this.localStorageService.keyName);
-
-    console.log(this.favouriteCats);
-
-    console.log(this.favCatsData$)
   }
 
   deleteFavouriteCatFromLS(event: Event, id: string) {
