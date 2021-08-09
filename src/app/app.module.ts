@@ -13,6 +13,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 import { AppComponent } from './app.component';
 import { CatsListComponent } from './components/cats-list/cats-list.component';
@@ -46,7 +47,8 @@ import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.
     MatCardModule,
     MatListModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
