@@ -1,76 +1,57 @@
-.details-container {
+.cat-card {
+    margin-top: 20px;
+    max-width: 400px;
+}
+
+.cat-header {
+    position: relative;
     display: flex;
-    justify-content: center;
-    margin: 0 auto;
-    gap: 20px;
-    padding: 20px;
-    max-width: 80%;
+    justify-content: space-between;
 
-    .cat-heading-wrapper {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        
-        h2 {
-            margin-bottom: 15px;
-            text-align: center;
-            font-size: 40px;
-        }
-
-        .selected-cat-picture {
-            margin-bottom: 10px;
-            width: 300px;
-            height: 200px;
-            object-fit: contain;
-            align-self: center;
-        }
-
-        .fav-btn {
-            padding: 10px 20px;
-            text-transform: uppercase;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
-            transition: color 0.3s, background-color 0.3s;
-
-            &:hover {
-                color: whitesmoke;
-                background-color: grey;
-            }
-        }
-    }
-
-    .cat-info-wrapper {
-        padding: 20px;
-        border-left: 1px solid black;
-        
-        p {
-            padding: 5px;
-        }
-
-        span {
-            font-weight: bold;
-        }
-
-        .wiki-link {
-            padding: 5px 0;
-        }
-    }
-
-    .go-back-btn {
-        margin-top: 10px;
-        color: white;
-        background-color: blueviolet;
-        transition: background-color 0.3s;
-
-        &:hover {
-            background-color: #4cb5bd;
-        }
+    .fav-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: none;
+        border: none;
+        cursor: pointer;
     }
 }
 
-.fav-btn, .go-back-btn {
+.selected-cat-picture {
+    margin-bottom: 10px;
+    min-width: 100%;
+    height: 300px;
+    object-fit: cover;
+    align-self: center;
+}
+
+.cat-info-wrapper {
+    p {
+        padding: 5px;
+    }
+
+    span {
+        font-weight: bold;
+    }
+
+    .wiki-link {
+        padding: 5px 0;
+    }
+}
+
+.go-back-btn {
+    margin-top: 10px;
+    color: white;
+    background-color: blueviolet;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: #4cb5bd;
+    }
+}
+
+.go-back-btn {
     padding: 10px 20px;
     text-transform: uppercase;
     border-radius: 5px;
@@ -78,19 +59,35 @@
     cursor: pointer;
 }
 
-@media screen and (max-width: 694px) {
-    .details-container {
-        flex-direction: column;
+@media screen and (min-width: 1000px) {
+  .cat-card {
+      display: flex;
+      gap: 35px;
+      max-width: 800px;
+  }
 
-        .cat-info-wrapper {
-            border-left: none;
-            border-top: 1px solid black;
-        }
+  .cat-header {
+    .fav-btn {
+      right: -10px;
     }
+  }
+
+  .cat-info-wrapper {
+      max-width: 400px;
+  }
+
+  .selected-cat-picture {
+      margin-left: 15px;
+      max-width: 100%;
+  }
 }
 
-@media screen and (max-width: 474px) {
-    .details-container {
-        max-width: 95%;
+@media screen and (max-width: 400px) {
+    .cat-card {
+        max-width: 300px;
+    }
+
+    .selected-cat-picture {
+        height: 250px;
     }
 }

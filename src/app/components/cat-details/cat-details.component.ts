@@ -14,7 +14,7 @@ export class CatDetailsComponent implements OnInit {
   cat: Cat;
   catImagePath: string;
   favCatsData$ = this.localStorageService.favCats$;
-  favButtonText: string = 'Add to ❤️';
+  favButtonText: string = '❤️';
 
   constructor(
     private route: ActivatedRoute,
@@ -44,7 +44,7 @@ export class CatDetailsComponent implements OnInit {
 
   isInFavourites() {
     let favItemID = this.localStorageService.favArr.map(item => item.id).includes(this.cat.id);
-    return favItemID ?  this.favButtonText = 'Added To 🖤' :  this.favButtonText = 'Add To ❤️'
+    return favItemID ?  this.favButtonText = '🖤' :  this.favButtonText = '❤️'
   }
   
   AddToFavourites() {
