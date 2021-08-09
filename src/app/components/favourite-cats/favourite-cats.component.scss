@@ -5,15 +5,6 @@ h3 {
     text-align: center;
 }
 
-.table-row { 
-    cursor: pointer;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-        box-shadow: 0px 0px 10px grey;
-    }
-}
-
 .table {
     min-width: 80vw;
 }
@@ -30,4 +21,18 @@ h3 {
         cursor: pointer;
     }
 }
-  
+
+.action-buttons {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+ 
+
+.delete-ico {
+    color: #e93818;
+}
+
+.info-ico {
+    color: #1850e9;
+}

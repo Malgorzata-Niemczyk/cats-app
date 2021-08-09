@@ -4,8 +4,8 @@
             <li><h1 class="cat-heading">cats<span>App</span></h1></li>
         </div>
         <div class="link-items">
-            <li><a href="/cats" class="nav-links">Home</a></li>
-            <li><a href="/favourites" class="nav-links">Favourites</a></li>
+            <li><a [routerLink]="['/cats']" routerLinkActive="is-active" class="nav-links">Home</a></li>
+            <li><a [routerLink]="['/favourites']" routerLinkActive="is-active" class="nav-links">Favourites</a></li>
         </div>
     </ul>
 </nav>

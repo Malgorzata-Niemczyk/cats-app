@@ -34,19 +34,37 @@
         </ng-container>
 
         <!-- Delete Button Column -->
-        <ng-container matColumnDef="action">
-          <th mat-header-cell *matHeaderCellDef>Action</th>
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef></th>
           <td mat-cell *matCellDef="let element">
-            <button mat-icon-button title="Delete Item"
-              style="border: none; background-color: transparent; cursor: pointer;"
-              (click)="deleteFavouriteCatFromLS($event, element.id)">
-              <mat-icon style="color: #e93818;">delete</mat-icon>
+            <button 
+              mat-icon-button 
+              title="Delete Item"
+              class="action-buttons"
+              (click)="deleteFavouriteCatFromLS($event, element.id)"
+            >
+              <mat-icon class="delete-ico">delete_outline</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <!-- More Info Button Column -->
+        <ng-container matColumnDef="info">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element">
+            <button 
+              mat-icon-button
+              class="action-buttons"
+              title="See Details"
+              [routerLink]="['/cat', element.id]"
+            >
+              <mat-icon class="info-ico">info_outline</mat-icon>
             </button>
           </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/cat', row.id]" class="table-row">
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
         </tr>
       </tbody>
     </table>
