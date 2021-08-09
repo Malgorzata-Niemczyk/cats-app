@@ -44,19 +44,63 @@
             </option>
         </select>
     </div>
-    <ul class="cats_list">
-        <li *ngFor="let cat of cats 
-                | paginate: { id: 'listing-pagination',
-                    itemsPerPage: itemsPerPage,
-                    currentPage: currentPage,
-                    totalItems: totalItems }
-                " 
-            class="cat_item" 
-            [routerLink]="['/cat', cat.id]"
-        >
-            <button class="fav-btn" (click)="AddToFavourites($event, cat)">{{favButtonText}}</button>
-            <p>Name: <span>{{cat.name}}</span></p>
-            <p>Origin: <span>{{cat.origin}}</span></p>
-        </li>
-    </ul>    
+    <table 
+        mat-table 
+        [dataSource]="cats | paginate: { id: 'listing-pagination',
+                        itemsPerPage: itemsPerPage,
+                        currentPage: currentPage,
+                        totalItems: totalItems }" 
+        class="mat-elevation-z8 table"
+    >
+        <tbody>
+          <!-- Position Column -->
+          <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef>No.</th>
+            <td mat-cell *matCellDef="let element; index as i">{{i + 1}}</td>
+          </ng-container>
+  
+          <!-- Breed Column -->
+          <ng-container matColumnDef="breed">
+            <th mat-header-cell *matHeaderCellDef>Breed</th>
+            <td mat-cell *matCellDef="let element">{{element.name}}</td>
+          </ng-container>
+  
+          <!-- Origin Column -->
+          <ng-container matColumnDef="origin">
+            <th mat-header-cell *matHeaderCellDef>Origin</th>
+            <td mat-cell *matCellDef="let element">{{element.origin}}</td>
+          </ng-container>
+
+           <!-- Favs Button Column -->
+           <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+              <button 
+                class="fav-btn action-buttons" 
+                title="Add To Favourites"
+                (click)="AddToFavourites($event, element)"
+                >{{favButtonText}}</button>
+            </td>
+          </ng-container>
+  
+          <!-- More Info Button Column -->
+          <ng-container matColumnDef="info">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+              <button 
+                mat-icon-button
+                class="info-btn action-buttons"
+                title="See Details"
+                [routerLink]="['/cat', element.id]"
+              >
+                <mat-icon class="info-ico">info_outline</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+          </tr>
+        </tbody>
+      </table>
 </div>

@@ -22,6 +22,8 @@ export class CatsListComponent implements OnInit {
   currentPage = 0;
   totalItems: number;
 
+  displayedColumns: string[] = ['position', 'breed', 'origin', 'delete', 'info'];
+
   favCatsData$ = this.localStorageService.favCats$;
 
   constructor(

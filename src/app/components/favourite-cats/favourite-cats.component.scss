@@ -7,6 +7,10 @@ h3 {
 
 .table {
     min-width: 80vw;
+
+    tr[mat-row]:hover {
+        background: #ebebeb;
+    }
 }
 
 .button-container {
