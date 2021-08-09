@@ -4,10 +4,15 @@
 }
 
 .search-bar {
-    input {
-        margin: 20px 0;
-        padding: 5px;
+    .search-form-field {
+        margin-top: 25px;
         width: 320px;
+    }
+
+    .clear-btn {
+        border: none;
+        background: none;
+        cursor: pointer;
     }
 }
 

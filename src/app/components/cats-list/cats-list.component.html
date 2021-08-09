@@ -1,11 +1,25 @@
 <div *ngIf="favCatsData$ | async as favCatsData">
     <div class="search-bar">
-        <input 
-            type="search" 
-            placeholder="Search cats by breed's name..."
-            [(ngModel)]="filteredCatsNames"
-            (input)="handleInputChange()"
-        >
+        <mat-form-field class="search-form-field" appearance="fill">
+            <mat-label>Search cats by breed's name...</mat-label>
+            <input 
+                type="search"
+                matInput 
+                type="text" 
+                [(ngModel)]="filteredCatsNames" 
+                (input)="handleInputChange()"
+            >
+            <button 
+                *ngIf="filteredCatsNames" 
+                matSuffix 
+                mat-icon-button 
+                aria-label="Clear" 
+                (click)="filteredCatsNames=''; getCatsList()"
+                class="clear-btn"
+            >
+              <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
     </div>
     <h3 class="loader" *ngIf="cats.length === 0">No results found!</h3>
     <div class="pagination-wrapper">

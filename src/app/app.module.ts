@@ -10,6 +10,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatInputModule } from '@angular/material/input';
 
 import { AppComponent } from './app.component';
 import { CatsListComponent } from './components/cats-list/cats-list.component';
@@ -38,7 +40,9 @@ import { FavouriteCatsComponent } from './components/favourite-cats/favourite-ca
     BrowserAnimationsModule,
     MatTableModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatListModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
