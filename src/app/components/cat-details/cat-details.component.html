@@ -4,7 +4,7 @@
             <mat-card-header class="cat-header">
                 <mat-card-title>{{cat.name | uppercase}}</mat-card-title>
                 <mat-card-subtitle>Cat Breed</mat-card-subtitle>
-                <button class="fav-btn" (click)="AddToFavourites()">{{favButtonText}}</button>
+                <button mat-mini-fab class="fav-btn" (click)="AddToFavourites()">{{favButtonText}}</button>
             </mat-card-header>
             <img mat-card-image [src]="catImagePath" alt="Photo of a cat" class="selected-cat-picture">
         </div>
@@ -15,7 +15,7 @@
             <p><span>Average life span:</span> {{cat.life_span}}</p>
             <p><span>Weight:</span> {{cat.weight?.metric}} kgs</p>
             <p><a [href]="cat.wikipedia_url" class="wiki-link">WIKIPEDIA</a></p>
-            <button class="go-back-btn" [routerLink]="['/cats']">Go Back</button>
+            <button mat-raised-button class="go-back-btn" [routerLink]="['/cats']">Go Back</button>
         </mat-card-content>
     </mat-card>
 </div>

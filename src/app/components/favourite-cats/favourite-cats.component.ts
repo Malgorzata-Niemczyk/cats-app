@@ -29,20 +29,25 @@ export class FavouriteCatsComponent implements OnInit {
 
   openDeleteCatDialog(event: Event, id: string) {
     event.stopPropagation();
+    const selectedFavCat = this.favouriteCats.find(selectedCat => selectedCat.id === id);
 
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.width = '420px';
     dialogConfig.height = '180px';
+    dialogConfig.data = selectedFavCat;
 
     this.dialogRef.open(DeleteDialogComponent, dialogConfig);
-    console.log(id);
   }
 
-  openDeleteAllCatsModal() {
-    // if (window.confirm('Are your sure you want to delete all records?')) {
-    //     this.localStorageService.deleteAllItemsFromLS(this.localStorageService.keyName);
-    // }
+  openDeleteAllCatsDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.width = '420px';
+    dialogConfig.height = '180px';
+    dialogConfig.data = this.favouriteCats;
+
+    this.dialogRef.open(DeleteDialogComponent, dialogConfig);
   }
   
 }

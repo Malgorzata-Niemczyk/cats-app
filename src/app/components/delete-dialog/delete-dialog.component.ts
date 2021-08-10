@@ -21,13 +21,19 @@ export class DeleteDialogComponent implements OnInit {
   }
 
   getFavouriteCat() {
-    this.data;
-    console.log('selected cat', this.data);
+    console.log(this.data);
+    return this.data;
   }
 
-  deleteFavouriteCatFromLS(event: Event) {
-    // this.localStorageService.deleteFavouriteCatFromLS(this.localStorageService.keyName, id);
-    // this.dialogRef.close();
+  deleteFavouriteCatFromLS(id: string) {
+    id = this.data.id;
+    this.localStorageService.deleteFavouriteCatFromLS(this.localStorageService.keyName, id);
+    this.dialogRef.close();
   }
+
+  // deleteAllFavouriteCatsFromLS() {
+  //   this.localStorageService.deleteAllItemsFromLS(this.localStorageService.keyName);
+  //   this.dialogRef.close();
+  // }
 
 }

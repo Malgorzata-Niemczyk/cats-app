@@ -10,7 +10,7 @@
 
     .fav-btn {
         position: absolute;
-        top: 10px;
+        top: 3px;
         right: 10px;
         background: none;
         border: none;
@@ -43,20 +43,16 @@
 .go-back-btn {
     margin-top: 10px;
     color: white;
+    text-transform: uppercase;
+    border-radius: 5px;
+    border: none;
     background-color: blueviolet;
+    cursor: pointer;
     transition: background-color 0.3s;
 
     &:hover {
         background-color: #4cb5bd;
     }
-}
-
-.go-back-btn {
-    padding: 10px 20px;
-    text-transform: uppercase;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
 }
 
 @media screen and (min-width: 1000px) {
