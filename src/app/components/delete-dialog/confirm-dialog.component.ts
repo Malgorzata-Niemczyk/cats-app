@@ -4,15 +4,15 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { modalData } from 'src/app/models/modalData';
 
 @Component({
-  selector: 'app-delete-dialog',
-  templateUrl: './delete-dialog.component.html',
-  styleUrls: ['./delete-dialog.component.scss']
+  selector: 'app-confirm-dialog',
+  templateUrl: './confirm-dialog.component.html',
+  styleUrls: ['./confirm-dialog.component.scss']
 })
-export class DeleteDialogComponent implements OnInit {
+export class ConfirmDialogComponent implements OnInit {
 
   constructor( 
     private localStorageService: LocalStorageService,
-    private dialogRef: MatDialogRef<DeleteDialogComponent>,
+    private dialogRef: MatDialogRef<ConfirmDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public modalData: modalData
   ) { }
 

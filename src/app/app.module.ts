@@ -21,7 +21,7 @@ import { CatDetailsComponent } from './components/cat-details/cat-details.compon
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FavouriteCatsComponent } from './components/favourite-cats/favourite-cats.component';
-import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
+import { ConfirmDialogComponent } from './components/delete-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.
     PageNotFoundComponent,
     NavbarComponent,
     FavouriteCatsComponent,
-    DeleteDialogComponent
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +52,6 @@ import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [DeleteDialogComponent]
+  entryComponents: [ConfirmDialogComponent]
 })
 export class AppModule { }

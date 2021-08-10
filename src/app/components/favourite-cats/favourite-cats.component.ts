@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { Cat } from 'src/app/models/cat';
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
-import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component'; 
+import { ConfirmDialogComponent } from '../delete-dialog/confirm-dialog.component'; 
 
 @Component({
   selector: 'app-favourite-cats',
@@ -43,7 +43,7 @@ export class FavouriteCatsComponent implements OnInit {
       selectedCat: selectedFavCat
     };
 
-    this.dialogRef.open(DeleteDialogComponent, dialogConfig);
+    this.dialogRef.open(ConfirmDialogComponent, dialogConfig);
   }
 
   openDeleteAllCatsDialog() {
@@ -59,7 +59,7 @@ export class FavouriteCatsComponent implements OnInit {
       catsFavCollection: this.favouriteCats
     };;
 
-    this.dialogRef.open(DeleteDialogComponent, dialogConfig);
+    this.dialogRef.open(ConfirmDialogComponent, dialogConfig);
   }
   
 }
