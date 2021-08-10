@@ -13,27 +13,27 @@ export class DeleteDialogComponent implements OnInit {
   constructor( 
     private localStorageService: LocalStorageService,
     private dialogRef: MatDialogRef<DeleteDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Cat
+    @Inject(MAT_DIALOG_DATA) public modalData: any
   ) { }
 
   ngOnInit(): void {
-    this.getFavouriteCat();
+    this.getModalData();
   }
 
-  getFavouriteCat() {
-    console.log(this.data);
-    return this.data;
+  getModalData() {
+    console.log(this.modalData);
+    return this.modalData;
   }
 
   deleteFavouriteCatFromLS(id: string) {
-    id = this.data.id;
+    id = this.modalData.id;
     this.localStorageService.deleteFavouriteCatFromLS(this.localStorageService.keyName, id);
     this.dialogRef.close();
   }
 
-  // deleteAllFavouriteCatsFromLS() {
-  //   this.localStorageService.deleteAllItemsFromLS(this.localStorageService.keyName);
-  //   this.dialogRef.close();
-  // }
+  deleteAllFavouriteCatsFromLS() {
+    this.localStorageService.deleteAllItemsFromLS(this.localStorageService.keyName);
+    this.dialogRef.close();
+  }
 
 }

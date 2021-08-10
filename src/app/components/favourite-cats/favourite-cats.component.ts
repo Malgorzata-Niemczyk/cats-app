@@ -33,9 +33,14 @@ export class FavouriteCatsComponent implements OnInit {
 
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
-    dialogConfig.width = '420px';
-    dialogConfig.height = '180px';
-    dialogConfig.data = selectedFavCat;
+    dialogConfig.width = '390px';
+    dialogConfig.height = '230px';
+    dialogConfig.data = {
+      name: 'deleteCat',
+      title: 'Are you sure you want to delete this record?',
+      description: `If you continue, the cat with the breed of ${selectedFavCat?.name} will be deleted.`,
+      selectedCat: selectedFavCat
+    };
 
     this.dialogRef.open(DeleteDialogComponent, dialogConfig);
   }
@@ -43,9 +48,14 @@ export class FavouriteCatsComponent implements OnInit {
   openDeleteAllCatsDialog() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
-    dialogConfig.width = '420px';
-    dialogConfig.height = '180px';
-    dialogConfig.data = this.favouriteCats;
+    dialogConfig.width = '390px';
+    dialogConfig.height = '230px';
+    dialogConfig.data = {
+      name: 'deleteAllCats',
+      title: 'Are you sure you want to delete all the records?',
+      description: `If you continue, all your favourite cats will be deleted.`,
+      catsFavCollection: this.favouriteCats
+    };;
 
     this.dialogRef.open(DeleteDialogComponent, dialogConfig);
   }

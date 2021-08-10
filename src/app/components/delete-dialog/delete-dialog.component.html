@@ -1,8 +1,8 @@
-<div *ngIf="data">
-  <h1 mat-dialog-title>Please confirm...</h1>
-  <div mat-dialog-content>Are you sure you want to delete this record?</div>
+<div *ngIf="modalData">
+  <h1 mat-dialog-title>{{modalData.title}}</h1>
+  <div mat-dialog-content>{{modalData.description}}</div>
   <div mat-dialog-actions class="action-butttons">
-    <button mat-raised-button color="warn" (click)="deleteFavouriteCatFromLS(data.id)">Delete</button>
+    <button mat-raised-button color="warn" (click)="deleteFavouriteCatFromLS(modalData.id)">Delete</button>
     <button mat-raised-button color="primary" mat-dialog-close>Cancel</button>
   </div>
 </div>

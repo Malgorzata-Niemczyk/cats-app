@@ -51,6 +51,7 @@ import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.
     MatButtonModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DeleteDialogComponent]
 })
 export class AppModule { }
