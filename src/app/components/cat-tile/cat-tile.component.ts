@@ -7,7 +7,7 @@ import { FavouriteCatsService } from 'src/app/services/favourite-cats.service';
   templateUrl: './cat-tile.component.html',
   styleUrls: ['./cat-tile.component.scss']
 })
-export class CatTileComponent implements OnInit {
+export class CatTileComponent {
   @Input() cat: Cat;
   @Output() onAddToFavourites: EventEmitter<Cat> = new EventEmitter();
 
@@ -15,9 +15,6 @@ export class CatTileComponent implements OnInit {
   addedFavButtonTex = '❤️';
 
   constructor(private favouriteCatsService: FavouriteCatsService) { }
-
-  ngOnInit(): void {
-  }
 
   onAddToFav(cat: Cat, event: Event): void {
     event.stopPropagation();

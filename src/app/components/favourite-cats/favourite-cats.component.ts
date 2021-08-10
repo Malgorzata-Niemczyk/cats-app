@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FavouriteCatsService } from 'src/app/services/favourite-cats.service';
 import { Cat } from 'src/app/models/cat';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-favourite-cats',
@@ -10,7 +11,7 @@ import { Cat } from 'src/app/models/cat';
 export class FavouriteCatsComponent implements OnInit {
   favouriteCats: Cat[];
   displayedColumns: string[] = ['position', 'id', 'breed', 'origin', 'action'];
-  favCatsData$ = this.favouriteCatsService.favCats$;
+  favCatsData$: Observable<Cat[]> = this.favouriteCatsService.favCats$;
 
   constructor(private favouriteCatsService: FavouriteCatsService) { }
 
@@ -20,8 +21,6 @@ export class FavouriteCatsComponent implements OnInit {
 
   getFavouriteCatsFromLS(): void {
     this.favouriteCats = this.favouriteCatsService.getFavouriteCats();
-
-    console.log(this.favouriteCats);
   }
 
   deleteFavCat(event: Event, id: string): void {

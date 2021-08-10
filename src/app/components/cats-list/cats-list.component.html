@@ -33,14 +33,14 @@
     </div>
     <ul class="cats_list">
         <app-cat-tile
-            [cat]="cat"
             *ngFor="let cat of cats 
                 | paginate: { id: 'listing-pagination',
-                    itemsPerPage: itemsPerPage,
-                    currentPage: currentPage,
-                    totalItems: totalItems }
+                itemsPerPage: itemsPerPage,
+                currentPage: currentPage,
+                totalItems: totalItems }
                 "
-            (onAddToFavourites)="AddToFavourites(cat)"
+            [cat]="cat"
+            (onAddToFavourites)="addToFavourites(cat)"
         ></app-cat-tile>
     </ul>
 </div>

@@ -14,7 +14,7 @@ export class CatDetailsComponent implements OnInit {
   cat: Cat;
   catImagePath: string;
   toAddfavButtonText = 'Add to 🖤';
-  addedFavButtonTex = 'Added To ❤️';
+  addedFavButtonText = 'Added To ❤️';
 
   constructor(
     private route: ActivatedRoute,
@@ -38,9 +38,8 @@ export class CatDetailsComponent implements OnInit {
     });
   }
 
-  AddToFavourites(): void {
+  addToFavourites(): void {
     this.favouriteCatsService.addFavouriteCat(this.cat);
-    // console.log(localStorage);
   }
 
   isInFavourites(): boolean {

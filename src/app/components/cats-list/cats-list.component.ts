@@ -38,8 +38,6 @@ export class CatsListComponent implements OnInit {
     .set('page', this.currentPage - 1)
     .set('q', this.filteredCatsNames);
 
-    console.log(params.toString());
-
     return params;
   }
 
@@ -49,7 +47,6 @@ export class CatsListComponent implements OnInit {
     this.catsService.getCats(params).subscribe((response) => {
       this.cats = response.cats;
       this.totalItems = response.totalItems;
-      console.log(response.cats, response.totalItems);
     });
   }
 
@@ -61,33 +58,31 @@ export class CatsListComponent implements OnInit {
       this.filteredCats = this.cats;
       
       this.totalItems = response.totalItems;
-      console.log(response.cats, response.totalItems);
     });
   }
 
-  isFilteredListDisplayed(): void {
+  fetchRequiredCatsList(): void {
     this.filteredCatsNames ? this.getFilteredCatsList() : this.getCatsList();
   }
 
   handleInputChange(): void {
     this.currentPage = 1;
-    this.isFilteredListDisplayed();
+    this.fetchRequiredCatsList();
   }
 
   onPageChanged(event: number): void {
     this.currentPage = event;
-    this.isFilteredListDisplayed();
+    this.fetchRequiredCatsList();
   }
 
   onPageSizeChange(event: any): void {
     this.itemsPerPage = event.target.value;
     this.currentPage = 1;
-    this.isFilteredListDisplayed();
+    this.fetchRequiredCatsList();
   }
 
-  AddToFavourites(favCat: Cat): void {
+  addToFavourites(favCat: Cat): void {
     this.favouriteCatsService.addFavouriteCat(favCat);
-    // console.log(localStorage);
   }
 
   isInFavourites(): boolean {
