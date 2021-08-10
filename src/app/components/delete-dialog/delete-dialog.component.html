@@ -2,7 +2,7 @@
   <h1 mat-dialog-title>{{modalData.title}}</h1>
   <div mat-dialog-content>{{modalData.description}}</div>
   <div mat-dialog-actions class="action-butttons">
-    <button mat-raised-button color="warn" (click)="dialogAction()">Delete</button>
+    <button mat-raised-button color="warn" (click)="dialogAction()">{{modalData.actionButtonText}}</button>
     <button mat-raised-button color="primary" mat-dialog-close>Cancel</button>
   </div>
 </div>

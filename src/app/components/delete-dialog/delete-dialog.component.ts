@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Cat } from 'src/app/models/cat';
+import { modalData } from 'src/app/models/modalData';
 
 @Component({
   selector: 'app-delete-dialog',
@@ -13,7 +13,7 @@ export class DeleteDialogComponent implements OnInit {
   constructor( 
     private localStorageService: LocalStorageService,
     private dialogRef: MatDialogRef<DeleteDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public modalData: any
+    @Inject(MAT_DIALOG_DATA) public modalData: modalData
   ) { }
 
   ngOnInit(): void {

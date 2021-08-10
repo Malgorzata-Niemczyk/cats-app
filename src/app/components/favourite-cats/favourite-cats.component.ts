@@ -39,6 +39,7 @@ export class FavouriteCatsComponent implements OnInit {
       name: 'deleteCat',
       title: 'Are you sure you want to delete this record?',
       description: `If you continue, the cat with the breed of ${selectedFavCat?.name} will be deleted.`,
+      actionButtonText: 'Delete Item',
       selectedCat: selectedFavCat
     };
 
@@ -54,6 +55,7 @@ export class FavouriteCatsComponent implements OnInit {
       name: 'deleteAllCats',
       title: 'Are you sure you want to delete all the records?',
       description: `If you continue, all your favourite cats will be deleted.`,
+      actionButtonText: 'Delete All',
       catsFavCollection: this.favouriteCats
     };;
 
