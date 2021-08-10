@@ -40,7 +40,10 @@ export class FavouriteCatsComponent implements OnInit {
       title: 'Are you sure you want to delete this record?',
       description: `If you continue, the cat with the breed of ${selectedFavCat?.name} will be deleted.`,
       actionButtonText: 'Delete Item',
-      selectedCat: selectedFavCat
+      selectedCat: selectedFavCat,
+      callBackMethod: () => {
+        this.performDeleteFavCatFromLS(dialogConfig.data.selectedCat.id);
+      }
     };
 
     this.dialogRef.open(ConfirmDialogComponent, dialogConfig);
@@ -56,10 +59,22 @@ export class FavouriteCatsComponent implements OnInit {
       title: 'Are you sure you want to delete all the records?',
       description: `If you continue, all your favourite cats will be deleted.`,
       actionButtonText: 'Delete All',
-      catsFavCollection: this.favouriteCats
+      catsFavCollection: this.favouriteCats,
+      callBackMethod: () => {
+        this.performDeleteAllFavCatsFromLS();
+      }
     };;
 
     this.dialogRef.open(ConfirmDialogComponent, dialogConfig);
+  }
+
+
+  performDeleteFavCatFromLS(id: string): void {
+    this.localStorageService.deleteFavouriteCatFromLS(this.localStorageService.keyName, id);
+  }
+
+  performDeleteAllFavCatsFromLS(): void {
+    this.localStorageService.deleteAllItemsFromLS(this.localStorageService.keyName);
   }
   
 }

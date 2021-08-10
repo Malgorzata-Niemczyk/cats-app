@@ -6,5 +6,6 @@ export interface modalData {
     selectedCat: {
         id: string
     }
-    catsFavCollection: []
+    catsFavCollection: [],
+    callBackMethod: () => void
 }
