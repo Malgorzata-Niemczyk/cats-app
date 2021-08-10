@@ -24,15 +24,18 @@ export class DeleteDialogComponent implements OnInit {
     console.log(this.modalData);
     return this.modalData;
   }
-
-  deleteFavouriteCatFromLS(id: string) {
-    id = this.modalData.id;
-    this.localStorageService.deleteFavouriteCatFromLS(this.localStorageService.keyName, id);
-    this.dialogRef.close();
-  }
-
-  deleteAllFavouriteCatsFromLS() {
-    this.localStorageService.deleteAllItemsFromLS(this.localStorageService.keyName);
+  
+  dialogAction() {
+    switch(this.modalData.name) {
+      case 'deleteCat':
+        this.localStorageService.deleteFavouriteCatFromLS(this.localStorageService.keyName, this.modalData.selectedCat.id);
+        break;
+      case 'deleteAllCats':
+        this.localStorageService.deleteAllItemsFromLS(this.localStorageService.keyName);
+        break;
+      default:
+        break;
+    }
     this.dialogRef.close();
   }
 
