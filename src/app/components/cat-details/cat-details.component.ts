@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { CatsService } from 'src/app/services/cats.service';
 import { FavouriteCatsService } from 'src/app/services/favourite-cats.service';
-import { Cat } from '../../models/cat';
+import { breedDetails, SearchBreedResults } from '../../models/cat';
 
 @Component({
   selector: 'app-cat-details',
@@ -11,7 +11,7 @@ import { Cat } from '../../models/cat';
   styleUrls: ['./cat-details.component.scss']
 })
 export class CatDetailsComponent implements OnInit {
-  cat: Cat;
+  cat: breedDetails;
   catImagePath: string;
   toAddfavButtonText = 'Add to 🖤';
   addedFavButtonText = 'Added To ❤️';
@@ -30,11 +30,11 @@ export class CatDetailsComponent implements OnInit {
     const id: any = this.route.snapshot.paramMap.get('id');
     
     this.catsService.getCat(id).subscribe((results: any) => {
-      results.map((value: Cat) => 
-        value.breeds.map((item: Cat) => this.cat = item)
+      results.forEach((value: SearchBreedResults) => 
+        value.breeds.forEach((item: breedDetails) => this.cat = item)
       );
       
-      this.catImagePath = results.map((item: Cat) => item.url);
+      this.catImagePath = results.map((item: SearchBreedResults) => item.url);
     });
   }
 
