@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { CatsService } from 'src/app/services/cats.service';
 import { FavouriteCatsService } from 'src/app/services/favourite-cats.service';
-import { breedDetails, SearchBreedResults } from '../../models/cat';
+import { Cat, breedDetails, SearchBreedResults } from '../../models/cat';
 
 @Component({
   selector: 'app-cat-details',
@@ -29,12 +29,11 @@ export class CatDetailsComponent implements OnInit {
   getSelectedCat(): void {
     const id: any = this.route.snapshot.paramMap.get('id');
     
-    this.catsService.getCat(id).subscribe((results: any) => {
-      results.forEach((value: SearchBreedResults) => 
-        value.breeds.forEach((item: breedDetails) => this.cat = item)
-      );
-      
-      this.catImagePath = results.map((item: SearchBreedResults) => item.url);
+    this.catsService.getCat(id).subscribe((results: SearchBreedResults[]) => {
+      results.forEach((value: SearchBreedResults) => {
+        value.breeds.forEach((item: breedDetails) => this.cat = item);
+        this.catImagePath = value.url;
+      });
     });
   }
 
