@@ -4,7 +4,7 @@ export interface Cat {
    origin: string,
 }
 
-export interface breedDetails {
+export interface BreedDetails {
    id: string,
    name: string,
    temperament: string,
@@ -20,6 +20,6 @@ export interface breedDetails {
 
 export interface SearchBreedResults {
    url: string,
-   breeds: [breedDetails],
+   breeds: [BreedDetails],
 }
 
