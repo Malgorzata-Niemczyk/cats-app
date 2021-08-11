@@ -1,0 +1,5 @@
+<li class="cat_item" [routerLink]="['/cat', cat.id]">
+    <button class="fav-btn" (click)="onAddToFav(cat, $event)">{{onIsCatInFavs() ? addedFavButtonTex : toAddfavButtonText}}</button>
+    <p>Name: <span>{{cat.name}}</span></p>
+    <p>Origin: <span>{{cat.origin}}</span></p>
+</li>

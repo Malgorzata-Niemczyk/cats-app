@@ -1,4 +1,4 @@
-<div *ngIf="favCatsData$ | async as favCatsData">
+<div>
     <div class="search-bar">
         <input 
             type="search" 
@@ -16,33 +16,31 @@
             nextLabel="Next"
             [responsive]="true"
             class="custom-pagination"
+            *ngIf="cats.length !== 0"
         ></pagination-controls>
     </div>
-    <div class="custom-page-size-selection">
+    <div class="custom-page-size-selection" *ngIf="cats.length !== 0">
         <label>Items per Page:</label>
         <select (change)="onPageSizeChange($event)">
             <option 
                 *ngFor="let pageSize of itemsPerPageSizes" 
                 [ngValue]="pageSize" 
-                [selected]="pageSize === 8"
+                [selected]="pageSize === itemsPerPage"
             >
                 {{pageSize}}
             </option>
         </select>
     </div>
     <ul class="cats_list">
-        <li *ngFor="let cat of cats 
+        <app-cat-tile
+            *ngFor="let cat of cats 
                 | paginate: { id: 'listing-pagination',
-                    itemsPerPage: itemsPerPage,
-                    currentPage: currentPage,
-                    totalItems: totalItems }
-                " 
-            class="cat_item" 
-            [routerLink]="['/cat', cat.id]"
-        >
-            <button class="fav-btn" (click)="AddToFavourites($event, cat)">{{favButtonText}}</button>
-            <p>Name: <span>{{cat.name}}</span></p>
-            <p>Origin: <span>{{cat.origin}}</span></p>
-        </li>
-    </ul>    
+                itemsPerPage: itemsPerPage,
+                currentPage: currentPage,
+                totalItems: totalItems }
+                "
+            [cat]="cat"
+            (onAddToFavourites)="addToFavourites(cat)"
+        ></app-cat-tile>
+    </ul>
 </div>

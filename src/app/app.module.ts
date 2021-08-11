@@ -16,6 +16,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FavouriteCatsComponent } from './components/favourite-cats/favourite-cats.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CatTileComponent } from './components/cat-tile/cat-tile.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CatDetailsComponent,
     PageNotFoundComponent,
     NavbarComponent,
-    FavouriteCatsComponent
+    FavouriteCatsComponent,
+    CatTileComponent
   ],
   imports: [
     BrowserModule,
