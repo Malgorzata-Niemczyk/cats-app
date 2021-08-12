@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ConfirmDialogData } from 'src/app/models/confirm-modal-data';
 
@@ -15,15 +15,15 @@ export class ConfirmDialogComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.dialogRef.keydownEvents().subscribe(event => {
-      if (event.key === "Escape") {
-        this.dialogRef.close();
-      }
-    })
   }
   
   handleConfirmDialogSubmit() {
     this.confirmDialogData.confirmationCallback();
+    this.dialogRef.close();
+  }
+
+  @HostListener("keydown.esc") 
+  public onEscape() {
     this.dialogRef.close();
   }
 
