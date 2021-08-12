@@ -31,6 +31,9 @@ export class FavouriteCatsComponent implements OnInit {
   openDeleteCatDialog(event: Event, id: string) {
     event.stopPropagation();
     const selectedFavCat = this.favouriteCats.find(selectedCat => selectedCat.id === id);
+    if (selectedFavCat === undefined) {
+      return;
+    }
 
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
@@ -38,12 +41,12 @@ export class FavouriteCatsComponent implements OnInit {
     dialogConfig.height = '230px';
     dialogConfig.data = {
       name: 'deleteCat',
-      title: 'Are you sure you want to delete this record?',
-      description: `If you continue, the cat with the breed of ${selectedFavCat?.name} will be deleted.`,
-      actionButtonText: 'Delete Item',
-      selectedCat: selectedFavCat,
-      callBackMethod: () => {
-        this.performDeleteFavCatFromLS(dialogConfig.data.selectedCat.id);
+      title: 'Removal Confirmation',
+      description: `Are you sure you want to remove the following cat: ${selectedFavCat.name}?`,
+      confirmButtonText: 'Delete Item',
+      cancelButtonText: 'Cancel',
+      confirmationCallback: () => {
+        this.favouriteCatsService.deleteFavouriteCat(id);
       }
     };
 
@@ -57,25 +60,16 @@ export class FavouriteCatsComponent implements OnInit {
     dialogConfig.height = '230px';
     dialogConfig.data = {
       name: 'deleteAllCats',
-      title: 'Are you sure you want to delete all the records?',
-      description: `If you continue, all your favourite cats will be deleted.`,
-      actionButtonText: 'Delete All',
-      catsFavCollection: this.favouriteCats,
-      callBackMethod: () => {
-        this.performDeleteAllFavCatsFromLS();
+      title: 'Removal Confirmation',
+      description: `Are you sure you want to delete all your favourite cats?`,
+      confirmButtonText: 'Delete All',
+      cancelButtonText: 'Cancel',
+      confirmationCallback: () => {
+        this.favouriteCatsService.deleteAllFavouriteCats();
       }
     };;
 
     this.dialogRef.open(ConfirmDialogComponent, dialogConfig);
   }
 
-
-  performDeleteFavCatFromLS(id: string): void {
-    this.favouriteCatsService.deleteFavouriteCat(id);
-  }
-
-  performDeleteAllFavCatsFromLS(): void {
-    this.favouriteCatsService.deleteAllFavouriteCats();
-  }
-  
 }

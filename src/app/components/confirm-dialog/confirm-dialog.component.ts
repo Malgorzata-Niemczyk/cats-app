@@ -14,10 +14,16 @@ export class ConfirmDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public modalData: modalData
   ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.dialogRef.keydownEvents().subscribe(event => {
+      if (event.key === "Escape") {
+        this.dialogRef.close();
+      }
+    })
+  }
   
   handleConfirmDialogSubmit() {
-    this.modalData.callBackMethod();
+    this.modalData.confirmationCallback();
     this.dialogRef.close();
   }
 
