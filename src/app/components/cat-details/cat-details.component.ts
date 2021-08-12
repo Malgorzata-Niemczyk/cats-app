@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { CatsService } from 'src/app/services/cats.service';
-import { LocalStorageService } from 'src/app/services/local-storage.service';
-import { Cat } from '../../models/cat';
+import { FavouriteCatsService } from 'src/app/services/favourite-cats.service';
+import { BreedDetails, SearchBreedResults } from '../../models/cat';
 
 @Component({
   selector: 'app-cat-details',
@@ -11,47 +11,39 @@ import { Cat } from '../../models/cat';
   styleUrls: ['./cat-details.component.scss']
 })
 export class CatDetailsComponent implements OnInit {
-  cat: Cat;
+  cat: BreedDetails;
   catImagePath: string;
-  favCatsData$ = this.localStorageService.favCats$;
-  favButtonText: string = '❤️';
+  favCatsData$ = this.favouriteCatsService.favCats$;
+  toAddfavButtonText = '🖤';
+  addedFavButtonText = '❤️';
 
   constructor(
     private route: ActivatedRoute,
     private catsService: CatsService,
-    private localStorageService: LocalStorageService
+    private favouriteCatsService: FavouriteCatsService
   ) { }
 
   ngOnInit(): void {
     this.getSelectedCat();
   }
   
-  getSelectedCat() {
+  getSelectedCat(): void {
     const id: any = this.route.snapshot.paramMap.get('id');
-
-    this.catsService.getCat(id).subscribe((results: any) => {
-      for (let value of results) {
-        for (let item of value.breeds) {
-          this.cat = item;
-        }
-      };
-
-      this.catImagePath = results.map((item: any) => item.url);
-      
-      console.log(this.cat);
+    
+    this.catsService.getCat(id).subscribe((results: SearchBreedResults[]) => {
+      results.forEach((value: SearchBreedResults) => {
+        value.breeds.forEach((item: BreedDetails) => this.cat = item);
+        this.catImagePath = value.url;
+      });
     });
   }
 
-  isInFavourites() {
-    let favItemID = this.localStorageService.favArr.map(item => item.id).includes(this.cat.id);
-    return favItemID ?  this.favButtonText = '🖤' :  this.favButtonText = '❤️'
+  addToFavourites(): void {
+    this.favouriteCatsService.addFavouriteCat(this.cat);
   }
-  
-  AddToFavourites() {
-    this.localStorageService.addFavItem('favourite-cats', this.cat);
-    this.isInFavourites();
 
-    console.log(localStorage);
+  isInFavourites(): boolean {
+    return this.favouriteCatsService.isCatInFavourites(this.cat);
   }
 
 }

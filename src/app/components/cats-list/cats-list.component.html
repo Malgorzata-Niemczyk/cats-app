@@ -1,4 +1,4 @@
-<div *ngIf="favCatsData$ | async as favCatsData">
+<div>
     <div class="search-bar">
         <mat-form-field class="search-form-field" appearance="fill">
             <mat-label>Search cats by breed's name...</mat-label>
@@ -30,15 +30,16 @@
             nextLabel="Next"
             [responsive]="true"
             class="custom-pagination"
+            *ngIf="cats.length !== 0"
         ></pagination-controls>
     </div>
-    <div class="custom-page-size-selection">
+    <div class="custom-page-size-selection" *ngIf="cats.length !== 0">
         <label>Items per Page:</label>
         <select (change)="onPageSizeChange($event)">
             <option 
                 *ngFor="let pageSize of itemsPerPageSizes" 
                 [ngValue]="pageSize" 
-                [selected]="pageSize === 8"
+                [selected]="pageSize === itemsPerPage"
             >
                 {{pageSize}}
             </option>
@@ -79,7 +80,7 @@
               <button 
                 class="fav-btn action-buttons" 
                 title="Add To Favourites"
-                (click)="AddToFavourites($event, element)"
+                (click)="addToFavourites(element)"
                 >{{favButtonText}}</button>
             </td>
           </ng-container>

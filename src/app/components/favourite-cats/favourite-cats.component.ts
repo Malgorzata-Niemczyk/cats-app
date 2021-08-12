@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { FavouriteCatsService } from 'src/app/services/favourite-cats.service';
 import { Cat } from 'src/app/models/cat';
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component'; 
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-favourite-cats',
@@ -12,10 +13,10 @@ import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.compone
 export class FavouriteCatsComponent implements OnInit {
   favouriteCats: Cat[];
   displayedColumns: string[] = ['position', 'breed', 'origin', 'delete', 'info'];
-  favCatsData$ = this.localStorageService.favCats$;
+  favCatsData$: Observable<Cat[]> = this.favouriteCatsService.favCats$;
 
   constructor(
-    private localStorageService: LocalStorageService,
+    private favouriteCatsService: FavouriteCatsService,
     private dialogRef: MatDialog
   ) { }
 
@@ -24,7 +25,7 @@ export class FavouriteCatsComponent implements OnInit {
   }
 
   getFavouriteCatsFromLS() {
-    this.favouriteCats = this.localStorageService.getStorage(this.localStorageService.keyName);
+    this.favouriteCats = this.favouriteCatsService.getFavouriteCats();
   }
 
   openDeleteCatDialog(event: Event, id: string) {
@@ -70,11 +71,11 @@ export class FavouriteCatsComponent implements OnInit {
 
 
   performDeleteFavCatFromLS(id: string): void {
-    this.localStorageService.deleteFavouriteCatFromLS(this.localStorageService.keyName, id);
+    this.favouriteCatsService.deleteFavouriteCat(id);
   }
 
   performDeleteAllFavCatsFromLS(): void {
-    this.localStorageService.deleteAllItemsFromLS(this.localStorageService.keyName);
+    this.favouriteCatsService.deleteAllFavouriteCats();
   }
   
 }

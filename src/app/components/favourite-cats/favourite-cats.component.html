@@ -1,6 +1,6 @@
 <div *ngIf="favCatsData$ | async as favCatsData">
-  <h3 *ngIf="favouriteCats.length === 0">There are no cats in your favourites list</h3>
-  <div *ngIf="favouriteCats.length > 0">
+  <h3 *ngIf="favCatsData.length === 0">There are no cats in your favourites list</h3>
+  <div *ngIf="favCatsData.length > 0">
     <div class="button-container">
       <button mat-raised-button class="remove-all-button" (click)="openDeleteAllCatsDialog()">
         Remove All

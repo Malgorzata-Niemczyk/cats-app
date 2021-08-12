@@ -1,7 +1,7 @@
 import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { CatsService } from 'src/app/services/cats.service';
-import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { FavouriteCatsService } from 'src/app/services/favourite-cats.service';
 import { Cat } from '../../models/cat';
 
 @Component({
@@ -13,22 +13,23 @@ export class CatsListComponent implements OnInit {
   cats: Cat[] = [];
   filteredCats: Cat[] = [];
   filteredCatsNames: string = '';
-  favButtonText: string = '❤️';
 
   selectedFavCat: Cat;
 
-  itemsPerPage = 8;
   itemsPerPageSizes = [3, 6, 8, 9, 12];
-  currentPage = 0;
+  itemsPerPage = this.itemsPerPageSizes[2];
+  currentPage = 1;
   totalItems: number;
 
   displayedColumns: string[] = ['position', 'breed', 'origin', 'delete', 'info'];
 
-  favCatsData$ = this.localStorageService.favCats$;
+  favButtonText = '🖤';
+
+  favCatsData$ = this.favouriteCatsService.favCats$;
 
   constructor(
     private catsService: CatsService, 
-    private localStorageService: LocalStorageService
+    private favouriteCatsService: FavouriteCatsService
   ) { }
 
   ngOnInit(): void { 
@@ -38,10 +39,8 @@ export class CatsListComponent implements OnInit {
   getHttpParams(): HttpParams {
     let params = new HttpParams()
     .set('limit', this.itemsPerPage)
-    .set('page', this.currentPage)
+    .set('page', this.currentPage - 1)
     .set('q', this.filteredCatsNames);
-
-    console.log(params.toString());
 
     return params;
   }
@@ -52,51 +51,50 @@ export class CatsListComponent implements OnInit {
     this.catsService.getCats(params).subscribe((response) => {
       this.cats = response.cats;
       this.totalItems = response.totalItems;
-      console.log(response.cats, response.totalItems);
     });
   }
 
-  getFilteredCatsList():void {
+  getFilteredCatsList(): void {
     const params = this.getHttpParams();
     
     this.catsService.getFilteredCats(params).subscribe((response) => {
       this.cats = response.cats;
+      this.filteredCats = this.cats;
+      
       this.totalItems = response.totalItems;
-      console.log(response.cats, response.totalItems);
     });
   }
 
+  fetchRequiredCatsList(): void {
+    this.filteredCatsNames ? this.getFilteredCatsList() : this.getCatsList();
+  }
+
   handleInputChange(): void {
-    if (this.filteredCatsNames) {
-      this.getFilteredCatsList()
-    } else {
-      this.getCatsList();
-    }
+    this.currentPage = 1;
+    this.fetchRequiredCatsList();
   }
 
-  onPageChanged(event: any) {
+  onPageChanged(event: number): void {
     this.currentPage = event;
-    this.getCatsList();
+    this.fetchRequiredCatsList();
   }
 
-  onPageSizeChange(event: any) {
-    this.itemsPerPage = event.target.value;
-    this.currentPage = 0;
-    this.getCatsList();
+  onPageSizeChange(event: Event): void {
+    if (!event) {
+      return;
+    }
+    
+    this.itemsPerPage = Number((event.target as HTMLOptionElement).value);
+    this.currentPage = 1;
+    this.fetchRequiredCatsList();
   }
 
-  isInFavourites(selectedItem: Cat) {
-    let favItemID = this.localStorageService.favArr.map(item => item.id).includes(selectedItem.id);
-    return favItemID ? this.favButtonText = '🖤' : this.favButtonText = '❤️';
+  addToFavourites(favCat: Cat): void {
+    this.favouriteCatsService.addFavouriteCat(favCat);
   }
 
-  AddToFavourites(event: Event, favCat: Cat) {
-    event.stopPropagation();
-
-    this.localStorageService.addFavItem(this.localStorageService.keyName, favCat);
-    this.isInFavourites(favCat);
-
-    console.log(localStorage);
+  isInFavourites(): boolean {
+    return this.favouriteCatsService.isCatInFavourites(this.selectedFavCat);
   }
  
 }

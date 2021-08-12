@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { Observable, pipe, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { Cat } from "../models/cat";
+import { Cat, SearchBreedResults } from "../models/cat";
 import { environment } from 'src/environments/environment';
 
 const httpOptions = {
@@ -40,9 +40,9 @@ export class CatsService {
       );
   }
 
-  getCat(id: string): Observable<Cat> {
+  getCat(id: string): Observable<SearchBreedResults[]> {
     const catURL = `${environment.apiURL}/images/search?breed_id=${id}`;
-    return this.http.get<Cat>(catURL);
+    return this.http.get<SearchBreedResults[]>(catURL);
   }
 
 }
