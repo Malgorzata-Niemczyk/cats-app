@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FavouriteCatsService } from 'src/app/services/favourite-cats.service';
 import { Cat } from 'src/app/models/cat';
-import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
-import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component'; 
 import { Observable } from 'rxjs';
+import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 
 @Component({
   selector: 'app-favourite-cats',
@@ -17,7 +16,7 @@ export class FavouriteCatsComponent implements OnInit {
 
   constructor(
     private favouriteCatsService: FavouriteCatsService,
-    private dialogRef: MatDialog
+    private dialogService: ConfirmDialogService
   ) { }
 
   ngOnInit(): void {
@@ -35,30 +34,22 @@ export class FavouriteCatsComponent implements OnInit {
       return;
     }
 
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.width = '390px';
-    dialogConfig.height = '230px';
-    dialogConfig.data = {
+    const options = {
       name: 'deleteCat',
       title: 'Removal Confirmation',
       description: `Are you sure you want to remove the following cat: ${selectedFavCat.name}?`,
       confirmButtonText: 'Delete Item',
       cancelButtonText: 'Cancel',
       confirmationCallback: () => {
-        this.favouriteCatsService.deleteFavouriteCat(id);
+        this.favouriteCatsService.deleteFavouriteCat(selectedFavCat.id);
       }
-    };
+    }
 
-    this.dialogRef.open(ConfirmDialogComponent, dialogConfig);
+    this.dialogService.open(options);
   }
 
   openDeleteAllCatsDialog() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.width = '390px';
-    dialogConfig.height = '230px';
-    dialogConfig.data = {
+    const options = {
       name: 'deleteAllCats',
       title: 'Removal Confirmation',
       description: `Are you sure you want to delete all your favourite cats?`,
@@ -67,9 +58,9 @@ export class FavouriteCatsComponent implements OnInit {
       confirmationCallback: () => {
         this.favouriteCatsService.deleteAllFavouriteCats();
       }
-    };;
+    }
 
-    this.dialogRef.open(ConfirmDialogComponent, dialogConfig);
+    this.dialogService.open(options);
   }
 
 }
