@@ -1,1 +1,72 @@
-<p>add-cat-dialog works!</p>
+<h1 mat-dialog-title>Add Cat</h1>
+<div mat-dialog-content>
+  <form>
+    <table class="add-form-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-label>ID</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-label>Breed's name</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <table class="add-form-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-label>Origin</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-label>Temperament</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <table class="add-form-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-label>Weight(kg)</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-label>Average life span</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <p>
+      <mat-form-field class="add-form-full-width" appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea
+          matInput
+          placeholder="Ex. Abyssinian is easy to care for, and a joy to have..."
+        ></textarea>
+      </mat-form-field>
+    </p>
+
+    <div mat-dialog-actions class="action-butttons">
+      <button mat-raised-button color="primary">Save</button>
+      <button mat-raised-button mat-dialog-close class="cancel-btn">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

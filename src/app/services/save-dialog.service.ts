@@ -16,7 +16,7 @@ export class SaveDialogService {
   public openDialog(data: SaveModalData): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
-    dialogConfig.width = '450px';
+    dialogConfig.width = '480px';
     dialogConfig.data = data;
 
     this.dialogRef = this.dialog.open(AddCatDialogComponent, dialogConfig)

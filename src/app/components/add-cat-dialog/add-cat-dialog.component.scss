@@ -1,0 +1,14 @@
+.add-form-full-width {
+    width: 100%;
+}
+
+.action-butttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+
+    .cancel-btn {
+        background-color: #66b700;
+        color: #fafafa;
+    }
+}
