@@ -14,6 +14,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { AppComponent } from './app.component';
 import { CatsListComponent } from './components/cats-list/cats-list.component';
@@ -52,10 +53,14 @@ import { AddCatDialogComponent } from './components/add-cat-dialog/add-cat-dialo
     MatListModule,
     MatInputModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ConfirmDialogComponent]
+  entryComponents: [
+    ConfirmDialogComponent,
+    AddCatDialogComponent
+  ]
 })
 export class AppModule { }

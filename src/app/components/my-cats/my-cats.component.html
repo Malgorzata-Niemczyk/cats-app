@@ -1,5 +1,9 @@
 <div class="new-cat-container">
-    <button mat-mini-fab color="basic" class="add-btn">
+    <button 
+        mat-mini-fab color="basic" 
+        class="add-btn"
+        (click)="openAddCatDialog()"
+    >
         <mat-icon>add</mat-icon>
     </button>
     <div class="new-cat-heading-wrapper">
