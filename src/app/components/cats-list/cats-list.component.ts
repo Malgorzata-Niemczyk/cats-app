@@ -23,10 +23,6 @@ export class CatsListComponent implements OnInit {
 
   displayedColumns: string[] = ['position', 'breed', 'origin', 'delete', 'info'];
 
-  favButtonText = '🖤';
-
-  favCatsData$ = this.favouriteCatsService.favCats$;
-
   constructor(
     private catsService: CatsService, 
     private favouriteCatsService: FavouriteCatsService
@@ -91,10 +87,6 @@ export class CatsListComponent implements OnInit {
 
   addToFavourites(favCat: Cat): void {
     this.favouriteCatsService.addFavouriteCat(favCat);
-  }
-
-  isInFavourites(): boolean {
-    return this.favouriteCatsService.isCatInFavourites(this.selectedFavCat);
   }
  
 }

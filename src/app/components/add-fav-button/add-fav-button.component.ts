@@ -1,13 +1,13 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
 import { Cat } from 'src/app/models/cat';
 import { FavouriteCatsService } from 'src/app/services/favourite-cats.service';
 
 @Component({
-  selector: 'app-cat-tile',
-  templateUrl: './cat-tile.component.html',
-  styleUrls: ['./cat-tile.component.scss']
+  selector: 'app-add-fav-button',
+  templateUrl: './add-fav-button.component.html',
+  styleUrls: ['./add-fav-button.component.scss']
 })
-export class CatTileComponent {
+export class AddFavButtonComponent implements OnInit {
   @Input() cat: Cat;
   @Output() onAddToFavourites: EventEmitter<Cat> = new EventEmitter();
 
@@ -16,12 +16,14 @@ export class CatTileComponent {
 
   constructor(private favouriteCatsService: FavouriteCatsService) { }
 
-  onAddToFav(cat: Cat, event: Event): void {
-    event.stopPropagation();
+  ngOnInit(): void {
+  }
+
+  addToFavs(cat: Cat) {
     this.onAddToFavourites.emit(cat);
   }
 
-  onIsCatInFavs(): boolean {
+  isCatInFavs() {
     return this.favouriteCatsService.isCatInFavourites(this.cat);
   }
 

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CatTileComponent } from './cat-tile.component';
+import { AddFavButtonComponent } from './add-fav-button.component';
 
-describe('CatTileComponent', () => {
-  let component: CatTileComponent;
-  let fixture: ComponentFixture<CatTileComponent>;
+describe('AddFavButtonComponent', () => {
+  let component: AddFavButtonComponent;
+  let fixture: ComponentFixture<AddFavButtonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CatTileComponent ]
+      declarations: [ AddFavButtonComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CatTileComponent);
+    fixture = TestBed.createComponent(AddFavButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
