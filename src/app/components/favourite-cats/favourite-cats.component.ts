@@ -45,7 +45,7 @@ export class FavouriteCatsComponent implements OnInit {
       }
     }
 
-    this.dialogService.open(options);
+    this.dialogService.openDialog(options);
   }
 
   openDeleteAllCatsDialog(): void {
@@ -60,7 +60,7 @@ export class FavouriteCatsComponent implements OnInit {
       }
     }
 
-    this.dialogService.open(options);
+    this.dialogService.openDialog(options);
   }
 
 }

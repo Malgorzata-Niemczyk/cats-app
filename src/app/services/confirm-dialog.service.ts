@@ -13,20 +13,11 @@ export class ConfirmDialogService {
 
   dialogRef: MatDialogRef<ConfirmDialogComponent>;
 
-  public open(options: ConfirmDialogData): void {
+  public openDialog(data: ConfirmDialogData): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.width = '390px';
-    dialogConfig.height = '230px';
-
-    dialogConfig.data = {
-        name: options.name,
-        title: options.title,
-        description: options.description,
-        confirmButtonText: options.confirmButtonText,
-        cancelButtonText: options.cancelButtonText,
-        confirmationCallback: options.confirmationCallback
-    }
+    dialogConfig.data = data;
 
     this.dialogRef = this.dialog.open(ConfirmDialogComponent, dialogConfig)
   }
