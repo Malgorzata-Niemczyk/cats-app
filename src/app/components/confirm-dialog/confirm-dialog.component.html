@@ -1,8 +1,8 @@
 <div>
-  <h1 mat-dialog-title>{{modalData.title}}</h1>
-  <div mat-dialog-content>{{modalData.description}}</div>
+  <h1 mat-dialog-title>{{confirmDialogData.title}}</h1>
+  <div mat-dialog-content>{{confirmDialogData.description}}</div>
   <div mat-dialog-actions class="action-butttons">
-    <button mat-raised-button color="warn" (click)="handleConfirmDialogSubmit()">{{modalData.confirmButtonText}}</button>
-    <button mat-raised-button mat-dialog-close class="cancel-btn">{{modalData.cancelButtonText}}</button>
+    <button mat-raised-button color="warn" (click)="handleConfirmDialogSubmit()">{{confirmDialogData.confirmButtonText}}</button>
+    <button mat-raised-button mat-dialog-close class="cancel-btn">{{confirmDialogData.cancelButtonText}}</button>
   </div>
 </div>

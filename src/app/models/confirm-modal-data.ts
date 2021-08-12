@@ -1,4 +1,4 @@
-export interface modalData {
+export interface ConfirmDialogData {
     name: string,
     title: string,
     description: string,
