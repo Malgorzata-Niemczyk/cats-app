@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { Cat } from 'src/app/models/cat';
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
-import { ConfirmDialogComponent } from '../delete-dialog/confirm-dialog.component'; 
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component'; 
 
 @Component({
   selector: 'app-favourite-cats',

@@ -21,7 +21,7 @@ import { CatDetailsComponent } from './components/cat-details/cat-details.compon
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FavouriteCatsComponent } from './components/favourite-cats/favourite-cats.component';
-import { ConfirmDialogComponent } from './components/delete-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
