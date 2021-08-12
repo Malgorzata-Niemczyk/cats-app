@@ -4,5 +4,5 @@ export interface ConfirmDialogData {
     description: string,
     confirmButtonText: string,
     cancelButtonText: string,
-    confirmationCallback: () => void
+    confirmationCallback: () => any
 }

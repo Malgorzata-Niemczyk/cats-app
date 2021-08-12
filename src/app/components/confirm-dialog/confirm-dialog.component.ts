@@ -17,7 +17,7 @@ export class ConfirmDialogComponent implements OnInit {
   ngOnInit(): void {
   }
   
-  handleConfirmDialogSubmit() {
+  handleConfirmDialogSubmit(): void {
     this.confirmDialogData.confirmationCallback();
     this.dialogRef.close();
   }

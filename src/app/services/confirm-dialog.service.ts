@@ -13,7 +13,7 @@ export class ConfirmDialogService {
 
   dialogRef: MatDialogRef<ConfirmDialogComponent>;
 
-  public open(options: ConfirmDialogData) {
+  public open(options: ConfirmDialogData): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.width = '390px';

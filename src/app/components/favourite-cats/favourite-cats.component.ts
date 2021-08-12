@@ -23,11 +23,11 @@ export class FavouriteCatsComponent implements OnInit {
     this.getFavouriteCatsFromLS();
   }
 
-  getFavouriteCatsFromLS() {
+  getFavouriteCatsFromLS(): void {
     this.favouriteCats = this.favouriteCatsService.getFavouriteCats();
   }
 
-  openDeleteCatDialog(event: Event, id: string) {
+  openDeleteCatDialog(event: Event, id: string): void {
     event.stopPropagation();
     const selectedFavCat = this.favouriteCats.find(selectedCat => selectedCat.id === id);
     if (selectedFavCat === undefined) {
@@ -40,7 +40,7 @@ export class FavouriteCatsComponent implements OnInit {
       description: `Are you sure you want to remove the following cat: ${selectedFavCat.name}?`,
       confirmButtonText: 'Delete Item',
       cancelButtonText: 'Cancel',
-      confirmationCallback: () => {
+      confirmationCallback: (): void => {
         this.favouriteCatsService.deleteFavouriteCat(selectedFavCat.id);
       }
     }
@@ -48,14 +48,14 @@ export class FavouriteCatsComponent implements OnInit {
     this.dialogService.open(options);
   }
 
-  openDeleteAllCatsDialog() {
+  openDeleteAllCatsDialog(): void {
     const options = {
       name: 'deleteAllCats',
       title: 'Removal Confirmation',
       description: `Are you sure you want to delete all your favourite cats?`,
       confirmButtonText: 'Delete All',
       cancelButtonText: 'Cancel',
-      confirmationCallback: () => {
+      confirmationCallback: (): void => {
         this.favouriteCatsService.deleteAllFavouriteCats();
       }
     }
