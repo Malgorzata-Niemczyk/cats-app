@@ -6,11 +6,13 @@ import { CatsListComponent } from './components/cats-list/cats-list.component';
 import { CatDetailsComponent } from './components/cat-details/cat-details.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { FavouriteCatsComponent } from './components/favourite-cats/favourite-cats.component';
+import { MyCatsComponent } from './components/my-cats/my-cats.component';
 
 const appRoutes: Routes = [
   { path: 'cats', component: CatsListComponent },
   { path: 'cat/:id', component: CatDetailsComponent },
   { path: 'favourites', component: FavouriteCatsComponent},
+  { path: 'my-cats', component: MyCatsComponent},
   { path: "", redirectTo: '/cats', pathMatch: 'full'},
   { path: '**', component: PageNotFoundComponent }
 ]

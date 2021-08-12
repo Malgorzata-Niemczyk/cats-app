@@ -1,0 +1,17 @@
+.new-cat-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    text-align: center;
+    
+    .new-cat-heading-wrapper {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+        padding: 20px 30px;
+        border: 1px solid grey;
+        max-width: 250px;
+        height: 200px;
+    }
+}

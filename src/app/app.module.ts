@@ -22,6 +22,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FavouriteCatsComponent } from './components/favourite-cats/favourite-cats.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { MyCatsComponent } from './components/my-cats/my-cats.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     PageNotFoundComponent,
     NavbarComponent,
     FavouriteCatsComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    MyCatsComponent
   ],
   imports: [
     BrowserModule,
