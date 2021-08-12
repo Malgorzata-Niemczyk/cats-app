@@ -13,7 +13,6 @@ import { BreedDetails, SearchBreedResults } from '../../models/cat';
 export class CatDetailsComponent implements OnInit {
   cat: BreedDetails;
   catImagePath: string;
-  favCatsData$ = this.favouriteCatsService.favCats$;
   toAddfavButtonText = '🖤';
   addedFavButtonText = '❤️';
 
