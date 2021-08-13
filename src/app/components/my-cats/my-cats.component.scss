@@ -1,40 +1,41 @@
-.new-cat-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
+h3 {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid gray;
     text-align: center;
-    
-    .new-cat-heading-wrapper {
-        display: flex;
-        align-items: center;
-        margin-top: 20px;
-        padding: 20px 30px;
-        border: 1px solid grey;
-        max-width: 250px;
-        height: 200px;
-    }
+}
 
-    .cat-card {
-        margin-top: 20px;
-        max-width: 250px;
-    }
-    
-    .cat-header {
-       text-align: start;
-       border-bottom: 1px solid #c7c6c6;
-    }
+.table {
+    min-width: 80vw;
 
-    .cat-info-wrapper {
-        margin-top: 15px;
-        text-align: start;
-
-        p {
-            padding: 5px;
-        }
-    
-        span {
-            font-weight: bold;
-        }
+    tr[mat-row]:hover {
+        background: #ebebeb;
     }
+}
+
+.button-container {
+    .add-button {
+        margin: 20px 0;
+        font-weight: bold;
+        border: none;
+        border-radius: 3px;
+        box-shadow: 0 0 5px grey;
+        background-color: white;
+        cursor: pointer;
+    }
+}
+
+.action-buttons {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+ 
+
+.delete-ico {
+    color: #e93818;
+}
+
+.info-ico {
+    color: #1850e9;
 }

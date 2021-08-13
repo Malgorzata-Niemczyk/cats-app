@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 export class MyCatsComponent implements OnInit {
   myCats: NewCat[];
   myCatsData$: Observable<NewCat[]> = this.newCatsCollectionService.myCatsList$;
+  displayedColumns: string[] = ['position', 'breed', 'origin', 'delete', 'info'];
 
   constructor(
     private saveDialogService: SaveDialogService,
