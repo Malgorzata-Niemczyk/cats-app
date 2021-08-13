@@ -1,6 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CatsService } from 'src/app/services/cats.service';
+import { MyCatsService } from 'src/app/services/my-cats.service';
 
 @Component({
   selector: 'app-add-cat-dialog',
@@ -11,6 +13,8 @@ export class AddCatDialogComponent implements OnInit {
 
   constructor(
     private dialogRef: MatDialogRef<AddCatDialogComponent>,
+    private catsService: CatsService,
+    private myCatsService: MyCatsService
   ) { }
 
   ngOnInit(): void {
@@ -28,16 +32,20 @@ export class AddCatDialogComponent implements OnInit {
     'Temperament': new FormControl(null, [Validators.required]),
     'Weight': new FormControl(null, [Validators.required, Validators.min(1), Validators.max(100)]),
     'Life_span': new FormControl(null, [Validators.required]),
-    'Description': new FormControl(null, [Validators.required, Validators.maxLength(500)])
+    'Description': new FormControl(null, [Validators.required, Validators.maxLength(150)])
   })
 
   onAddNewCat() {
     if (this.newCatForm.valid) {
       const newCatData = this.newCatForm.value;
 
+      this.catsService.addCat(newCatData);
+      this.myCatsService.addMyCat(newCatData);
+      
       console.log('submitted', newCatData);
-
+      console.log(localStorage);
+      
+      this.dialogRef.close();
     }
-
   }
 }
