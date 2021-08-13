@@ -9,10 +9,12 @@
         <td>
           <mat-form-field appearance="fill">
             <mat-label>ID</mat-label>
-            <input 
+            <input
               matInput 
               required
+              name="ID"
               formControlName="ID"
+              placeholder="3 to 6 characters required"
             />
           </mat-form-field>
         </td>
@@ -22,6 +24,7 @@
             <input 
               matInput 
               required
+              name="Name"
               formControlName="Name"
             />
           </mat-form-field>
@@ -37,6 +40,7 @@
             <input 
               matInput 
               required
+              name="Origin"
               formControlName="Origin"
             />
           </mat-form-field>
@@ -47,6 +51,7 @@
             <input 
               matInput 
               required
+              name="Temperament"
               formControlName="Temperament"
             />
           </mat-form-field>
@@ -58,10 +63,12 @@
       <tr>
         <td>
           <mat-form-field appearance="fill">
-            <mat-label>Weight(kg)</mat-label>
+            <mat-label>Weight (kg)</mat-label>
             <input 
+              type="number"
               matInput 
               required
+              name="Weight"
               formControlName="Weight"
             />
           </mat-form-field>
@@ -69,9 +76,10 @@
         <td>
           <mat-form-field appearance="fill">
             <mat-label>Average life span</mat-label>
-            <input 
+            <input
               matInput 
               required
+              name="Life_span"
               formControlName="Life_span"
             />
           </mat-form-field>
@@ -86,8 +94,11 @@
           matInput
           placeholder="Ex. Abyssinian is easy to care for, and a joy to have..."
           required
+          name="Description"
           formControlName="Description"
+          #message
         ></textarea>
+        <mat-hint align="end">{{message.value.length}} / 500</mat-hint>
       </mat-form-field>
     </p>
 
