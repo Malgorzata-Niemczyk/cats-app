@@ -3,6 +3,7 @@ import { FavouriteCatsService } from 'src/app/services/favourite-cats.service';
 import { Cat } from 'src/app/models/cat';
 import { Observable } from 'rxjs';
 import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
+import { ConfirmDialogData } from 'src/app/models/confirm-modal-data';
 
 @Component({
   selector: 'app-favourite-cats',
@@ -34,7 +35,7 @@ export class FavouriteCatsComponent implements OnInit {
       return;
     }
 
-    const options = {
+    const options: ConfirmDialogData = {
       name: 'deleteCat',
       title: 'Removal Confirmation',
       description: `Are you sure you want to remove the following cat: ${selectedFavCat.name}?`,
@@ -49,7 +50,7 @@ export class FavouriteCatsComponent implements OnInit {
   }
 
   openDeleteAllCatsDialog(): void {
-    const options = {
+    const options: ConfirmDialogData = {
       name: 'deleteAllCats',
       title: 'Removal Confirmation',
       description: `Are you sure you want to delete all your favourite cats?`,

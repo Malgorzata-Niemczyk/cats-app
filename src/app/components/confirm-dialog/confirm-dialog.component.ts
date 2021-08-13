@@ -14,6 +14,12 @@ export class ConfirmDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public confirmDialogData: ConfirmDialogData
   ) { }
 
+  
+  @HostListener("keydown.esc") 
+  public onEscape() {
+    this.dialogRef.close();
+  }
+  
   ngOnInit(): void {
   }
   
@@ -22,9 +28,5 @@ export class ConfirmDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  @HostListener("keydown.esc") 
-  public onEscape() {
-    this.dialogRef.close();
-  }
 
 }
