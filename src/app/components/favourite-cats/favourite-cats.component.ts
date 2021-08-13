@@ -20,10 +20,10 @@ export class FavouriteCatsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getFavouriteCatsFromLS();
+    this.getFavouriteCats();
   }
 
-  getFavouriteCatsFromLS(): void {
+  getFavouriteCats(): void {
     this.favouriteCats = this.favouriteCatsService.getFavouriteCats();
   }
 
