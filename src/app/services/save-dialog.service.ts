@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef} from '@angular/material/dialog';
 import { AddCatDialogComponent } from '../components/add-cat-dialog/add-cat-dialog.component';
-import { SaveModalData } from '../models/save-modal-data';
+import { NewCat } from '../models/save-modal-data';
 
 
 @Injectable({
@@ -13,7 +13,7 @@ export class SaveDialogService {
 
   dialogRef: MatDialogRef<AddCatDialogComponent>;
 
-  public openDialog(data: SaveModalData): void {
+  public openDialog(data: NewCat): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.width = '480px';

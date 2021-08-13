@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams, HttpResponse } 
 import { Observable, pipe, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Cat, SearchBreedResults } from "../models/cat";
+import { NewCat } from '../models/save-modal-data';
 import { environment } from 'src/environments/environment';
 
 const httpOptions = {
@@ -43,6 +44,12 @@ export class CatsService {
   getCat(id: string): Observable<SearchBreedResults[]> {
     const catURL = `${environment.apiURL}/images/search?breed_id=${id}`;
     return this.http.get<SearchBreedResults[]>(catURL);
+  }
+
+  addCat(cat: NewCat): Observable<NewCat> {
+    const url = `${environment.apiURL}/breeds`;
+    // @ts-ignore 
+    return this.http.post<Cat>(url, cat, httpOptions);
   }
 
 }

@@ -1,4 +1,4 @@
-export interface SaveModalData {
+export interface NewCat {
     id: string,
     name: string,
     temperament: string,
