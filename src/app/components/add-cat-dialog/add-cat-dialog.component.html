@@ -1,18 +1,29 @@
 <h1 mat-dialog-title>Add Cat</h1>
 <div mat-dialog-content>
-  <form>
+  <form 
+    (ngSubmit)="onAddNewCat()"
+    [formGroup]="newCatForm"
+  >
     <table class="add-form-full-width" cellspacing="0">
       <tr>
         <td>
           <mat-form-field appearance="fill">
             <mat-label>ID</mat-label>
-            <input matInput />
+            <input 
+              matInput 
+              required
+              formControlName="ID"
+            />
           </mat-form-field>
         </td>
         <td>
           <mat-form-field appearance="fill">
             <mat-label>Breed's name</mat-label>
-            <input matInput />
+            <input 
+              matInput 
+              required
+              formControlName="Name"
+            />
           </mat-form-field>
         </td>
       </tr>
@@ -23,13 +34,21 @@
         <td>
           <mat-form-field appearance="fill">
             <mat-label>Origin</mat-label>
-            <input matInput />
+            <input 
+              matInput 
+              required
+              formControlName="Origin"
+            />
           </mat-form-field>
         </td>
         <td>
           <mat-form-field appearance="fill">
             <mat-label>Temperament</mat-label>
-            <input matInput />
+            <input 
+              matInput 
+              required
+              formControlName="Temperament"
+            />
           </mat-form-field>
         </td>
       </tr>
@@ -40,13 +59,21 @@
         <td>
           <mat-form-field appearance="fill">
             <mat-label>Weight(kg)</mat-label>
-            <input matInput />
+            <input 
+              matInput 
+              required
+              formControlName="Weight"
+            />
           </mat-form-field>
         </td>
         <td>
           <mat-form-field appearance="fill">
             <mat-label>Average life span</mat-label>
-            <input matInput />
+            <input 
+              matInput 
+              required
+              formControlName="Life_span"
+            />
           </mat-form-field>
         </td>
       </tr>
@@ -58,12 +85,18 @@
         <textarea
           matInput
           placeholder="Ex. Abyssinian is easy to care for, and a joy to have..."
+          required
+          formControlName="Description"
         ></textarea>
       </mat-form-field>
     </p>
 
     <div mat-dialog-actions class="action-butttons">
-      <button mat-raised-button color="primary">Save</button>
+      <button 
+        mat-raised-button color="primary" 
+        type="submit"
+        [disabled]="!newCatForm.valid"
+      >Save</button>
       <button mat-raised-button mat-dialog-close class="cancel-btn">
         Cancel
       </button>
