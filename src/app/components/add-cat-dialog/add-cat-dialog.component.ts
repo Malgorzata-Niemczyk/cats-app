@@ -26,7 +26,6 @@ export class AddCatDialogComponent implements OnInit {
   }
 
   newCatForm = new FormGroup({
-    'ID': new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(6)]),
     'Name': new FormControl(null, [Validators.required]),
     'Origin': new FormControl(null, [Validators.required]),
     'Temperament': new FormControl(null, [Validators.required]),
@@ -36,16 +35,18 @@ export class AddCatDialogComponent implements OnInit {
   })
 
   onAddNewCat() {
-    if (this.newCatForm.valid) {
-      const newCatData = this.newCatForm.value;
-
-      this.catsService.addCat(newCatData).subscribe();
-      this.newCatsCollectionService.addNewCat(newCatData);
-      
-      console.log('submitted', newCatData);
-      console.log(localStorage);
-      
-      this.dialogRef.close();
+    if (!this.newCatForm.valid) {
+      return;
     }
+
+    const newCatData = this.newCatForm.value;
+
+    this.catsService.addCat(newCatData).subscribe();
+    this.newCatsCollectionService.addNewCat(newCatData);
+      
+    console.log('submitted', newCatData);
+    console.log(localStorage);
+      
+    this.dialogRef.close();
   }
 }

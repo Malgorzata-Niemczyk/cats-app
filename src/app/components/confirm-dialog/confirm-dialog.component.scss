@@ -4,8 +4,13 @@
     margin-top: 30px;
     gap: 10px;
 
+    .delete-btn {
+        background-color: #BD4C6A;
+        color: #fafafa;
+    }
+
     .cancel-btn {
-        background-color: #66b700;
+        background-color: #adacac;
         color: #fafafa;
     }
 }

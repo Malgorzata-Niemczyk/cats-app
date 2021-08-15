@@ -4,33 +4,19 @@
     (ngSubmit)="onAddNewCat()"
     [formGroup]="newCatForm"
   >
-    <table class="add-form-full-width" cellspacing="0">
-      <tr>
-        <td>
-          <mat-form-field appearance="fill">
-            <mat-label>ID</mat-label>
-            <input
-              matInput 
-              required
-              name="ID"
-              formControlName="ID"
-              placeholder="3 to 6 characters required"
-            />
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field appearance="fill">
-            <mat-label>Breed's name</mat-label>
-            <input 
-              matInput 
-              required
-              name="Name"
-              formControlName="Name"
-            />
-          </mat-form-field>
-        </td>
-      </tr>
-    </table>
+  
+    <p>
+      <mat-form-field class="add-form-full-width" appearance="fill">
+        <mat-label>Breed's name</mat-label>
+          <input 
+            matInput 
+            required
+            name="Name"
+            formControlName="Name"
+          />
+        </mat-form-field>
+    </p>
+     
 
     <table class="add-form-full-width" cellspacing="0">
       <tr>
