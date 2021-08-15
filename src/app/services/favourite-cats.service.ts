@@ -26,7 +26,10 @@ export class FavouriteCatsService {
   addFavouriteCat(cat: Cat): void {
     let favArr = this.getFavouriteCats();
 
-    this.isCatInFavourites(cat);
+    if (this.isCatInFavourites(cat)) {
+      return;
+    }
+
     favArr = [...favArr, cat]
    
     this.setFavouriteCats(favArr);
