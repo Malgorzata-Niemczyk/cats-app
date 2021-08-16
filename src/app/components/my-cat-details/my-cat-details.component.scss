@@ -6,6 +6,9 @@
 .cat-header {
    border-bottom: 1px solid lightgray;
 
+   mat-card-title, mat-card-subtitle {
+       transform: translateX(-10px);
+   }
 }
 
 .cat-info-wrapper {

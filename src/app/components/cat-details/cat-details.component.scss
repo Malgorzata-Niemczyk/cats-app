@@ -8,6 +8,10 @@
     display: flex;
     justify-content: space-between;
 
+    mat-card-title, mat-card-subtitle {
+        transform: translateX(-10px);
+    }
+
     .fav-btn {
         position: absolute;
         top: 3px;
@@ -15,6 +19,7 @@
         background: none;
         border: none;
         cursor: pointer;
+        transform: translateX(10px);
     }
 }
 
