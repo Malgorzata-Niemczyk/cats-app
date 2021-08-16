@@ -73,5 +73,15 @@ export class MyCatsComponent implements OnInit {
   }
 
 
+  openEditNewCatDialog(event: Event, id: string) {
+    event.stopPropagation();
+    const selectedCat = this.newCatsCollectionService.getNewCat(id);
+
+    console.log(selectedCat)
+
+    this.saveDialogService.openDialog(selectedCat);
+  }
+
+
 
 }

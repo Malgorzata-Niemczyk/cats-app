@@ -50,6 +50,7 @@
                 mat-icon-button
                 class="action-buttons"
                 title="Edit Details"
+                (click)="openEditNewCatDialog($event, element.id)"
               >
                 <mat-icon class="edit-ico">edit</mat-icon>
               </button>
