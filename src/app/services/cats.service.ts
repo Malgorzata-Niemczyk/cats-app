@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams, HttpResponse } 
 import { Observable, pipe, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Cat, SearchBreedResults } from "../models/cat";
-import { NewCat } from '../models/save-modal-data';
+import { NewCat } from '../models/new-cat-data';
 import { environment } from 'src/environments/environment';
 
 const httpOptions = {

@@ -3,17 +3,17 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CatsService } from 'src/app/services/cats.service';
 import { NewCatsCollectionService } from 'src/app/services/new-cats-collection.service';
-import { NewCat } from 'src/app/models/save-modal-data';
+import { NewCat } from 'src/app/models/new-cat-data';
 
 @Component({
-  selector: 'app-add-cat-dialog',
-  templateUrl: './add-cat-dialog.component.html',
-  styleUrls: ['./add-cat-dialog.component.scss']
+  selector: 'save-dialog',
+  templateUrl: './save-dialog.component.html',
+  styleUrls: ['./save-dialog.component.scss']
 })
-export class AddCatDialogComponent implements OnInit {
+export class SaveDialogComponent implements OnInit {
 
   constructor(
-    private dialogRef: MatDialogRef<AddCatDialogComponent>,
+    private dialogRef: MatDialogRef<SaveDialogComponent>,
     private catsService: CatsService,
     private newCatsCollectionService: NewCatsCollectionService,
     @Inject(MAT_DIALOG_DATA) public newCat: NewCat

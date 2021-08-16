@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { CatsService } from 'src/app/services/cats.service';
 import { FavouriteCatsService } from 'src/app/services/favourite-cats.service';
-import { BreedDetails, SearchBreedResults } from '../../models/cat';
+import { BreedDetails, SearchBreedResults } from '../../../models/cat';
 
 @Component({
   selector: 'app-cat-details',

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { NewCat } from '../models/save-modal-data';
+import { NewCat } from '../models/new-cat-data';
 import { LocalStorageRefService } from './local-storage-ref.service';
 import { UUID } from 'angular2-uuid';
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SaveDialogService } from 'src/app/services/save-dialog.service';
 import { NewCatsCollectionService } from 'src/app/services/new-cats-collection.service';
-import { NewCat } from 'src/app/models/save-modal-data';
+import { NewCat } from 'src/app/models/new-cat-data';
 import { Observable } from 'rxjs';
 import { UUID } from 'angular2-uuid';
 import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';

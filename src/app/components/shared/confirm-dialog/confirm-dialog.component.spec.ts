@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddCatDialogComponent } from './add-cat-dialog.component';
+import { ConfirmDialogComponent } from './confirm-dialog.component';
 
-describe('AddCatDialogComponent', () => {
-  let component: AddCatDialogComponent;
-  let fixture: ComponentFixture<AddCatDialogComponent>;
+describe('DeleteDialogComponent', () => {
+  let component: ConfirmDialogComponent;
+  let fixture: ComponentFixture<ConfirmDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddCatDialogComponent ]
+      declarations: [ ConfirmDialogComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddCatDialogComponent);
+    fixture = TestBed.createComponent(ConfirmDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

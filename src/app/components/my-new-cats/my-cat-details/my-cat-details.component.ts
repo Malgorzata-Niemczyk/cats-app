@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NewCat } from 'src/app/models/save-modal-data';
+import { NewCat } from 'src/app/models/new-cat-data';
 import { ActivatedRoute } from '@angular/router';
 import { NewCatsCollectionService } from 'src/app/services/new-cats-collection.service';
 

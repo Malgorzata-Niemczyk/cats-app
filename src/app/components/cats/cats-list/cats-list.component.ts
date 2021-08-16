@@ -2,7 +2,7 @@ import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { CatsService } from 'src/app/services/cats.service';
 import { FavouriteCatsService } from 'src/app/services/favourite-cats.service';
-import { Cat } from '../../models/cat';
+import { Cat } from '../../../models/cat';
 
 @Component({
   selector: 'app-cats-list',

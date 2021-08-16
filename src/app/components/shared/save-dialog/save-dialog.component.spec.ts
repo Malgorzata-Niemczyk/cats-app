@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeleteDialogComponent } from './confirm-dialog.component';
+import { SaveDialogComponent } from './save-dialog.component';
 
-describe('DeleteDialogComponent', () => {
-  let component: DeleteDialogComponent;
-  let fixture: ComponentFixture<DeleteDialogComponent>;
+describe('AddCatDialogComponent', () => {
+  let component: SaveDialogComponent;
+  let fixture: ComponentFixture<SaveDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DeleteDialogComponent ]
+      declarations: [ SaveDialogComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DeleteDialogComponent);
+    fixture = TestBed.createComponent(SaveDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
