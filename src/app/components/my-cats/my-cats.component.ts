@@ -4,6 +4,8 @@ import { NewCatsCollectionService } from 'src/app/services/new-cats-collection.s
 import { NewCat } from 'src/app/models/save-modal-data';
 import { Observable } from 'rxjs';
 import { UUID } from 'angular2-uuid';
+import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
+import { ConfirmDialogData } from 'src/app/models/confirm-modal-data';
 
 @Component({
   selector: 'app-my-cats',
@@ -18,7 +20,8 @@ export class MyCatsComponent implements OnInit {
   
   constructor(
     private saveDialogService: SaveDialogService,
-    private newCatsCollectionService: NewCatsCollectionService
+    private newCatsCollectionService: NewCatsCollectionService,
+    private dialogService: ConfirmDialogService
     ) { }
     
     ngOnInit(): void {
@@ -48,5 +51,27 @@ export class MyCatsComponent implements OnInit {
     
     this.saveDialogService.openDialog(options);
   } 
+
+  openDeleteNewCatDialog(event: Event, id: string): void {
+    event.stopPropagation();
+    const selectedNewCat = this.myCats.find(selectedCat => selectedCat.id === id);
+    if (selectedNewCat === undefined) {
+      return;
+    }
+
+    const options: ConfirmDialogData = {
+      title: 'Removal Confirmation',
+      description: `Are you sure you want to remove the following cat: ${selectedNewCat.name}?`,
+      confirmButtonText: 'Delete Item',
+      cancelButtonText: 'Cancel',
+      confirmationCallback: (): void => {
+        this.newCatsCollectionService.deleteNewCat(selectedNewCat.id);
+      }
+    }
+
+    this.dialogService.openDialog(options);
+  }
+
+
 
 }

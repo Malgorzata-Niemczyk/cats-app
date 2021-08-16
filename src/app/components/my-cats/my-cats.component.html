@@ -35,6 +35,7 @@
                 mat-icon-button 
                 title="Delete Item"
                 class="action-buttons"
+                (click)="openDeleteNewCatDialog($event, element.id)"
               >
                 <mat-icon class="delete-ico">delete_outline</mat-icon>
               </button>
