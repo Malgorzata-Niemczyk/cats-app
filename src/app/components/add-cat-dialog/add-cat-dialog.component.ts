@@ -26,12 +26,12 @@ export class AddCatDialogComponent implements OnInit {
   }
 
   newCatForm = new FormGroup({
-    'Name': new FormControl(null, [Validators.required]),
-    'Origin': new FormControl(null, [Validators.required]),
-    'Temperament': new FormControl(null, [Validators.required]),
-    'Weight': new FormControl(null, [Validators.required, Validators.min(1), Validators.max(100)]),
-    'Life_span': new FormControl(null, [Validators.required]),
-    'Description': new FormControl(null, [Validators.required, Validators.maxLength(150)])
+    'Name': new FormControl(null, [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
+    'Origin': new FormControl(null, [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
+    'Temperament': new FormControl(null, [Validators.required, Validators.pattern('[a-zA-Z, ]*')]),
+    'Weight': new FormControl(null, [Validators.required, Validators.min(1), Validators.max(100), Validators.pattern('[0-9- ]*')]),
+    'Life_span': new FormControl(null, [Validators.required, Validators.pattern('[0-9- ]*')]),
+    'Description': new FormControl(null, [Validators.required, Validators.maxLength(150), Validators.pattern('[a-zA-Z,-. ]*')])
   })
 
   onAddNewCat() {
