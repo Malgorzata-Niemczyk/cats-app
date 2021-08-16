@@ -10,6 +10,7 @@ import { FavouriteCatsService } from 'src/app/services/favourite-cats.service';
 export class AddFavButtonComponent implements OnInit {
   @Input() cat: Cat;
   @Output() onAddToFavourites: EventEmitter<Cat> = new EventEmitter();
+  @Output() onRemoveFromFavourites: EventEmitter<Cat> = new EventEmitter();
 
   toAddfavButtonText = '🖤';
   addedFavButtonTex = '❤️';
@@ -19,12 +20,14 @@ export class AddFavButtonComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addToFavs(cat: Cat) {
-    this.onAddToFavourites.emit(cat);
+  isCatInFavs(): boolean {
+    return this.favouriteCatsService.isCatInFavourites(this.cat);
   }
 
-  isCatInFavs() {
-    return this.favouriteCatsService.isCatInFavourites(this.cat);
+  toggleFavs(): void {
+    this.isCatInFavs()
+     ? this.onRemoveFromFavourites.emit(this.cat)
+     : this.onAddToFavourites.emit(this.cat);
   }
 
 }

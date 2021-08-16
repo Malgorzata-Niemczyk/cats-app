@@ -88,5 +88,10 @@ export class CatsListComponent implements OnInit {
   addToFavourites(favCat: Cat): void {
     this.favouriteCatsService.addFavouriteCat(favCat);
   }
+
+  removeFromFavourites(id: string): void {
+    this.favouriteCatsService.deleteFavouriteCat(id);
+  }
+
  
 }

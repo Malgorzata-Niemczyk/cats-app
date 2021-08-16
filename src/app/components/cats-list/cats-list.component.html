@@ -79,6 +79,7 @@
             <td mat-cell *matCellDef="let element">
               <app-add-fav-button
                 (onAddToFavourites)="addToFavourites(element)"
+                (onRemoveFromFavourites)="removeFromFavourites(element.id)"
                 [cat]="element"
               ></app-add-fav-button>
             </td>

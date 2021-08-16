@@ -3,7 +3,7 @@
         <mat-card-header class="cat-header">
             <mat-card-title>{{cat.name | uppercase}}</mat-card-title>
             <mat-card-subtitle>Cat Breed</mat-card-subtitle>
-            <button mat-mini-fab class="fav-btn" (click)="addToFavourites()">{{isInFavourites() ? addedFavButtonText :
+            <button mat-mini-fab class="fav-btn" (click)="toggleFavourites()">{{isInFavourites() ? addedFavButtonText :
                 toAddfavButtonText}}</button>
         </mat-card-header>
         <img mat-card-image [src]="catImagePath" alt="Photo of a cat" class="selected-cat-picture">

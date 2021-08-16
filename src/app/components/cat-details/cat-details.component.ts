@@ -37,12 +37,14 @@ export class CatDetailsComponent implements OnInit {
     });
   }
 
-  addToFavourites(): void {
-    this.favouriteCatsService.addFavouriteCat(this.cat);
-  }
-
   isInFavourites(): boolean {
     return this.favouriteCatsService.isCatInFavourites(this.cat);
+  }
+
+  toggleFavourites(): void {
+    this.isInFavourites() 
+      ? this.favouriteCatsService.deleteFavouriteCat(this.cat.id)
+      : this.favouriteCatsService.addFavouriteCat(this.cat);
   }
 
 }

@@ -60,7 +60,11 @@ export class FavouriteCatsService {
   }
 
   deleteAllFavouriteCats(): void {
-    this.setFavouriteCats([])
+    this.setFavouriteCats([]);
+  }
+
+  toggleFavourites() {
+
   }
 
 }
