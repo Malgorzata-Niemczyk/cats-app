@@ -6,7 +6,7 @@
   
     <p>
       <mat-form-field class="add-form-full-width" appearance="fill">
-        <mat-label>Breed's name</mat-label>
+        <mat-label>{{newCat.name}}</mat-label>
           <input 
             matInput 
             required
@@ -22,7 +22,7 @@
       <tr>
         <td>
           <mat-form-field appearance="fill">
-            <mat-label>Origin</mat-label>
+            <mat-label>{{newCat.origin}}</mat-label>
             <input 
               matInput 
               required
@@ -34,7 +34,7 @@
         </td>
         <td>
           <mat-form-field appearance="fill">
-            <mat-label>Temperament</mat-label>
+            <mat-label>{{newCat.temperament}}</mat-label>
             <input 
               matInput 
               required
@@ -51,7 +51,7 @@
       <tr>
         <td>
           <mat-form-field appearance="fill">
-            <mat-label>Weight (kg)</mat-label>
+            <mat-label>{{newCat.weight}}</mat-label>
             <input 
               matInput 
               required
@@ -63,13 +63,13 @@
         </td>
         <td>
           <mat-form-field appearance="fill">
-            <mat-label>Average life span</mat-label>
+            <mat-label>{{newCat.lifeSpan}}</mat-label>
             <input
               matInput 
               required
               placeholder="Ex. 14 - 15"
-              name="Life_span"
-              formControlName="Life_span"
+              name="LifeSpan"
+              formControlName="LifeSpan"
             />
           </mat-form-field>
         </td>
@@ -78,7 +78,7 @@
 
     <p>
       <mat-form-field class="add-form-full-width" appearance="fill">
-        <mat-label>Description</mat-label>
+        <mat-label>{{newCat.description}}</mat-label>
         <textarea
           matInput
           placeholder="Ex. Abyssinian is easy to care for, and a joy to have..."

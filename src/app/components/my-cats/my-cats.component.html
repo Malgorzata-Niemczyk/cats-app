@@ -1,5 +1,5 @@
-<div>
-    <h3>There are no new cats added</h3>
+<div *ngIf="myCatsData$ | async as myCatsData">
+    <h3 *ngIf="myCatsData.length === 0">There are no new cats added</h3>
     <div>
       <div class="button-container">
         <button mat-raised-button class="add-button" (click)="openAddCatDialog()">
@@ -7,7 +7,7 @@
         </button>
       </div>
   
-      <table mat-table class="mat-elevation-z8 table">
+      <table mat-table [dataSource]="myCatsData" class="mat-elevation-z8 table" *ngIf="myCatsData.length > 0">
         <tbody>
           <!-- Position Column -->
           <ng-container matColumnDef="position">

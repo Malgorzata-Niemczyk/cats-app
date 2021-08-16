@@ -1,8 +1,9 @@
-import { Component, HostListener, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, HostListener, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CatsService } from 'src/app/services/cats.service';
 import { NewCatsCollectionService } from 'src/app/services/new-cats-collection.service';
+import { NewCat } from 'src/app/models/save-modal-data';
 
 @Component({
   selector: 'app-add-cat-dialog',
@@ -14,7 +15,8 @@ export class AddCatDialogComponent implements OnInit {
   constructor(
     private dialogRef: MatDialogRef<AddCatDialogComponent>,
     private catsService: CatsService,
-    private newCatsCollectionService: NewCatsCollectionService
+    private newCatsCollectionService: NewCatsCollectionService,
+    @Inject(MAT_DIALOG_DATA) public newCat: NewCat
   ) { }
 
   ngOnInit(): void {
@@ -30,8 +32,8 @@ export class AddCatDialogComponent implements OnInit {
     'Origin': new FormControl(null, [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
     'Temperament': new FormControl(null, [Validators.required, Validators.pattern('[a-zA-Z, ]*')]),
     'Weight': new FormControl(null, [Validators.required, Validators.min(1), Validators.max(100), Validators.pattern('[0-9- ]*')]),
-    'Life_span': new FormControl(null, [Validators.required, Validators.pattern('[0-9- ]*')]),
-    'Description': new FormControl(null, [Validators.required, Validators.maxLength(150), Validators.pattern('[a-zA-Z,-. ]*')])
+    'LifeSpan': new FormControl(null, [Validators.required, Validators.pattern('[0-9- ]*')]),
+    'Description': new FormControl(null, [Validators.required, Validators.maxLength(150), Validators.pattern('[a-zA-Z\'":;,-. ]*')])
   })
 
   onAddNewCat() {

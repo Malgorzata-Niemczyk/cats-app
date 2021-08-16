@@ -28,12 +28,11 @@ export class MyCatsComponent implements OnInit {
   }
 
   openAddCatDialog(): void {
-    const options = {
-      id: 'ID',
-      name: 'Name',
-      temperament: 'Name',
-      weight: 'Weight(kg)',
-      life_span: 'Average life span',
+    const options: NewCat = {
+      name: `Breed's name`,
+      temperament: 'Temperament',
+      weight: 'Weight (kg)',
+      lifeSpan: 'Average life span',
       origin: 'Origin',
       description: 'Description'
     }

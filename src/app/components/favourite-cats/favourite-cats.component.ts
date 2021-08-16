@@ -36,7 +36,6 @@ export class FavouriteCatsComponent implements OnInit {
     }
 
     const options: ConfirmDialogData = {
-      name: 'deleteCat',
       title: 'Removal Confirmation',
       description: `Are you sure you want to remove the following cat: ${selectedFavCat.name}?`,
       confirmButtonText: 'Delete Item',
@@ -51,7 +50,6 @@ export class FavouriteCatsComponent implements OnInit {
 
   openDeleteAllCatsDialog(): void {
     const options: ConfirmDialogData = {
-      name: 'deleteAllCats',
       title: 'Removal Confirmation',
       description: `Are you sure you want to delete all your favourite cats?`,
       confirmButtonText: 'Delete All',
