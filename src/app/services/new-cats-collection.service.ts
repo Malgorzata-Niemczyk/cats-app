@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { NewCat } from '../models/save-modal-data';
 import { LocalStorageRefService } from './local-storage-ref.service';
+import { UUID } from 'angular2-uuid';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ export class NewCatsCollectionService {
   private _localStorage: Storage;
   private myCatsKey = "my-cats";
   private _myCatsList$ = new BehaviorSubject<NewCat[]>([]);
+  uuidValue: string;
 
   constructor(private _localStorageRefService: LocalStorageRefService) {
     this._localStorage = _localStorageRefService.localStorage;
@@ -18,6 +20,20 @@ export class NewCatsCollectionService {
    get myCatsList$(): Observable<NewCat[]> {
       return this._myCatsList$.asObservable();
    }
+
+  generateUUID(): string {
+    this.uuidValue = UUID.UUID();
+    return this.uuidValue;
+  }
+
+  addNewCat(myCat: NewCat): void {
+    let myCatsArr = this.getNewCats();
+
+    myCatsArr = [...myCatsArr, myCat];
+    myCat.id = this.generateUUID();
+
+    this.setNewCats(myCatsArr);
+  }
 
   setNewCats(myCats: NewCat[]): void {
     this._localStorage.setItem(this.myCatsKey, JSON.stringify(myCats));
@@ -32,12 +48,11 @@ export class NewCatsCollectionService {
     return myCatsArr;
   }
 
-  addNewCat(myCat: NewCat): void {
-    let myCatsArr = this.getNewCats();
+  getNewCat(id: string): NewCat {
+    let newCat = this.getNewCats().find(newCat => newCat.id === id);
+    console.log(newCat);
 
-    myCatsArr = [...myCatsArr, myCat];
-
-    this.setNewCats(myCatsArr);
+    return newCat!;
   }
 
 
