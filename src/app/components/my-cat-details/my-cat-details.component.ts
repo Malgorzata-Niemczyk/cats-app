@@ -22,8 +22,7 @@ export class MyCatDetailsComponent implements OnInit {
 
   getSelectedNewCat(): void {
     const id: any = this.route.snapshot.paramMap.get('id');
-
-    this.newCatsCollectionService.getNewCat(id);
+    this.newCat = this.newCatsCollectionService.getNewCat(id);
   }
 
 }

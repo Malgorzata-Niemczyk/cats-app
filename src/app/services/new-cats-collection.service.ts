@@ -50,8 +50,6 @@ export class NewCatsCollectionService {
 
   getNewCat(id: string): NewCat {
     let newCat = this.getNewCats().find(newCat => newCat.id === id);
-    console.log(newCat);
-
     return newCat!;
   }
 
