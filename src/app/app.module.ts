@@ -26,6 +26,7 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
 import { MyCatsComponent } from './components/my-cats/my-cats.component';
 import { AddCatDialogComponent } from './components/add-cat-dialog/add-cat-dialog.component';
 import { AddFavButtonComponent } from './components/add-fav-button/add-fav-button.component';
+import { MyCatDetailsComponent } from './components/my-cat-details/my-cat-details.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { AddFavButtonComponent } from './components/add-fav-button/add-fav-butto
     ConfirmDialogComponent,
     MyCatsComponent,
     AddCatDialogComponent,
-    AddFavButtonComponent
+    AddFavButtonComponent,
+    MyCatDetailsComponent
   ],
   imports: [
     BrowserModule,

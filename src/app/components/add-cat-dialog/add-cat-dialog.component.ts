@@ -46,9 +46,6 @@ export class AddCatDialogComponent implements OnInit {
     this.catsService.addCat(newCatData).subscribe();
     this.newCatsCollectionService.addNewCat(newCatData);
       
-    console.log('submitted', newCatData);
-    console.log(localStorage);
-      
     this.dialogRef.close();
   }
 }
