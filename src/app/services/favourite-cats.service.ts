@@ -63,8 +63,4 @@ export class FavouriteCatsService {
     this.setFavouriteCats([]);
   }
 
-  toggleFavourites() {
-
-  }
-
 }
