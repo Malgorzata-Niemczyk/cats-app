@@ -13,7 +13,7 @@ import { ConfirmDialogData } from 'src/app/models/confirm-modal-data';
 export class FavouriteCatsComponent implements OnInit {
   favouriteCats: Cat[];
   displayedColumns: string[] = ['position', 'breed', 'origin', 'delete', 'info'];
-  favCatsData$: Observable<Cat[]> = this.favouriteCatsService.favCats$;
+  favCatsData$: Observable<Cat[]>;
 
   constructor(
     private favouriteCatsService: FavouriteCatsService,
@@ -22,6 +22,7 @@ export class FavouriteCatsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getFavouriteCats();
+    this.favCatsData$ = this.favouriteCatsService.favCats$;
   }
 
   getFavouriteCats(): void {

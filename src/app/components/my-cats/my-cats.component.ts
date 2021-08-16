@@ -11,16 +11,17 @@ import { Observable } from 'rxjs';
 })
 export class MyCatsComponent implements OnInit {
   myCats: NewCat[];
-  myCatsData$: Observable<NewCat[]> = this.newCatsCollectionService.myCatsList$;
+  myCatsData$: Observable<NewCat[]>;
   displayedColumns: string[] = ['position', 'breed', 'origin', 'delete', 'info'];
-
+  
   constructor(
     private saveDialogService: SaveDialogService,
     private newCatsCollectionService: NewCatsCollectionService
     ) { }
-
-  ngOnInit(): void {
+    
+    ngOnInit(): void {
     this.getMyCats();
+    this.myCatsData$ = this.newCatsCollectionService.myCatsList$;
   }
 
   getMyCats(): void {
