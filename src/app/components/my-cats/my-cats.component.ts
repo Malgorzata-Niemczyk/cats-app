@@ -15,7 +15,7 @@ import { ConfirmDialogData } from 'src/app/models/confirm-modal-data';
 export class MyCatsComponent implements OnInit {
   myCats: NewCat[];
   myCatsData$: Observable<NewCat[]>;
-  displayedColumns: string[] = ['position', 'breed', 'origin', 'delete', 'info'];
+  displayedColumns: string[] = ['position', 'breed', 'origin', 'delete', 'edit', 'info'];
   uuidValue: string;
   
   constructor(
