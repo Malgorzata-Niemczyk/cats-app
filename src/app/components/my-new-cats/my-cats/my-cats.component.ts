@@ -17,14 +17,14 @@ export class MyCatsComponent implements OnInit {
   myCatsData$: Observable<NewCat[]>;
   displayedColumns: string[] = ['position', 'breed', 'origin', 'delete', 'edit', 'info'];
   uuidValue: string;
-  
+
   constructor(
     private saveDialogService: SaveDialogService,
     private newCatsCollectionService: NewCatsCollectionService,
     private dialogService: ConfirmDialogService
-    ) { }
-    
-    ngOnInit(): void {
+  ) { }
+
+  ngOnInit(): void {
     this.getMyCats();
     this.myCatsData$ = this.newCatsCollectionService.myCatsList$;
   }
@@ -40,17 +40,18 @@ export class MyCatsComponent implements OnInit {
 
   openAddCatDialog(): void {
     const options: NewCat = {
+      actionTitle: 'Add Cat',
       id: this.generateUUID(),
-      name: `Breed's name`,
-      temperament: 'Temperament',
-      weight: 'Weight (kg)',
-      lifeSpan: 'Average life span',
-      origin: 'Origin',
-      description: 'Description'
+      name: '',
+      temperament: '',
+      weight: '',
+      lifeSpan: '',
+      origin: '',
+      description: ''
     }
-    
+
     this.saveDialogService.openDialog(options);
-  } 
+  }
 
   openDeleteNewCatDialog(event: Event, id: string): void {
     event.stopPropagation();
@@ -73,15 +74,24 @@ export class MyCatsComponent implements OnInit {
   }
 
 
-  openEditNewCatDialog(event: Event, id: string) {
+  openEditNewCatDialog(event: Event, catID: string) {
     event.stopPropagation();
-    const selectedCat = this.newCatsCollectionService.getNewCat(id);
+    const selectedCat: NewCat = this.newCatsCollectionService.getNewCat(catID);
 
-    console.log(selectedCat)
+    const options: NewCat = {
+      actionTitle: "Edit Cat",
+      id: catID,
+      name: selectedCat.name,
+      temperament: selectedCat.temperament,
+      weight: selectedCat.weight,
+      lifeSpan: selectedCat.lifeSpan,
+      origin: selectedCat.origin,
+      description: selectedCat.description
+    }
 
-    this.saveDialogService.openDialog(selectedCat);
+    console.log(options)
+
+    this.saveDialogService.openDialog(options);
+    }
+
   }
-
-
-
-}

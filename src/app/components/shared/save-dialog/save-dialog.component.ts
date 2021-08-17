@@ -11,6 +11,8 @@ import { NewCat } from 'src/app/models/new-cat-data';
   styleUrls: ['./save-dialog.component.scss']
 })
 export class SaveDialogComponent implements OnInit {
+  alert = false;
+  editedCatsArr: NewCat[];
 
   constructor(
     private dialogRef: MatDialogRef<SaveDialogComponent>,
@@ -28,24 +30,46 @@ export class SaveDialogComponent implements OnInit {
   }
 
   newCatForm = new FormGroup({
-    'name': new FormControl(null, [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
-    'origin': new FormControl(null, [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
-    'temperament': new FormControl(null, [Validators.required, Validators.pattern('[a-zA-Z, ]*')]),
-    'weight': new FormControl(null, [Validators.required, Validators.min(1), Validators.max(100), Validators.pattern('[0-9- ]*')]),
-    'lifeSpan': new FormControl(null, [Validators.required, Validators.pattern('[0-9- ]*')]),
-    'description': new FormControl(null, [Validators.required, Validators.maxLength(150), Validators.pattern('[a-zA-Z\'":;,-. ]*')])
+    'name': new FormControl(this.newCat.name, [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
+    'origin': new FormControl(this.newCat.origin, [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
+    'temperament': new FormControl(this.newCat.temperament, [Validators.required, Validators.pattern('[a-zA-Z, ]*')]),
+    'weight': new FormControl(this.newCat.weight, [Validators.required, Validators.min(1), Validators.max(100), Validators.pattern('[0-9- ]*')]),
+    'lifeSpan': new FormControl(this.newCat.lifeSpan, [Validators.required, Validators.pattern('[0-9- ]*')]),
+    'description': new FormControl(this.newCat.description, [Validators.required, Validators.maxLength(150), Validators.pattern('[a-zA-Z\'":;,-. ]*')])
   })
 
-  onAddNewCat() {
+  onHandleSubmit() {
     if (!this.newCatForm.valid) {
-      return;
+      return; 
     }
 
-    const newCatData = this.newCatForm.value;
+    switch(this.newCat.actionTitle) {
+      case 'Add Cat': 
+        this.onSaveAddNewCat();
+        break;
+      case 'Edit Cat':
+        this.onSaveEditNewCat();
+    }
 
-    this.catsService.addCat(newCatData).subscribe();
-    this.newCatsCollectionService.addNewCat(newCatData);
-      
+
     this.dialogRef.close();
   }
+
+  onSaveAddNewCat() {
+    this.catsService.addCat(this.newCatForm.value).subscribe(() => {
+      try {
+        this.alert = true;
+      } catch(error) {
+        console.log(error);
+      }
+    });
+
+    this.newCatsCollectionService.addNewCat(this.newCatForm.value);
+  }
+
+  onSaveEditNewCat() {
+    
+  }
+
+
 }

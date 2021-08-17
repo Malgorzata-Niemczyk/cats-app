@@ -1,6 +1,6 @@
-  <h1 mat-dialog-title>Add Cat</h1>
+  <h1 mat-dialog-title>{{newCat.actionTitle}}</h1>
   <form 
-    (ngSubmit)="onAddNewCat()"
+    (ngSubmit)="onHandleSubmit()"
     [formGroup]="newCatForm"
   >
   
