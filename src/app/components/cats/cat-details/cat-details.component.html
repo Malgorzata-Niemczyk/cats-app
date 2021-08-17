@@ -1,3 +1,4 @@
+<h3 class="loading-message" *ngIf="!cat">Loading...</h3>
 <mat-card *ngIf="cat" class="cat-card">
     <div class="cat-header-wrapper">
         <mat-card-header class="cat-header">
@@ -14,7 +15,7 @@
         <p><span>Origin:</span> {{cat.origin}}</p>
         <p><span>Average life span:</span> {{cat.life_span}} years</p>
         <p><span>Weight:</span> {{cat.weight?.metric}} kgs</p>
-        <p><a [href]="cat.wikipedia_url" class="wiki-link">WIKIPEDIA</a></p>
+        <p><a [href]="cat.wikipedia_url" target="_blank" rel=”noopener” class="wiki-link">WIKIPEDIA</a></p>
         <button mat-raised-button class="go-back-btn" [routerLink]="['/cats']">Go Back</button>
     </mat-card-content>
 </mat-card>

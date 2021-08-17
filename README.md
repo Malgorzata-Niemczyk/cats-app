@@ -12,15 +12,17 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - API: https://docs.thecatapi.com/
 
 
-## The aim of the task is to create three views:
+## The aim of the task is to create the following views:
 - The first view is the paginated list of items
-- The second view is the detailed view of an item from the list
+- The second view is the detailed view of an item chosen from the list
 - The third view is the view of items added to favourites
+- The fourth view allows the user to add new cats and edit them
 
 ## App features:
 - Searching items by their names
-- Adding an item to favourites from a list view and a detailed view
+- Toggling the addition and removal of an item from favourites from a list view and a detailed view
 - Items added to favourites view are saved in localStorage
+- Adding a new cat to the my cats view, viewing the details of an added cat, editing and deleting the added cat
 
 ## App views:
 
@@ -32,9 +34,6 @@ Detailed view of an item
 
 ![](./screenshots/cat-details.PNG)
 
-Favourites view
-
-![](./screenshots/fav-cats.PNG)
 
 ## Development server
 
