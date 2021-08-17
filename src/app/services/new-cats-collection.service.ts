@@ -53,7 +53,7 @@ export class NewCatsCollectionService {
     return newCat!;
   }
 
-  deleteNewCat(id: String): void {
+  deleteNewCat(id: string): void {
     let newCats = this.getNewCats();
     let updatedCatsArr = newCats.filter((newCat: NewCat) => newCat.id !== id);
 

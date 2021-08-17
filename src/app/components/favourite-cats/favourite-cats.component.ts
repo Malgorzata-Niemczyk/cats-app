@@ -11,7 +11,6 @@ import { ConfirmDialogData } from 'src/app/models/confirm-modal-data';
   styleUrls: ['./favourite-cats.component.scss']
 })
 export class FavouriteCatsComponent implements OnInit {
-  favouriteCats: Cat[];
   displayedColumns: string[] = ['position', 'breed', 'origin', 'delete', 'info'];
   favCatsData$: Observable<Cat[]>;
 
@@ -21,28 +20,20 @@ export class FavouriteCatsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getFavouriteCats();
+    this.favouriteCatsService.getFavouriteCats();
     this.favCatsData$ = this.favouriteCatsService.favCats$;
-  }
-
-  getFavouriteCats(): void {
-    this.favouriteCats = this.favouriteCatsService.getFavouriteCats();
   }
 
   openDeleteCatDialog(event: Event, id: string): void {
     event.stopPropagation();
-    const selectedFavCat = this.favouriteCats.find(selectedCat => selectedCat.id === id);
-    if (selectedFavCat === undefined) {
-      return;
-    }
 
     const options: ConfirmDialogData = {
       title: 'Removal Confirmation',
-      description: `Are you sure you want to remove the following cat: ${selectedFavCat.name}?`,
+      description: `Are you sure you want to remove the cat with an ID: ${id}?`,
       confirmButtonText: 'Delete Item',
       cancelButtonText: 'Cancel',
       confirmationCallback: (): void => {
-        this.favouriteCatsService.deleteFavouriteCat(selectedFavCat.id);
+        this.favouriteCatsService.deleteFavouriteCat(id);
       }
     }
 

@@ -13,7 +13,6 @@ import { ConfirmDialogData } from 'src/app/models/confirm-modal-data';
   styleUrls: ['./my-cats.component.scss']
 })
 export class MyCatsComponent implements OnInit {
-  myCats: NewCat[];
   myCatsData$: Observable<NewCat[]>;
   displayedColumns: string[] = ['position', 'breed', 'origin', 'delete', 'edit', 'info'];
   uuidValue: string;
@@ -25,12 +24,8 @@ export class MyCatsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getMyCats();
+    this.newCatsCollectionService.getNewCats();
     this.myCatsData$ = this.newCatsCollectionService.myCatsList$;
-  }
-
-  getMyCats(): void {
-    this.myCats = this.newCatsCollectionService.getNewCats();
   }
 
   generateUUID(): string {
@@ -55,18 +50,14 @@ export class MyCatsComponent implements OnInit {
 
   openDeleteNewCatDialog(event: Event, id: string): void {
     event.stopPropagation();
-    const selectedNewCat = this.myCats.find(selectedCat => selectedCat.id === id);
-    if (selectedNewCat === undefined) {
-      return;
-    }
 
     const options: ConfirmDialogData = {
       title: 'Removal Confirmation',
-      description: `Are you sure you want to remove the following cat: ${selectedNewCat.name}?`,
+      description: `Are you sure you want to remove the cat with an ID: ${id}?`,
       confirmButtonText: 'Delete Item',
       cancelButtonText: 'Cancel',
       confirmationCallback: (): void => {
-        this.newCatsCollectionService.deleteNewCat(selectedNewCat.id);
+        this.newCatsCollectionService.deleteNewCat(id);
       }
     }
 
