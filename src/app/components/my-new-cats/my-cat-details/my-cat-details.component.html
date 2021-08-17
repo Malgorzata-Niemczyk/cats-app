@@ -7,7 +7,7 @@
     </div>
     <mat-card-content class="cat-info-wrapper">
         <p><span>Description:</span><br>{{newCat.description}}</p>
-        <p><span>Temperament:</span> {{newCat.temperament}}</p>
+        <p><span>Temperament:</span> {{capitalizeWords(newCat.temperament)}}</p>
         <p><span>Origin:</span> {{newCat.origin}}</p>
         <p><span>Average life span:</span> {{newCat.lifeSpan}}</p>
         <p><span>Weight:</span> {{newCat.weight}} kgs</p>

@@ -89,8 +89,6 @@ export class MyCatsComponent implements OnInit {
       description: selectedCat.description
     }
 
-    console.log(options)
-
     this.saveDialogService.openDialog(options);
     }
 

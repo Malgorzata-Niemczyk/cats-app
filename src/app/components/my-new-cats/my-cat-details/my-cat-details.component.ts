@@ -24,5 +24,9 @@ export class MyCatDetailsComponent implements OnInit {
     const id: any = this.route.snapshot.paramMap.get('id');
     this.newCat = this.newCatsCollectionService.getNewCat(id);
   }
+  
+  capitalizeWords(string: string) {
+    return string.replace(/(?:^|\s)\S/g, (string: string) => string.toUpperCase());
+  };
 
 }
