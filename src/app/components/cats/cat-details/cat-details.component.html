@@ -12,7 +12,7 @@
         <p><span>Description:</span> <br> {{cat.description}}</p>
         <p><span>Temperament:</span> {{cat.temperament}}</p>
         <p><span>Origin:</span> {{cat.origin}}</p>
-        <p><span>Average life span:</span> {{cat.life_span}}</p>
+        <p><span>Average life span:</span> {{cat.life_span}} years</p>
         <p><span>Weight:</span> {{cat.weight?.metric}} kgs</p>
         <p><a [href]="cat.wikipedia_url" class="wiki-link">WIKIPEDIA</a></p>
         <button mat-raised-button class="go-back-btn" [routerLink]="['/cats']">Go Back</button>

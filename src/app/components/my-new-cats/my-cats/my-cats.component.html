@@ -2,7 +2,12 @@
   <h3 *ngIf="myCatsData.length === 0">There are no new cats added</h3>
   <div>
     <div class="button-container">
-      <button mat-raised-button class="add-button" (click)="openAddCatDialog()">
+      <button mat-raised-button *ngIf="myCatsData.length === 0" class="add-button" (click)="openAddCatDialog()">
+        Add Cat
+      </button>
+    </div>
+    <div>
+      <button mat-raised-button *ngIf="myCatsData.length > 0" class="add-button" (click)="openAddCatDialog()">
         Add Cat
       </button>
     </div>
