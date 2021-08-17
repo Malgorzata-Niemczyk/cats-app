@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit, Inject } from '@angular/core';
+import { Component, HostListener, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CatsService } from 'src/app/services/cats.service';
@@ -10,7 +10,7 @@ import { NewCat } from 'src/app/models/new-cat-data';
   templateUrl: './save-dialog.component.html',
   styleUrls: ['./save-dialog.component.scss']
 })
-export class SaveDialogComponent implements OnInit {
+export class SaveDialogComponent {
   alert = false;
   editedCatsArr: NewCat[];
 
@@ -20,9 +20,6 @@ export class SaveDialogComponent implements OnInit {
     private newCatsCollectionService: NewCatsCollectionService,
     @Inject(MAT_DIALOG_DATA) public newCat: NewCat
   ) { }
-
-  ngOnInit(): void {
-  }
 
   @HostListener("keydown.esc") 
   public onEscape() {
@@ -35,10 +32,11 @@ export class SaveDialogComponent implements OnInit {
     'temperament': new FormControl(this.newCat.temperament, [Validators.required, Validators.pattern('[a-zA-Z, ]*')]),
     'weight': new FormControl(this.newCat.weight, [Validators.required, Validators.min(1), Validators.max(100), Validators.pattern('[0-9- ]*')]),
     'lifeSpan': new FormControl(this.newCat.lifeSpan, [Validators.required, Validators.pattern('[0-9- ]*')]),
-    'description': new FormControl(this.newCat.description, [Validators.required, Validators.maxLength(150), Validators.pattern('[a-zA-Z\'":;,-. ]*')])
+    'description': new FormControl(this.newCat.description, [Validators.required, Validators.maxLength(150), Validators.pattern('[a-zA-Z\'":;,-. ]*')]),
+    'id': new FormControl(this.newCat.id)
   })
 
-  onHandleSubmit() {
+  onHandleSubmit(): void {
     if (!this.newCatForm.valid) {
       return; 
     }
@@ -49,13 +47,15 @@ export class SaveDialogComponent implements OnInit {
         break;
       case 'Edit Cat':
         this.onSaveEditNewCat();
+        break;
+      default:
+        break;
     }
-
 
     this.dialogRef.close();
   }
 
-  onSaveAddNewCat() {
+  onSaveAddNewCat(): void {
     this.catsService.addCat(this.newCatForm.value).subscribe(() => {
       try {
         this.alert = true;
@@ -67,9 +67,8 @@ export class SaveDialogComponent implements OnInit {
     this.newCatsCollectionService.addNewCat(this.newCatForm.value);
   }
 
-  onSaveEditNewCat() {
-    
+  onSaveEditNewCat(): void {
+    this.newCatsCollectionService.updateNewCat(this.newCatForm.value);
   }
-
 
 }

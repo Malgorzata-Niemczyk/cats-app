@@ -58,7 +58,15 @@ export class NewCatsCollectionService {
     let updatedCatsArr = newCats.filter((newCat: NewCat) => newCat.id !== id);
 
     this.setNewCats(updatedCatsArr);
+  }
 
+  updateNewCat(cat: NewCat): void {
+    const existingMyCatsArr: NewCat[] = this.getNewCats();
+    const index: number = existingMyCatsArr.findIndex((item: NewCat) => item.id === cat.id);
+    
+    existingMyCatsArr[index] = cat;
+
+    this.setNewCats(existingMyCatsArr);
   }
 
 }
