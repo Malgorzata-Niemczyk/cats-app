@@ -27,12 +27,12 @@ export class SaveDialogComponent {
   }
 
   newCatForm = new FormGroup({
-    'name': new FormControl(this.newCat.name, [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
-    'origin': new FormControl(this.newCat.origin, [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
-    'temperament': new FormControl(this.newCat.temperament, [Validators.required, Validators.pattern('[a-zA-Z, ]*')]),
+    'name': new FormControl(this.newCat.name, [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*')]),
+    'origin': new FormControl(this.newCat.origin, [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*')]),
+    'temperament': new FormControl(this.newCat.temperament, [Validators.required, Validators.minLength(4), Validators.pattern('[a-zA-Z, ]*')]),
     'weight': new FormControl(this.newCat.weight, [Validators.required, Validators.min(1), Validators.max(100), Validators.pattern('[0-9- ]*')]),
     'lifeSpan': new FormControl(this.newCat.lifeSpan, [Validators.required, Validators.pattern('[0-9- ]*')]),
-    'description': new FormControl(this.newCat.description, [Validators.required, Validators.maxLength(150), Validators.pattern('[a-zA-Z\'":;,-. ]*')]),
+    'description': new FormControl(this.newCat.description, [Validators.required, Validators.minLength(10), Validators.maxLength(150), Validators.pattern('[a-zA-Z\'":;,-. ]*')]),
     'id': new FormControl(this.newCat.id)
   })
 
