@@ -50,7 +50,7 @@ export class NewCatsCollectionService {
 
   getNewCat(id: string): NewCat {
     let newCat = this.getNewCats().find(newCat => newCat.id === id);
-    return newCat!;
+    return newCat as NewCat;
   }
 
   deleteNewCat(id: string): void {
