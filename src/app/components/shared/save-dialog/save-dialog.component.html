@@ -14,6 +14,12 @@
             name="name"
             formControlName="name"
           />
+          <mat-error *ngIf="this.newCatForm.controls.name.hasError('pattern') && !this.newCatForm.controls.name.hasError('required')">
+            Please enter a valid breed's name
+          </mat-error>
+          <mat-error *ngIf="this.newCatForm.controls.name.hasError('required')">
+            Breed's name is <strong>required</strong>
+          </mat-error>
         </mat-form-field>
     </p>
      
@@ -30,6 +36,12 @@
               name="origin"
               formControlName="origin"
             />
+            <mat-error *ngIf="this.newCatForm.controls.origin.hasError('pattern') && !this.newCatForm.controls.origin.hasError('required')">
+              Please enter a valid origin
+            </mat-error>
+            <mat-error *ngIf="this.newCatForm.controls.origin.hasError('required')">
+              Origin is <strong>required</strong>
+            </mat-error>
           </mat-form-field>
         </td>
         <td>
@@ -42,6 +54,12 @@
               name="temperament"
               formControlName="temperament"
             />
+            <mat-error *ngIf="this.newCatForm.controls.temperament.hasError('pattern') && !this.newCatForm.controls.temperament.hasError('required')">
+              Please enter a valid value
+            </mat-error>
+            <mat-error *ngIf="this.newCatForm.controls.temperament.hasError('required')">
+              Temperament is <strong>required</strong>
+            </mat-error>
           </mat-form-field>
         </td>
       </tr>
@@ -59,6 +77,12 @@
               name="weight"
               formControlName="weight"
             />
+            <mat-error *ngIf="this.newCatForm.controls.weight.hasError('pattern') && !this.newCatForm.controls.weight.hasError('required')">
+              Please enter a valid value
+            </mat-error>
+            <mat-error *ngIf="this.newCatForm.controls.weight.hasError('required')">
+              Weight in kilograms is <strong>required</strong>
+            </mat-error>
           </mat-form-field>
         </td>
         <td>
@@ -71,6 +95,12 @@
               name="lifeSpan"
               formControlName="lifeSpan"
             />
+            <mat-error *ngIf="this.newCatForm.controls.lifeSpan.hasError('pattern') && !this.newCatForm.controls.lifeSpan.hasError('required')">
+              Please enter a valid value
+            </mat-error>
+            <mat-error *ngIf="this.newCatForm.controls.lifeSpan.hasError('required')">
+              Life span in years is <strong>required</strong>
+            </mat-error>
           </mat-form-field>
         </td>
       </tr>
@@ -87,6 +117,12 @@
           formControlName="description"
           #message
         ></textarea>
+        <mat-error *ngIf="!this.newCatForm.controls.description.hasError('maxLength') && !this.newCatForm.controls.description.hasError('required')">
+          Min 10 characters and max 150 characters are required
+        </mat-error>
+        <mat-error *ngIf="this.newCatForm.controls.description.hasError('required')">
+          Description is <strong>required</strong>
+        </mat-error>
         <mat-hint align="end">{{message.value.length}} / 150</mat-hint>
       </mat-form-field>
     </p>

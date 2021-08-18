@@ -4,11 +4,17 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CatsService } from 'src/app/services/cats.service';
 import { NewCatsCollectionService } from 'src/app/services/new-cats-collection.service';
 import { NewCat } from 'src/app/models/new-cat-data';
+import { ErrorStateMatcher } from '@angular/material/core';
+import { FormErrorStateMatcher } from '../../error-state-matcher';
+
 
 @Component({
   selector: 'save-dialog',
   templateUrl: './save-dialog.component.html',
-  styleUrls: ['./save-dialog.component.scss']
+  styleUrls: ['./save-dialog.component.scss'],
+  providers: [
+    { provide: ErrorStateMatcher, useClass: FormErrorStateMatcher }
+  ]
 })
 export class SaveDialogComponent {
   alert = false;
