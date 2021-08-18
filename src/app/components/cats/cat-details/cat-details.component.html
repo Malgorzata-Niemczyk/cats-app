@@ -1,3 +1,6 @@
+<button mat-raised-button class="go-back-btn" (click)="goBack()">
+    <mat-icon>arrow_back_ios</mat-icon> Go Back
+</button>
 <h3 class="loading-message" *ngIf="!cat">Loading...</h3>
 <mat-card *ngIf="cat" class="cat-card">
     <div class="cat-header-wrapper">
@@ -16,6 +19,5 @@
         <p><span>Average life span:</span> {{cat.life_span}} years</p>
         <p><span>Weight:</span> {{cat.weight?.metric}} kgs</p>
         <p><a [href]="cat.wikipedia_url" target="_blank" rel=”noopener” class="wiki-link">WIKIPEDIA</a></p>
-        <button mat-raised-button class="go-back-btn" [routerLink]="['/cats']">Go Back</button>
     </mat-card-content>
 </mat-card>

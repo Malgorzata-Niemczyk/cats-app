@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
+import { Location } from '@angular/common'
 import { CatsService } from 'src/app/services/cats.service';
 import { FavouriteCatsService } from 'src/app/services/favourite-cats.service';
 import { BreedDetails, SearchBreedResults } from '../../../models/cat';
@@ -18,6 +18,7 @@ export class CatDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private location: Location,
     private catsService: CatsService,
     private favouriteCatsService: FavouriteCatsService
   ) { }
@@ -45,6 +46,10 @@ export class CatDetailsComponent implements OnInit {
     this.isInFavourites() 
       ? this.favouriteCatsService.deleteFavouriteCat(this.cat.id)
       : this.favouriteCatsService.addFavouriteCat(this.cat);
+  }
+
+  goBack(): void {
+    this.location.back()
   }
 
 }

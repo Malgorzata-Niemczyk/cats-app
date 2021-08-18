@@ -1,3 +1,6 @@
+<button mat-raised-button class="go-back-btn" [routerLink]="['/my-cats']">
+    <mat-icon>arrow_back_ios</mat-icon> Go Back
+</button>
 <mat-card class="cat-card">
     <div class="cat-header-wrapper">
         <mat-card-header class="cat-header">
@@ -11,6 +14,5 @@
         <p><span>Origin:</span> {{newCat.origin}}</p>
         <p><span>Average life span:</span> {{newCat.lifeSpan}} years</p>
         <p><span>Weight:</span> {{newCat.weight}} kgs</p>
-        <button mat-raised-button class="go-back-btn" [routerLink]="['/my-cats']">Go Back</button>
     </mat-card-content>
 </mat-card>
