@@ -51,7 +51,7 @@ export class MyCatsComponent implements OnInit {
 
     const options: ConfirmDialogData = {
       title: 'Removal Confirmation',
-      description: `Are you sure you want to remove the cat with an ID: ${id}?`,
+      description: `Are you sure you want to remove this cat?`,
       confirmButtonText: 'Delete Item',
       cancelButtonText: 'Cancel',
       confirmationCallback: (): void => {

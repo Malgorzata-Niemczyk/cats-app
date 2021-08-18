@@ -3,12 +3,12 @@
   <div>
     <div class="button-container">
       <button mat-raised-button *ngIf="myCatsData.length === 0" class="add-button" (click)="openAddCatDialog()">
-        Add Cat
+        <mat-icon>add</mat-icon> Add Cat
       </button>
     </div>
     <div>
       <button mat-raised-button *ngIf="myCatsData.length > 0" class="add-button" (click)="openAddCatDialog()">
-        Add Cat
+        <mat-icon>add</mat-icon> Add Cat
       </button>
     </div>
 
