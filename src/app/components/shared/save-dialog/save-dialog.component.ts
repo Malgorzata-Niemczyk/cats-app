@@ -5,7 +5,7 @@ import { CatsService } from 'src/app/services/cats.service';
 import { NewCatsCollectionService } from 'src/app/services/new-cats-collection.service';
 import { NewCat } from 'src/app/models/new-cat-data';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { FormErrorStateMatcher } from '../../error-state-matcher';
+import { FormErrorStateMatcher } from 'src/app/error-state-matcher';
 
 
 @Component({
